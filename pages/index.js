@@ -1,65 +1,64 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Link from "next/link";
+import { AiOutlineGoogle } from "react-icons/ai";
+
+import { useAuth } from "@/lib/auth";
 
 export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+	const auth = useAuth();
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+	return (
+		<>
+			<Head>
+				<title>Home - Tsks, just tasks.</title>
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `
+          if (document.cookie && document.cookie.includes('feedback-auth')) {
+            window.location.href = "/dashboard"
+          }`
+					}}
+				/>
+				<link rel='icon' href='/favicon.ico' />
+			</Head>
+			<main className='flex flex-col items-center justify-center min-h-screen text-center text-white bg-gray-900'>
+				{!auth.user ? (
+					<h1 className='text-6xl font-bold'>Tsks, just tasks.</h1>
+				) : (
+					<h1 className='text-5xl font-bold'>
+						Welcome, {auth.user.name}.
+					</h1>
+				)}
+				{!auth?.user && (
+					<p className='opacity-60 mt-8 text-gray-200'>
+						Keep track of your daily tasks in life and
+						<br /> get that satisfaction once completed.
+					</p>
+				)}
+				{auth.user ? (
+					<div className='flex'>
+						<Link href='/dashboard'>
+							<button className='hover:bg-purple-400 rounded-xl mt-14 flex flex-row items-center justify-center px-6 py-3 mx-2 font-semibold text-white transition-colors duration-200 ease-in-out bg-purple-500'>
+								View Dashboard
+							</button>
+						</Link>
+						<button
+							onClick={(e) => auth.signout()}
+							className='hover:bg-purple-400 rounded-xl mt-14 flex flex-row items-center justify-center px-6 py-3 mx-2 font-semibold text-white transition-colors duration-200 ease-in-out bg-purple-500'
+						>
+							Sign out
+						</button>
+					</div>
+				) : (
+					<button
+						onClick={(e) => auth.signinWithGoogle()}
+						className='hover:bg-purple-400 rounded-xl mt-14 flex flex-row items-center justify-center px-6 py-3 font-semibold text-white transition-colors duration-200 ease-in-out bg-purple-500'
+					>
+						<AiOutlineGoogle className='mr-2 text-2xl' />
+						Sign in with Google
+					</button>
+				)}
+			</main>
+		</>
+	);
 }
