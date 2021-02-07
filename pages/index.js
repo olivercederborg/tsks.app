@@ -4,7 +4,7 @@ import { AiOutlineGoogle } from "react-icons/ai";
 
 import { useAuth } from "@/lib/auth";
 
-export default function Home() {
+export default function Index() {
 	const auth = useAuth();
 
 	return (
@@ -14,7 +14,7 @@ export default function Home() {
 				<script
 					dangerouslySetInnerHTML={{
 						__html: `
-          if (document.cookie && document.cookie.includes('feedback-auth')) {
+          if (document.cookie && document.cookie.includes('tsks-auth')) {
             window.location.href = "/dashboard"
           }`
 					}}
