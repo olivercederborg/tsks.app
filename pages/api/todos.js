@@ -3,8 +3,8 @@ import { getCollectionTodos } from "@/lib/db-admin";
 
 export default async (req, res) => {
 	try {
-		const { uid } = await auth.verifyIdToken(req.headers.uid);
-		const { todos } = await getCollectionTodos(user_id);
+		const uid = req.headers.uid;
+		const { todos } = await getCollectionTodos(uid);
 
 		// console.log(todos);
 
