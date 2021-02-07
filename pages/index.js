@@ -4,7 +4,7 @@ import { AiOutlineGoogle } from "react-icons/ai";
 
 import { useAuth } from "@/lib/auth";
 
-export default function Home() {
+export default function Index() {
 	const auth = useAuth();
 
 	return (
