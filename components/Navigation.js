@@ -7,7 +7,7 @@ const Navigation = () => {
 	const auth = useAuth();
 
 	return (
-		<header className='flex items-center justify-center font-semibold text-white bg-gray-800'>
+		<header className='bg-secondary-background flex items-center justify-center font-semibold text-white'>
 			<div className='h-14 container flex flex-row items-center justify-between'>
 				<nav>
 					<Link href='/' passHref>

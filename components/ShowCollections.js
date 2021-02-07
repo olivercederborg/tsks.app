@@ -21,7 +21,7 @@ export default function ShowCollections({ collections }) {
 							passHref
 						>
 							<Link>
-								<div className='rounded-3xl flex flex-row items-start p-6 pb-10 bg-gray-800'>
+								<div className='rounded-3xl bg-primary-card flex flex-row items-start p-6'>
 									<div className='rounded-2xl p-4 bg-purple-400'>
 										<MdLabel fontSize='30px' />
 									</div>
@@ -29,9 +29,9 @@ export default function ShowCollections({ collections }) {
 										<h2 className='text-2xl font-bold'>
 											{collection.name}
 										</h2>
-										{/* <p className='opacity-60 mt-2 font-medium'>
+										<p className='opacity-60 mt-2 font-medium'>
 											10 tasks - 4 completed
-										</p> */}
+										</p>
 									</div>
 								</div>
 							</Link>

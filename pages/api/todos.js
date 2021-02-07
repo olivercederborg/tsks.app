@@ -1,11 +1,9 @@
-import { getCollectionTodos } from "@/lib/db-admin";
+import { getAllTodos } from "@/lib/db-admin";
 
 export default async (req, res) => {
 	try {
 		const uid = req.headers.uid;
-		const { todos } = await getCollectionTodos(uid);
-
-		// console.log(todos);
+		const { todos } = await getAllTodos(uid);
 
 		res.status(200).json({ todos });
 	} catch (error) {

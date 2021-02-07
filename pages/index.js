@@ -21,7 +21,7 @@ export default function Index() {
 				/>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<main className='flex flex-col items-center justify-center min-h-screen text-center text-white bg-gray-900'>
+			<main className='bg-primary-background flex flex-col items-center justify-center min-h-screen text-center text-white'>
 				{!auth.user ? (
 					<h1 className='text-6xl font-bold'>Tsks, just tasks.</h1>
 				) : (
