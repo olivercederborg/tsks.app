@@ -2,19 +2,22 @@ import Head from "next/head";
 
 import { useAuth } from "@/lib/auth";
 import Navigation from "@/components/Navigation";
-import AddCollectionModal from "@/components/AddCollectionModal";
 import DashboardShell from "@/components/DashboardShell";
-import EmptyState from "@/components/EmptyState";
 import ShowCollections from "@/components/ShowCollections";
-import useSWR from "swr";
-import fetcher from "@/utils/fetcher";
+import { getUserCollections } from "@/lib/db-admin";
+import { useEffect, useState } from "react";
 
 export default function Dashboard() {
 	const { user } = useAuth();
-	const { data } = useSWR(
-		user ? ["/api/collections", user.token] : null,
-		fetcher
-	);
+	const [allCollections, setAllCollections] = useState([]);
+
+	useEffect(() => {
+		const getEm = async () => {
+			const { collections } = await getUserCollections(user?.uid);
+			setAllCollections(collections);
+		};
+		getEm();
+	}, [user?.uid]);
 
 	return (
 		<>
@@ -27,7 +30,7 @@ export default function Dashboard() {
 			<Navigation />
 
 			<DashboardShell>
-				<ShowCollections collections={data?.collections} />
+				<ShowCollections collections={allCollections} />
 			</DashboardShell>
 		</>
 	);
