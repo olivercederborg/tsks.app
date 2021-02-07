@@ -43,7 +43,7 @@ const AddCollectionModal = ({ children }) => {
 			isClosable: true
 		});
 		mutate(
-			["/api/collections", auth.user.token],
+			["/api/todo-collections", auth.user.token],
 			async (data) => ({
 				collections: [...data.collections, { id, ...newCollection }]
 			}),
