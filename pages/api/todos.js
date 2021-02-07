@@ -1,4 +1,3 @@
-import { auth } from "@/lib/firebase";
 import { getCollectionTodos } from "@/lib/db-admin";
 
 export default async (req, res) => {
