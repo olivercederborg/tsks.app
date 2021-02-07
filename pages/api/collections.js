@@ -3,8 +3,8 @@ import { getUserCollections } from "@/lib/db-admin";
 
 export default async (req, res) => {
 	try {
-		const { user_id } = await auth.verifyIdToken(req.headers.token);
-		const { collections } = await getUserCollections(user_id);
+		const { uid } = await auth.verifyIdToken(req.headers.token);
+		const { collections } = await getUserCollections(uid);
 
 		return res.status(200).json({ collections });
 	} catch (error) {
