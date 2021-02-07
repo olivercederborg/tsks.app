@@ -7,7 +7,7 @@ import fetcher from "@/utils/fetcher";
 const Dashboard = () => {
 	const { user } = useAuth();
 	const { data } = useSWR(
-		user ? ["/api/collections", user.token] : null,
+		user ? ["/api/collections", user.uid] : null,
 		fetcher
 	);
 
