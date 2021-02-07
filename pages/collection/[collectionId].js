@@ -13,7 +13,6 @@ const CollectionTodos = () => {
 	const router = useRouter();
 	const inputEl = useRef(null);
 	const collectionId = router.query.collectionId;
-	// const collections = getAllCollections();
 	const [allTodos, setAllTodos] = useState([]);
 
 	useEffect(() => {
