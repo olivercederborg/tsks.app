@@ -14,7 +14,7 @@ export default function Home() {
 				<script
 					dangerouslySetInnerHTML={{
 						__html: `
-          if (document.cookie && document.cookie.includes('feedback-auth')) {
+          if (document.cookie && document.cookie.includes('tsks-auth')) {
             window.location.href = "/dashboard"
           }`
 					}}

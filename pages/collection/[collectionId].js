@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 
 import { useAuth } from "@/lib/auth";
-import { getAllCollections, getAllTodos } from "@/lib/db-admin";
+import { getAllTodos } from "@/lib/db-admin";
 import { createTodo } from "@/lib/db";
 import Todo from "@/components/Todo";
 import TodoShell from "@/components/TodoShell";

@@ -1,11 +1,6 @@
 import Head from "next/head";
-import { MdLabel } from "react-icons/md";
-import useSWR from "swr";
 
 import Navigation from "@/components/Navigation";
-import { useAuth } from "@/lib/auth";
-import AddCollectionModal from "@/components/AddCollectionModal";
-import fetcher from "@/utils/fetcher";
 
 export default function DashboardShell({ children }) {
 	return (
