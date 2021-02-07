@@ -1,7 +1,5 @@
 import { useAuth } from "@/lib/auth";
-import AddCollectionModal from "@/components/AddCollectionModal";
 import DashboardShell from "@/components/DashboardShell";
-import EmptyState from "@/components/EmptyState";
 import ShowCollections from "@/components/ShowCollections";
 import useSWR from "swr";
 import fetcher from "@/utils/fetcher";
@@ -24,7 +22,7 @@ const Dashboard = () => {
 	if (data.collections.length) {
 		return (
 			<DashboardShell>
-				<ShowCollections collections={data?.collections} />
+				<ShowCollections collections={data.collections} />
 			</DashboardShell>
 		);
 	}
