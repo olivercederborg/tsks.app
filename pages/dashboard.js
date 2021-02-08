@@ -3,6 +3,7 @@ import DashboardShell from "@/components/DashboardShell";
 import ShowCollections from "@/components/ShowCollections";
 import useSWR from "swr";
 import fetcher from "@/utils/fetcher";
+import EmptyState from "@/components/EmptyState";
 
 const Dashboard = () => {
 	const { user } = useAuth();
@@ -26,6 +27,12 @@ const Dashboard = () => {
 			</DashboardShell>
 		);
 	}
+
+	return (
+		<DashboardShell>
+			<EmptyState />
+		</DashboardShell>
+	);
 };
 
 export default Dashboard;
