@@ -12,8 +12,10 @@ const TodoShell = ({ children, currentCollection }) => {
 	const { user } = useAuth();
 	const router = useRouter();
 
-	if (currentCollection && user.uid !== currentCollection.authorId) {
-		router.push("/dashboard");
+	if (user?.uid) {
+		if (currentCollection && user.uid !== currentCollection.authorId) {
+			router.push("/dashboard");
+		}
 	}
 
 	return (

@@ -1,9 +1,10 @@
-import "tailwindcss/tailwind.css";
-import { AuthProvider } from "../lib/auth";
 import { ChakraProvider } from "@chakra-ui/react";
-import "@/styles/style.scss";
 import { css, Global } from "@emotion/react";
 import Head from "next/head";
+
+import { AuthProvider } from "../lib/auth";
+import "@/styles/style.scss";
+import "tailwindcss/tailwind.css";
 
 const GlobalStyle = ({ children }) => {
 	return (

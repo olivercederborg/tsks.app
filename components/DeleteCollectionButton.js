@@ -19,7 +19,7 @@ import {
 import { HiOutlineTrash } from "react-icons/hi";
 import { useRouter } from "next/router";
 
-import { deleteCollection } from "@/lib/db";
+import { deleteCollection, deleteCollectionTodos } from "@/lib/db";
 import { useAuth } from "@/lib/auth";
 
 const DeleteCollectionButton = ({ currentCollection }) => {
@@ -35,6 +35,7 @@ const DeleteCollectionButton = ({ currentCollection }) => {
 			duration: 5000,
 			isClosable: true
 		});
+		deleteCollectionTodos(currentCollection.id);
 		deleteCollection(currentCollection.id);
 
 		mutate(

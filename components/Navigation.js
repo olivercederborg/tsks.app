@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { FaUserCircle } from "react-icons/fa";
 
 import { useAuth } from "@/lib/auth";
+import { Avatar } from "@chakra-ui/react";
 
 const Navigation = () => {
 	const auth = useAuth();
@@ -39,7 +40,17 @@ const Navigation = () => {
 						>
 							Log out
 						</button>
-						<FaUserCircle fontSize='30px' className='text-gray-400' />
+						{/* <FaUserCircle fontSize='30px' className='text-gray-400' /> */}
+						{auth.user.userRole == "admin" ? (
+							<div className='text-red-50 px-2 py-1 mr-2 text-xs font-semibold tracking-wider uppercase bg-red-400 rounded-lg'>
+								{auth.user.userRole}
+							</div>
+						) : (
+							<div className='bg-primary-default px-2 py-1 mr-2 text-xs font-semibold tracking-wider text-purple-200 uppercase rounded-lg'>
+								{auth.user.userRole}
+							</div>
+						)}
+						<Avatar h='30px' w='30px' />
 					</div>
 				)}
 			</div>

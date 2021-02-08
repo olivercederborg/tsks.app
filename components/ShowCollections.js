@@ -33,7 +33,7 @@ export default function ShowCollections({ collections }) {
 							passHref
 						>
 							<a className='group no-underline'>
-								<div className='group-hover:bg-hover-card rounded-3xl bg-primary-card flex flex-row items-start p-6 transition-all duration-200 ease-in-out'>
+								<div className='group-hover:bg-hover-card rounded-3xl bg-primary-card flex flex-row items-start p-6 overflow-x-hidden transition-all duration-200 ease-in-out'>
 									<div className='rounded-2xl bg-primary-default p-4'>
 										<MdLabel fontSize='30px' />
 									</div>

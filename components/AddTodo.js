@@ -49,7 +49,7 @@ const AddTodo = () => {
 							<HiOutlinePlus />
 						</button>
 						<input
-							className='w-full font-medium bg-transparent outline-none'
+							className='w-full bg-transparent outline-none'
 							ref={inputEl}
 							name='name'
 							type='name'
