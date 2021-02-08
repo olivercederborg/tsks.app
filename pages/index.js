@@ -11,14 +11,14 @@ export default function Index() {
 		<>
 			<Head>
 				<title>Home - Tsks, just tasks.</title>
-				<script
+				{/* <script
 					dangerouslySetInnerHTML={{
 						__html: `
           if (document.cookie && document.cookie.includes('tsks-auth')) {
             window.location.href = "/dashboard"
           }`
 					}}
-				/>
+				/> */}
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<main className='bg-primary-background flex flex-col items-center justify-center min-h-screen text-center text-white'>
