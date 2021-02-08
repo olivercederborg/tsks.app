@@ -72,7 +72,7 @@ const DeleteCollectionButton = ({ currentCollection }) => {
 		<>
 			<button
 				onClick={onOpen}
-				className='group bg-primary-card rounded-xl hover:bg-red-500 focus:outline-none px-3 py-3 transition-all duration-200 ease-in-out'
+				className='group bg-primary-card rounded-2xl hover:bg-red-500 focus:outline-none px-3 py-3 transition-all duration-200 ease-in-out'
 			>
 				<HiOutlineTrash className='group-hover:opacity-100 text-2xl transition-all duration-200 ease-in-out opacity-50' />
 			</button>

@@ -2,6 +2,7 @@ import AddCollectionModal from "@/components/AddCollectionModal";
 import { MdLabel } from "react-icons/md";
 import NextLink from "next/link";
 import { Link } from "@chakra-ui/react";
+import { HiOutlinePlus } from "react-icons/hi";
 import { useEffect, useState } from "react";
 import { Router } from "next/router";
 import { getUserTodos } from "@/lib/db-admin";
@@ -37,7 +38,7 @@ export default function ShowCollections({ collections }) {
 										<MdLabel fontSize='30px' />
 									</div>
 									<div className='ml-5'>
-										<h2 className='text-2xl font-bold'>
+										<h2 className='text-xl font-semibold'>
 											{collection.name}
 										</h2>
 										<PendingTodos
@@ -49,7 +50,10 @@ export default function ShowCollections({ collections }) {
 							</a>
 						</NextLink>
 					))}
-				<AddCollectionModal>Add Collection</AddCollectionModal>
+				<AddCollectionModal>
+					<HiOutlinePlus className='mr-1 text-lg' />
+					Add Collection
+				</AddCollectionModal>
 			</div>
 		</>
 	);

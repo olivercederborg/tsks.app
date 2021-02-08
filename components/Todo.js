@@ -16,8 +16,8 @@ const Todo = ({ name, id }) => {
 		toast({
 			title: "Task completed!",
 			status: "success",
-			duration: 5000,
-			isClosable: true
+			position: "bottom-right",
+			duration: 1500
 		});
 		mutate(
 			["/api/todos", collectionId],
@@ -32,12 +32,12 @@ const Todo = ({ name, id }) => {
 	};
 	return (
 		<div className='py-2'>
-			<div className='rounded-xl bg-primary-card flex items-center justify-start p-3'>
+			<div className='rounded-2xl bg-primary-card flex items-center justify-start p-3'>
 				<button
-					className='border-primary-default border-3 focus:outline-none active:bg-primary-default px-2 py-2 transition-colors duration-100 ease-in-out rounded-lg'
+					className='border-primary-default border-3 focus:outline-none hover:bg-primary-default active:bg-primary-default hover:bg-opacity-40 px-2 py-2 transition-colors duration-100 ease-in-out rounded-lg'
 					onClick={onDelete}
 				></button>
-				<p className='ml-3 font-semibold text-white'>{name}</p>
+				<p className='ml-3 text-white'>{name}</p>
 				{/* <BsCheckAll /> */}
 			</div>
 		</div>
