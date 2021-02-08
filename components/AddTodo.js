@@ -45,6 +45,7 @@ const AddTodo = () => {
 			false
 		);
 		inputEl.current.value = "";
+		console.log(id);
 	};
 	return (
 		<Box as='form' onSubmit={onCreateTodo}>
