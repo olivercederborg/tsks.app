@@ -19,7 +19,7 @@ const Dashboard = () => {
 		);
 	}
 
-	if (data?.collections.length) {
+	if (data.collections?.length) {
 		return (
 			<DashboardShell>
 				<ShowCollections collections={data.collections} />

@@ -1,6 +1,10 @@
 import Head from "next/head";
 import { Box } from "@chakra-ui/react";
+import { mutate } from "swr";
+
 import Navigation from "./Navigation";
+import { useAuth } from "@/lib/auth";
+import DeleteCollectionButton from "./DeleteCollectionButton";
 
 const TodoShell = ({ children, currentCollection }) => {
 	return (
@@ -13,12 +17,17 @@ const TodoShell = ({ children, currentCollection }) => {
 
 			<Navigation />
 			<main className='bg-primary-background flex flex-col items-center min-h-screen text-white'>
-				<Box maxWidth='700px' className='mt-14 container min-h-screen'>
-					<h1 className='mb-14 text-4xl font-bold'>
-						{currentCollection?.name}
-					</h1>
+				<div className='mt-14 w-full max-w-screen-md px-5'>
+					<div className='mb-14 flex justify-between'>
+						<h1 className='text-4xl font-bold'>
+							{currentCollection?.name}
+						</h1>
+						<DeleteCollectionButton
+							currentCollection={currentCollection}
+						/>
+					</div>
 					{children}
-				</Box>
+				</div>
 			</main>
 		</>
 	);

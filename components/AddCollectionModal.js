@@ -56,7 +56,7 @@ const AddCollectionModal = ({ children }) => {
 		<>
 			<button
 				onClick={onOpen}
-				className='hover:bg-purple-400 rounded-xl flex flex-row items-center justify-center px-6 py-3 mx-2 font-semibold text-white transition-colors duration-200 ease-in-out bg-transparent border-2 border-purple-400'
+				className='hover:bg-primary-default rounded-xl hover:border-primary-default border-secondary-card flex flex-row items-center justify-center px-6 py-3 font-semibold text-white transition-colors duration-200 ease-in-out bg-transparent border-2'
 			>
 				{children}
 			</button>

@@ -10,12 +10,18 @@ module.exports = {
 				"primary-background": "#191B21",
 				"secondary-background": "#1E2027",
 				"primary-card": "#21232D",
-				"secondary-card": "#333644"
+				"hover-card": "#333644",
+				"secondary-card": "#2A2D39"
+			},
+			borderWidth: {
+				3: "3px"
 			}
 		}
 	},
 	variants: {
-		extend: {}
+		extend: {
+			backgroundColor: ["active"]
+		}
 	},
 	plugins: []
 };
