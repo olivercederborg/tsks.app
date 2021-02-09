@@ -2,7 +2,8 @@ import { completeTodo, deleteTodo } from "@/lib/db";
 import { useAuth } from "../lib/auth";
 import { mutate } from "swr";
 import router from "next/router";
-import { BsCheckAll } from "react-icons/bs";
+import { FiCheck } from "react-icons/fi";
+import { HiOutlineTrash } from "react-icons/hi";
 import { useToast } from "@chakra-ui/react";
 
 const Todo = ({ name, id, createdAt, authorId }) => {
@@ -14,9 +15,9 @@ const Todo = ({ name, id, createdAt, authorId }) => {
 
 	const onDelete = () => {
 		toast({
-			title: "Task completed!",
+			title: "Task deleted!",
 			status: "success",
-			position: "bottom-right",
+			position: "top",
 			duration: 1500
 		});
 		mutate(
@@ -42,7 +43,7 @@ const Todo = ({ name, id, createdAt, authorId }) => {
 		toast({
 			title: "Task completed!",
 			status: "success",
-			position: "bottom-right",
+			position: "top",
 			duration: 1500
 		});
 		mutate(
@@ -63,13 +64,18 @@ const Todo = ({ name, id, createdAt, authorId }) => {
 	};
 	return (
 		<div className='py-2'>
-			<div className='rounded-2xl bg-primary-card flex items-center justify-start p-3'>
+			<div className='group rounded-2xl bg-primary-card relative flex items-center justify-start p-3'>
 				<button
 					className='border-primary-default border-3 focus:outline-none hover:bg-primary-default active:bg-primary-default hover:bg-opacity-40 px-2 py-2 transition-colors duration-100 ease-in-out rounded-lg'
 					onClick={onComplete}
 				></button>
-				<p className='ml-3 text-white'>{name}</p>
-				{/* <BsCheckAll /> */}
+				<p className='pr-8 ml-3 text-white'>{name}</p>
+				<button
+					className='focus:outline-none hover:bg-red-400 active:bg-primary-default hover:opacity-100 group-hover:opacity-70 absolute right-0 p-2 mr-3 transition-all duration-200 ease-in-out rounded-lg opacity-0'
+					onClick={onDelete}
+				>
+					<HiOutlineTrash className='' />
+				</button>
 			</div>
 		</div>
 	);
