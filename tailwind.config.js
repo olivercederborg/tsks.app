@@ -1,21 +1,21 @@
 module.exports = {
-	purge: {
-		content: [
-			"./pages/**/*.{js,ts,jsx,tsx}",
-			"./components/**/*.{js,ts,jsx,tsx}"
-		],
-		options: {
-			safelist: [
-				"border-primary-yellow",
-				"border-primary-teal",
-				"border-primary-rose",
-				"bg-primary-yellow",
-				"bg-primary-teal",
-				"bg-primary-rose",
-				"bg-opacity-40"
-			]
-		}
-	},
+	// purge: {
+	// 	content: [
+	// 		"./pages/**/*.{js,ts,jsx,tsx}",
+	// 		"./components/**/*.{js,ts,jsx,tsx}"
+	// 	],
+	// 	options: {
+	// 		safelist: [
+	// 			"border-primary-yellow",
+	// 			"border-primary-teal",
+	// 			"border-primary-rose",
+	// 			"bg-primary-yellow",
+	// 			"bg-primary-teal",
+	// 			"bg-primary-rose",
+	// 			"bg-opacity-40"
+	// 		]
+	// 	}
+	// },
 	darkMode: false, // or 'media' or 'class'
 	theme: {
 		extend: {
