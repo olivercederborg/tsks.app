@@ -62,7 +62,7 @@ const Navigation = () => {
 					<nav className='flex items-center justify-around w-full'>
 						<Link href='/' passHref>
 							<a
-								className={`py-5 opacity-70 hover:opacity-100 flex items-center ${
+								className={`py-4 opacity-70 hover:opacity-100 flex items-center ${
 									router.pathname == "/" ? "opacity-100" : ""
 								}`}
 							>
@@ -78,7 +78,7 @@ const Navigation = () => {
 						</Link>
 						<Link href='/dashboard' passHref>
 							<a
-								className={`py-5 opacity-70 hover:opacity-100 flex items-center ${
+								className={`py-4 opacity-70 hover:opacity-100 flex items-center ${
 									router.pathname == "/dashboard" ? "opacity-100" : ""
 								}`}
 							>
