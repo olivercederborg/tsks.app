@@ -16,7 +16,11 @@ export default function PendingTodos({ currentCollection, userTodos }) {
 	return (
 		<>
 			<p className='opacity-60 mt-1'>
-				{collectionTodos ? `${collectionTodos} tasks` : "No tasks"}
+				{collectionTodos === 1
+					? `${collectionTodos} task`
+					: collectionTodos > 1
+					? `${collectionTodos} tasks`
+					: "No tasks"}
 			</p>
 		</>
 	);
