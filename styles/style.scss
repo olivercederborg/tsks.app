@@ -2,3 +2,7 @@ body {
 	@apply bg-primary-background;
 	box-sizing: border-box;
 }
+
+#mobile_menu {
+	height: calc(70px + env(safe-area-inset-bottom));
+}

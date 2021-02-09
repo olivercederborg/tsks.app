@@ -21,7 +21,7 @@ import { createCollection } from "@/lib/db";
 import { useAuth } from "@/lib/auth";
 
 const AddCollectionModal = ({ children }) => {
-	const initialRef = useRef();
+	const initialRef = useRef(null);
 	const toast = useToast();
 	const auth = useAuth();
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -56,7 +56,7 @@ const AddCollectionModal = ({ children }) => {
 		<>
 			<button
 				onClick={onOpen}
-				className='hover:bg-primary-default rounded-2xl hover:border-primary-default border-secondary-card border-3 flex flex-row items-center justify-center px-6 py-3 font-medium text-white transition-colors duration-200 ease-in-out bg-transparent'
+				className='hover:bg-primary-default rounded-2xl hover:border-primary-default border-secondary-card border-3 focus:outline-none flex flex-row items-center justify-center px-6 py-3 font-medium text-white transition-colors duration-200 ease-in-out bg-transparent'
 			>
 				{children}
 			</button>
@@ -65,8 +65,8 @@ const AddCollectionModal = ({ children }) => {
 				<ModalContent
 					as='form'
 					onSubmit={handleSubmit(onCreateCollection)}
-					bg='#21232D'
-					borderRadius='15px'
+					bgColor='#191B21'
+					borderRadius='20px'
 					color='white'
 				>
 					<ModalHeader fontWeight='700'>Add Collection</ModalHeader>
@@ -81,7 +81,7 @@ const AddCollectionModal = ({ children }) => {
 								borderColor='#333644'
 								py='5'
 								px='4'
-								borderRadius='10px'
+								borderRadius='12px'
 								name='name'
 								_hover={{ borderColor: "#464957" }}
 								ref={register({ required: true })}
