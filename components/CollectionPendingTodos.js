@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 
-export default function PendingTodos({ currentCollection, userTodos }) {
+export default function CollectionPendingTodos({
+	currentCollection,
+	userTodos
+}) {
 	const [collectionTodos, setCollectionTodos] = useState(null);
 
 	useEffect(() => {

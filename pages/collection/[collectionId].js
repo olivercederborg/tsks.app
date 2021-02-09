@@ -1,17 +1,10 @@
 import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import useSWR, { mutate } from "swr";
-import {
-	Box,
-	Button,
-	FormControl,
-	FormLabel,
-	Input,
-	useToast
-} from "@chakra-ui/react";
 
 import { useAuth } from "@/lib/auth";
 import Todo from "@/components/Todo";
+import CompletedTodo from "@/components/CompletedTodo";
 import TodoShell from "@/components/TodoShell";
 import fetcher from "@/utils/fetcher";
 import AddTodo from "@/components/AddTodo";
@@ -25,6 +18,10 @@ const CollectionTodos = () => {
 	const auth = useAuth();
 	const { data: todoData } = useSWR(
 		auth.user ? ["/api/todos", collectionId] : null,
+		fetcher
+	);
+	const { data: completedTodoData } = useSWR(
+		auth.user ? ["/api/todos-completed", collectionId] : null,
 		fetcher
 	);
 
@@ -48,7 +45,23 @@ const CollectionTodos = () => {
 						</div>
 				  ))
 				: ""}
+
 			<AddTodo />
+
+			{completedTodoData?.todos?.length ? (
+				<p className='mt-8 mb-2 font-medium text-white'>
+					Completed - {completedTodoData?.todos.length}
+				</p>
+			) : (
+				""
+			)}
+			{completedTodoData?.todos?.length
+				? completedTodoData.todos.map((todo) => (
+						<div key={todo.id}>
+							<CompletedTodo {...todo} />
+						</div>
+				  ))
+				: ""}
 		</TodoShell>
 	);
 };

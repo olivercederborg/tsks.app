@@ -1,8 +1,8 @@
-import { completeTodo, deleteTodo } from "@/lib/db";
+import { completeTodo, deleteTodo, unCompleteTodo } from "@/lib/db";
 import { useAuth } from "../lib/auth";
 import { mutate } from "swr";
 import router from "next/router";
-import { BsCheckAll } from "react-icons/bs";
+import { FiCheck } from "react-icons/fi";
 import { useToast } from "@chakra-ui/react";
 
 const Todo = ({ name, id, createdAt, authorId }) => {
@@ -31,22 +31,16 @@ const Todo = ({ name, id, createdAt, authorId }) => {
 		deleteTodo(id);
 	};
 
-	const onComplete = () => {
+	const onUnComplete = () => {
 		const newTodo = {
 			name,
 			authorId,
 			collectionId,
 			createdAt,
-			status: "completed"
+			status: "pending"
 		};
-		toast({
-			title: "Task completed!",
-			status: "success",
-			position: "bottom-right",
-			duration: 1500
-		});
 		mutate(
-			["/api/todos", collectionId],
+			["/api/todos-completed", collectionId],
 			async (data) => {
 				return {
 					todos: data.todos.filter((todo) => todo.id !== id)
@@ -55,21 +49,23 @@ const Todo = ({ name, id, createdAt, authorId }) => {
 			false
 		);
 		mutate(
-			["/api/todos-completed", collectionId],
+			["/api/todos", collectionId],
 			async (data) => ({ todos: [...data.todos, { id, ...newTodo }] }),
 			false
 		);
-		completeTodo(id);
+		unCompleteTodo(id);
 	};
 	return (
 		<div className='py-2'>
 			<div className='rounded-2xl bg-primary-card flex items-center justify-start p-3'>
 				<button
-					className='border-primary-default border-3 focus:outline-none hover:bg-primary-default active:bg-primary-default hover:bg-opacity-40 px-2 py-2 transition-colors duration-100 ease-in-out rounded-lg'
-					onClick={onComplete}
-				></button>
-				<p className='ml-3 text-white'>{name}</p>
-				{/* <BsCheckAll /> */}
+					onClick={onUnComplete}
+					className='bg-primary-default border-primary-default hover:bg-opacity-50 focus:outline-none active:bg-primary-default border-1 p-1 mr-3 text-sm transition-colors duration-100 ease-in-out rounded-lg'
+					style={{ height: "22px" }}
+				>
+					<FiCheck />
+				</button>
+				<p className='ml-3 text-white line-through'>{name}</p>
 			</div>
 		</div>
 	);

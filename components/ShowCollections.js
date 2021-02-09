@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { Router } from "next/router";
 import { getUserTodos } from "@/lib/db-admin";
 import { useAuth } from "@/lib/auth";
-import PendingTodos from "./CollectionPendingTodos";
+import CollectionPendingTodos from "./CollectionPendingTodos";
 
 export default function ShowCollections({ collections }) {
 	const { user } = useAuth();
@@ -41,7 +41,7 @@ export default function ShowCollections({ collections }) {
 										<h2 className='text-xl font-semibold'>
 											{collection.name}
 										</h2>
-										<PendingTodos
+										<CollectionPendingTodos
 											currentCollection={collection}
 											userTodos={userTodos}
 										/>

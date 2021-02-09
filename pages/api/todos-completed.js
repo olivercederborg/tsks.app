@@ -1,9 +1,9 @@
-import { getAllTodos, getPendingTodos } from "@/lib/db-admin";
+import { getCompletedTodos } from "@/lib/db-admin";
 
 export default async (req, res) => {
 	try {
 		const uid = req.headers.uid;
-		const { todos } = await getPendingTodos(uid);
+		const { todos } = await getCompletedTodos(uid);
 
 		res.status(200).json({ todos });
 	} catch (error) {
