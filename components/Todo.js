@@ -11,7 +11,6 @@ const Todo = ({ name, id, createdAt, authorId, collectionColor }) => {
 	const toast = useToast();
 
 	const collectionId = router.query.collectionId;
-	// console.log(name, id);
 
 	const onDelete = () => {
 		toast({
