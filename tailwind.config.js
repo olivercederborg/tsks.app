@@ -8,7 +8,11 @@ module.exports = {
 			safelist: [
 				"border-primary-yellow",
 				"border-primary-teal",
-				"border-primary-rose"
+				"border-primary-rose",
+				"bg-primary-yellow",
+				"bg-primary-teal",
+				"bg-primary-rose",
+				"bg-opacity-40"
 			]
 		}
 	},
