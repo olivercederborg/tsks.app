@@ -1,13 +1,13 @@
-import AddCollectionModal from "@/components/AddCollectionModal";
-import { MdLabel } from "react-icons/md";
-import NextLink from "next/link";
-import { Link } from "@chakra-ui/react";
-import { HiOutlinePlus } from "react-icons/hi";
 import { useEffect, useState } from "react";
 import { Router } from "next/router";
+import NextLink from "next/link";
+import { MdLabel } from "react-icons/md";
+import { HiOutlinePlus } from "react-icons/hi";
+
+import AddCollectionModal from "@/components/AddCollectionModal";
+import CollectionPendingTodos from "./CollectionPendingTodos";
 import { getUserTodos } from "@/lib/db-admin";
 import { useAuth } from "@/lib/auth";
-import CollectionPendingTodos from "./CollectionPendingTodos";
 
 export default function ShowCollections({ collections }) {
 	const { user } = useAuth();
@@ -35,7 +35,7 @@ export default function ShowCollections({ collections }) {
 							as={`/collection/${collection.id}`}
 							passHref
 						>
-							<a className='group no-underline'>
+							<a className='group default-focus rounded-3xl no-underline'>
 								<div className='group-hover:bg-hover-card rounded-3xl bg-primary-card flex flex-row items-start p-6 break-all transition-all duration-200 ease-in-out'>
 									<div
 										className={`rounded-2xl p-4 ${

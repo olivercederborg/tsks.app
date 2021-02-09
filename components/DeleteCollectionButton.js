@@ -1,8 +1,6 @@
-import { useRef } from "react";
-import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 import useSWR, { mutate } from "swr";
 import {
-	Button,
 	Modal,
 	ModalOverlay,
 	ModalContent,
@@ -11,15 +9,10 @@ import {
 	ModalBody,
 	ModalCloseButton,
 	useDisclosure,
-	FormControl,
-	FormLabel,
-	Input,
 	useToast
 } from "@chakra-ui/react";
-import { HiOutlineTrash } from "react-icons/hi";
-import { useRouter } from "next/router";
 
-import { deleteCollection, deleteCollectionTodos } from "@/lib/db";
+import { deleteCollection } from "@/lib/db";
 import { useAuth } from "@/lib/auth";
 
 const DeleteCollectionButton = ({ currentCollection }) => {
@@ -53,22 +46,17 @@ const DeleteCollectionButton = ({ currentCollection }) => {
 
 	return (
 		<>
-			<button
-				onClick={onOpen}
-				className='group bg-primary-card rounded-2xl hover:bg-red-500 focus:outline-none px-3 py-3 transition-all duration-200 ease-in-out'
-			>
-				<HiOutlineTrash className='group-hover:opacity-100 text-2xl transition-all duration-200 ease-in-out opacity-50' />
-			</button>
+			<div onClick={onOpen}>Delete {currentCollection?.name}</div>
 
 			<Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
 				<ModalOverlay />
 				<ModalContent color='white' bgColor='#191B21' borderRadius='20px'>
-					<ModalHeader>Are you sure?</ModalHeader>
+					<ModalHeader>Delete collection</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody opacity='65%' pb={6}>
-						You are about to delete your collection.
+						Are you sure you want to delete?
 						<br />
-						Do you wish to proceed?
+						This action cannot be undone.
 					</ModalBody>
 
 					<ModalFooter>

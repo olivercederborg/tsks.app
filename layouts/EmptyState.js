@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Router } from "next/router";
 import { getUserTodos } from "@/lib/db-admin";
 import { useAuth } from "@/lib/auth";
-import PendingTodos from "./CollectionPendingTodos";
+import PendingTodos from "../components/CollectionPendingTodos";
 
 export default function EmptyState({ collections }) {
 	const { user } = useAuth();

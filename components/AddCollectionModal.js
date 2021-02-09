@@ -18,9 +18,9 @@ import {
 	useRadioGroup
 } from "@chakra-ui/react";
 
+import RadioCard from "@/components/CustomRadioButton";
 import { createCollection } from "@/lib/db";
 import { useAuth } from "@/lib/auth";
-import RadioCard from "@/components/CustomRadioButton";
 
 const AddCollectionModal = ({ children }) => {
 	const options = ["purple", "yellow", "teal", "rose"];
@@ -69,7 +69,7 @@ const AddCollectionModal = ({ children }) => {
 		<>
 			<button
 				onClick={onOpen}
-				className='hover:bg-primary-default rounded-2xl hover:border-primary-default border-secondary-card border-3 focus:outline-none flex flex-row items-center justify-center px-6 py-3 font-medium text-white transition-colors duration-200 ease-in-out bg-transparent'
+				className='default-focus hover:bg-primary-default rounded-2xl hover:border-primary-default border-secondary-card border-3 focus:outline-none flex flex-row items-center justify-center px-6 py-3 font-medium text-white transition-colors duration-200 ease-in-out bg-transparent'
 			>
 				{children}
 			</button>
@@ -122,16 +122,6 @@ const AddCollectionModal = ({ children }) => {
 
 					<ModalFooter>
 						<Button
-							onClick={onClose}
-							mr={3}
-							bgColor='#333644'
-							fontWeight='600'
-							px='5'
-							_hover={{ bgColor: "#3E4255" }}
-						>
-							Cancel
-						</Button>
-						<Button
 							type='submit'
 							bgColor='#7578D1'
 							fontWeight='600'
@@ -139,6 +129,16 @@ const AddCollectionModal = ({ children }) => {
 							_hover={{ bgColor: "#9396F3" }}
 						>
 							Create
+						</Button>
+						<Button
+							onClick={onClose}
+							ml={3}
+							bgColor='#333644'
+							fontWeight='600'
+							px='5'
+							_hover={{ bgColor: "#3E4255" }}
+						>
+							Cancel
 						</Button>
 					</ModalFooter>
 				</ModalContent>

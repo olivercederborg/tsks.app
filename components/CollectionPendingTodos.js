@@ -1,5 +1,5 @@
-import { Skeleton } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { Skeleton } from "@chakra-ui/react";
 
 export default function CollectionPendingTodos({
 	currentCollection,

@@ -25,7 +25,7 @@ export default function RadioCard(props) {
 
 	return (
 		<Box as='label'>
-			<input name='collection-color' {...input} />
+			<input name='default-focus collection-color' {...input} />
 			<Box
 				{...checkbox}
 				cursor='pointer'

@@ -3,6 +3,22 @@ body {
 	box-sizing: border-box;
 }
 
+*:focus-visible {
+	outline: none;
+}
+
 #mobile_menu {
 	padding-bottom: calc(env(safe-area-inset-bottom));
+}
+
+.default-focus:focus-visible {
+	@apply ring-2;
+	@apply ring-offset-primary-background;
+	@apply ring-primary-default;
+	@apply ring-offset-4;
+	@apply ring-opacity-70;
+}
+
+.default-focus:focus {
+	outline: 0;
 }

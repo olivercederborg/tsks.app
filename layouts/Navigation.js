@@ -6,6 +6,7 @@ import { IoLogOutOutline } from "react-icons/io5";
 
 import { useAuth } from "@/lib/auth";
 import { Avatar } from "@chakra-ui/react";
+import NavDropdown from "../components/NavDropdown";
 
 const Navigation = () => {
 	const auth = useAuth();
@@ -18,13 +19,13 @@ const Navigation = () => {
 					<div>
 						<nav className='flex items-center'>
 							<Link href='/' passHref>
-								<a className='text-2xl font-bold'>
+								<a className='default-focus text-2xl font-bold'>
 									TSKS<span className='text-primary-default'>.</span>
 								</a>
 							</Link>
 							<Link href='/dashboard' passHref>
 								<a
-									className={`ml-6 py-4 font-medium border-transparent opacity-70 border-b-2 hover:opacity-100 flex items-center ${
+									className={`default-focus ml-6 py-4 font-medium border-transparent opacity-70 border-b-2 hover:opacity-100 flex items-center ${
 										router.pathname == "/dashboard" &&
 										"border-primary-default opacity-100"
 									}`}
@@ -41,26 +42,7 @@ const Navigation = () => {
 							</Link>
 						</nav>
 					</div>
-					{auth.user && (
-						<div className='flex items-center'>
-							<button
-								onClick={() => auth.signout()}
-								className='font-regular mr-5'
-							>
-								<IoLogOutOutline className='text-2xl' />
-							</button>
-							{/* {auth.user.userRole == "admin" && (
-								<div className='text-red-50 px-2 py-1 mr-2 text-xs font-semibold tracking-wider uppercase bg-red-400 rounded-lg'>
-									{auth.user.userRole}
-								</div>
-							)} */}
-							<Avatar
-								h='35px'
-								w='35px'
-								// src={auth.user?.photoUrl && auth.user?.photoUrl}
-							/>
-						</div>
-					)}
+					{auth.user && <NavDropdown auth={auth} />}
 				</div>
 			</header>
 
@@ -72,7 +54,7 @@ const Navigation = () => {
 					<nav className='flex items-center justify-around w-full'>
 						<Link href='/' passHref>
 							<a
-								className={`py-4 opacity-70 hover:opacity-100 flex items-center ${
+								className={`default-focus py-4 opacity-70 hover:opacity-100 flex items-center ${
 									router.pathname == "/" ? "opacity-100" : ""
 								}`}
 							>
@@ -88,7 +70,7 @@ const Navigation = () => {
 						</Link>
 						<Link href='/dashboard' passHref>
 							<a
-								className={`py-4 opacity-70 hover:opacity-100 flex items-center ${
+								className={`default-focus py-4 opacity-70 hover:opacity-100 flex items-center ${
 									router.pathname == "/dashboard" ? "opacity-100" : ""
 								}`}
 							>

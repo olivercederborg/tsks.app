@@ -3,7 +3,7 @@ import Link from "next/link";
 import { AiOutlineGoogle } from "react-icons/ai";
 
 import { useAuth } from "@/lib/auth";
-import Navigation from "@/components/Navigation";
+import Navigation from "layouts/Navigation";
 
 export default function Index() {
 	const auth = useAuth();
@@ -40,13 +40,13 @@ export default function Index() {
 				{auth.user ? (
 					<div className='flex'>
 						<Link href='/dashboard'>
-							<button className='hover:bg-purple-400 rounded-xl mt-14 flex flex-row items-center justify-center px-6 py-3 mx-2 font-semibold text-white transition-colors duration-200 ease-in-out bg-purple-500'>
+							<button className='default-focus hover:bg-purple-400 rounded-xl mt-14 flex flex-row items-center justify-center px-6 py-3 mx-2 font-semibold text-white transition-colors duration-200 ease-in-out bg-purple-500'>
 								View Dashboard
 							</button>
 						</Link>
 						<button
 							onClick={(e) => auth.signout()}
-							className='hover:bg-purple-400 rounded-xl mt-14 flex flex-row items-center justify-center px-6 py-3 mx-2 font-semibold text-white transition-colors duration-200 ease-in-out bg-purple-500'
+							className='default-focus hover:bg-purple-400 rounded-xl mt-14 flex flex-row items-center justify-center px-6 py-3 mx-2 font-semibold text-white transition-colors duration-200 ease-in-out bg-purple-500'
 						>
 							Sign out
 						</button>
@@ -54,7 +54,7 @@ export default function Index() {
 				) : (
 					<button
 						onClick={(e) => auth.signinWithGoogle()}
-						className='hover:bg-purple-400 rounded-xl mt-14 flex flex-row items-center justify-center px-6 py-3 font-semibold text-white transition-colors duration-200 ease-in-out bg-purple-500'
+						className='default-focus hover:bg-purple-400 rounded-xl mt-14 flex flex-row items-center justify-center px-6 py-3 font-semibold text-white transition-colors duration-200 ease-in-out bg-purple-500'
 					>
 						<AiOutlineGoogle className='mr-2 text-2xl' />
 						Sign in with Google

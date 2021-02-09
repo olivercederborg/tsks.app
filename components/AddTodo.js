@@ -43,13 +43,13 @@ const AddTodo = ({ collectionColor }) => {
 						style={{ padding: "10px" }}
 					>
 						<button
-							className={`bg-${collectionColor} border-${collectionColor} focus:outline-none active:bg-${collectionColor} border-1 p-1 mr-3 text-sm transition-colors duration-100 ease-in-out rounded-lg`}
+							className={`default-focus bg-${collectionColor} border-${collectionColor} active:bg-${collectionColor} border-1 p-1 mr-3 hover:bg-opacity-70 text-sm transition-colors duration-100 ease-in-out rounded-lg`}
 							style={{ height: "22px" }}
 						>
 							<HiOutlinePlus />
 						</button>
 						<input
-							className='w-full bg-transparent outline-none'
+							className='w-full bg-transparent rounded-md outline-none'
 							ref={inputEl}
 							name='name'
 							type='name'

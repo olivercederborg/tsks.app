@@ -6,8 +6,10 @@ import { IoChevronBackOutline } from "react-icons/io5";
 
 import { useAuth } from "@/lib/auth";
 import Navigation from "./Navigation";
-import DeleteCollectionButton from "./DeleteCollectionButton";
+import DeleteCollectionButton from "../components/DeleteCollectionButton";
 import { Skeleton } from "@chakra-ui/react";
+import CompletedTodoDropdown from "../components/CompletedTodoDropdown";
+import CollectionDropdown from "../components/CollectionDropdown";
 
 const TodoShell = ({ children, currentCollection }) => {
 	const { user } = useAuth();
@@ -33,7 +35,7 @@ const TodoShell = ({ children, currentCollection }) => {
 					<div className='flex justify-between mb-12'>
 						<div className='flex items-center'>
 							<Link href='/dashboard' passHref>
-								<a className='bg-primary-card hover:bg-hover-card rounded-2xl p-3 text-2xl transition-colors duration-200 ease-in-out'>
+								<a className='default-focus bg-primary-card hover:bg-hover-card rounded-2xl p-3 text-2xl transition-colors duration-200 ease-in-out'>
 									<IoChevronBackOutline />
 								</a>
 							</Link>
@@ -52,9 +54,7 @@ const TodoShell = ({ children, currentCollection }) => {
 								/>
 							)}
 						</div>
-						<DeleteCollectionButton
-							currentCollection={currentCollection}
-						/>
+						<CollectionDropdown currentCollection={currentCollection} />
 					</div>
 					{children}
 				</div>

@@ -1,4 +1,4 @@
-import { ChakraProvider, CSSReset, extendTheme } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import Head from "next/head";
 
 import { AuthProvider } from "../lib/auth";
@@ -9,10 +9,10 @@ function MyApp({ Component, pageProps }) {
 	const theme = extendTheme({
 		styles: {
 			global: {
-				// styles for the `body`
 				body: {
 					bg: "#191B21",
-					color: "white"
+					color: "white",
+					overflowX: "hidden"
 				}
 			}
 		}
