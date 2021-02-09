@@ -3,7 +3,7 @@ import Link from "next/link";
 import { AiOutlineGoogle } from "react-icons/ai";
 
 import { useAuth } from "@/lib/auth";
-import Navigation from "layouts/Navigation";
+import Navigation from "@/layouts/Navigation";
 
 export default function Index() {
 	const auth = useAuth();

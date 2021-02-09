@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import Navigation from "layouts/Navigation";
+import Navigation from "@/layouts/Navigation";
 
 export default function DashboardShell({ children }) {
 	return (

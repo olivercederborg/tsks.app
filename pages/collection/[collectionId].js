@@ -5,11 +5,11 @@ import useSWR, { mutate } from "swr";
 import { useAuth } from "@/lib/auth";
 import Todo from "@/components/Todo";
 import CompletedTodo from "@/components/CompletedTodo";
-import TodoShell from "layouts/TodoShell";
+import TodoShell from "@/layouts/TodoShell";
 import fetcher from "@/utils/fetcher";
 import AddTodo from "@/components/AddTodo";
 import { getCollection } from "@/lib/db-admin";
-import TodoSkeleton from "layouts/TodoSkeleton";
+import TodoSkeleton from "@/layouts/TodoSkeleton";
 
 const CollectionTodos = () => {
 	const router = useRouter();
