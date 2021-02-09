@@ -27,7 +27,7 @@ const TodoShell = ({ children, currentCollection }) => {
 			</Head>
 
 			<Navigation />
-			<main className='bg-primary-background flex flex-col items-center min-h-screen text-white'>
+			<main className='bg-primary-background flex flex-col items-center min-h-screen pb-40 text-white'>
 				<div className='mt-14 w-full max-w-screen-md px-5'>
 					<div className='flex justify-between mb-12'>
 						<div className='flex items-center'>
