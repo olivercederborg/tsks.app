@@ -1,3 +1,4 @@
+import { Skeleton } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 export default function CollectionPendingTodos({
@@ -14,7 +15,7 @@ export default function CollectionPendingTodos({
 				).length
 			);
 		}
-	}, [currentCollection, userTodos]);
+	}, [userTodos.todos]);
 
 	return (
 		<>

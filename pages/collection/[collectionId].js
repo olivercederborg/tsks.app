@@ -32,8 +32,11 @@ const CollectionTodos = () => {
 			const currentCollection = await getCollection(collectionId);
 			setCollection(currentCollection.collection);
 		};
-		getCurrentCollection();
 
+		getCurrentCollection();
+	}, [router]);
+
+	useEffect(() => {
 		if (collection?.collectionColor === "teal") {
 			setCollectionColor("primary-teal");
 		} else if (collection?.collectionColor === "yellow") {
@@ -45,9 +48,9 @@ const CollectionTodos = () => {
 		} else if (!collection?.collectionColor) {
 			setCollectionColor("primary-default");
 		}
-	}, [router, collection?.collectionColor]);
+	}, [collection?.collectionColor]);
 
-	if (!todoData) {
+	if (!todoData || !collectionColor) {
 		return (
 			<TodoShell>
 				<TodoSkeleton />

@@ -13,7 +13,7 @@ const Navigation = () => {
 
 	return (
 		<>
-			<header className='bg-secondary-background font-regular md:flex items-center justify-center hidden text-white'>
+			<header className='bg-secondary-background font-regular md:flex items-center justify-center hidden text-white shadow-2xl'>
 				<div className='flex flex-row items-center justify-between w-full px-5'>
 					<div>
 						<nav className='flex items-center'>
