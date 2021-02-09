@@ -12,7 +12,8 @@ function MyApp({ Component, pageProps }) {
 				body: {
 					bg: "#191B21",
 					color: "white",
-					overflowX: "hidden"
+					overflowX: "hidden",
+					fontFamily: "Inter, sans-serif"
 				}
 			}
 		}
