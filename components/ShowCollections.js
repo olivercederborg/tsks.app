@@ -12,6 +12,7 @@ import CollectionPendingTodos from "./CollectionPendingTodos";
 export default function ShowCollections({ collections }) {
 	const { user } = useAuth();
 	const [userTodos, setUserTodos] = useState([]);
+	// const [collectionColor, setCollectionColor] = useState("");
 
 	useEffect(() => {
 		const getAllUserTodos = async () => {
@@ -23,6 +24,8 @@ export default function ShowCollections({ collections }) {
 
 	return (
 		<>
+			<h1 className='text-3xl font-bold'>Collections</h1>
+
 			<div className='md:grid-cols-2 grid items-start grid-cols-1 gap-4 mt-10'>
 				{collections &&
 					collections.map((collection) => (
@@ -34,7 +37,24 @@ export default function ShowCollections({ collections }) {
 						>
 							<a className='group no-underline'>
 								<div className='group-hover:bg-hover-card rounded-3xl bg-primary-card flex flex-row items-start p-6 break-all transition-all duration-200 ease-in-out'>
-									<div className='rounded-2xl bg-primary-default p-4'>
+									<div
+										className={`rounded-2xl p-4 ${
+											collection.collectionColor == "teal" &&
+											"bg-primary-teal"
+										} ${
+											collection.collectionColor == "yellow" &&
+											"bg-primary-yellow"
+										} ${
+											collection.collectionColor == "rose" &&
+											"bg-primary-rose"
+										} ${
+											collection.collectionColor == "purple" &&
+											"bg-primary-default"
+										} ${
+											!collection.collectionColor &&
+											"bg-primary-default"
+										}`}
+									>
 										<MdLabel fontSize='30px' />
 									</div>
 									<div className='ml-5'>

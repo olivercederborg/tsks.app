@@ -6,7 +6,7 @@ import { FiCheck } from "react-icons/fi";
 import { HiOutlineTrash } from "react-icons/hi";
 import { useToast } from "@chakra-ui/react";
 
-const Todo = ({ name, id, createdAt, authorId }) => {
+const Todo = ({ name, id, createdAt, authorId, collectionColor }) => {
 	const auth = useAuth();
 	const toast = useToast();
 
@@ -66,12 +66,12 @@ const Todo = ({ name, id, createdAt, authorId }) => {
 		<div className='py-2'>
 			<div className='group rounded-2xl bg-primary-card relative flex items-center justify-start p-3'>
 				<button
-					className='border-primary-default border-3 focus:outline-none hover:bg-primary-default active:bg-primary-default hover:bg-opacity-40 px-2 py-2 transition-colors duration-100 ease-in-out rounded-lg'
+					className={`border-${collectionColor} border-3 focus:outline-none hover:bg-${collectionColor} active:bg-${collectionColor} hover:bg-opacity-40 px-2 py-2 transition-colors duration-100 ease-in-out rounded-lg`}
 					onClick={onComplete}
 				></button>
 				<p className='pr-8 ml-3 text-white'>{name}</p>
 				<button
-					className='focus:outline-none hover:bg-red-400 active:bg-primary-default hover:opacity-100 group-hover:opacity-70 absolute right-0 p-2 mr-3 transition-all duration-200 ease-in-out rounded-lg opacity-0'
+					className={`focus:outline-none hover:bg-red-400 active:bg-${collectionColor} hover:opacity-100 group-hover:opacity-70 absolute right-0 p-2 mr-3 transition-all duration-200 ease-in-out rounded-lg opacity-0`}
 					onClick={onDelete}
 				>
 					<HiOutlineTrash className='' />

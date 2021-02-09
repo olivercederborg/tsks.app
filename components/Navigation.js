@@ -54,7 +54,11 @@ const Navigation = () => {
 									{auth.user.userRole}
 								</div>
 							)} */}
-							<Avatar h='35px' w='35px' src={auth.user.photoUrl} />
+							<Avatar
+								h='35px'
+								w='35px'
+								// src={auth.user?.photoUrl && auth.user?.photoUrl}
+							/>
 						</div>
 					)}
 				</div>

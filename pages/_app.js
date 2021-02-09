@@ -1,40 +1,25 @@
-import { ChakraProvider } from "@chakra-ui/react";
-import { css, Global } from "@emotion/react";
+import { ChakraProvider, CSSReset, extendTheme } from "@chakra-ui/react";
 import Head from "next/head";
 
 import { AuthProvider } from "../lib/auth";
 import "@/styles/style.scss";
 import "tailwindcss/tailwind.css";
 
-const GlobalStyle = ({ children }) => {
-	return (
-		<>
-			<Global
-				styles={css`
-					html {
-						scroll-behavior: smooth;
-					}
-					body {
-						font-family: "Inter";
-						background: "#191B21 !important";
-					}
-					#__next {
-						display: flex;
-						flex-direction: column;
-						min-height: 100vh;
-					}
-				`}
-			/>
-			{children}
-		</>
-	);
-};
-
 function MyApp({ Component, pageProps }) {
+	const theme = extendTheme({
+		styles: {
+			global: {
+				// styles for the `body`
+				body: {
+					bg: "#191B21",
+					color: "white"
+				}
+			}
+		}
+	});
 	return (
 		<AuthProvider>
-			<ChakraProvider>
-				<GlobalStyle />
+			<ChakraProvider theme={theme}>
 				<Head>
 					<link rel='preconnect' href='https://fonts.gstatic.com' />
 					<link
@@ -46,6 +31,7 @@ function MyApp({ Component, pageProps }) {
 						name='viewport'
 					/>
 				</Head>
+
 				<Component {...pageProps} />
 			</ChakraProvider>
 		</AuthProvider>

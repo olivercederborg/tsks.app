@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AiOutlineGoogle } from "react-icons/ai";
 
 import { useAuth } from "@/lib/auth";
+import Navigation from "@/components/Navigation";
 
 export default function Index() {
 	const auth = useAuth();
@@ -21,6 +22,7 @@ export default function Index() {
 				/> */}
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
+			{auth?.user && <Navigation />}
 			<main className='bg-primary-background flex flex-col items-center justify-center min-h-screen text-center text-white'>
 				{!auth.user ? (
 					<h1 className='text-6xl font-bold'>Tsks, just tasks.</h1>

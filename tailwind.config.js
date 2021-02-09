@@ -7,6 +7,8 @@ module.exports = {
 				"primary-default": "#7578D1",
 				"primary-pink": "#C97DD6",
 				"primary-rose": "#D05673",
+				"primary-teal": "#4BAE96",
+				"primary-yellow": "#DDB058",
 				"primary-background": "#191B21",
 				"secondary-background": "#1E2027",
 				"primary-card": "#21232D",

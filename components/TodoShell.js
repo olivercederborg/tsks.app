@@ -7,6 +7,7 @@ import { IoChevronBackOutline } from "react-icons/io5";
 import { useAuth } from "@/lib/auth";
 import Navigation from "./Navigation";
 import DeleteCollectionButton from "./DeleteCollectionButton";
+import { Skeleton } from "@chakra-ui/react";
 
 const TodoShell = ({ children, currentCollection }) => {
 	const { user } = useAuth();
@@ -36,9 +37,20 @@ const TodoShell = ({ children, currentCollection }) => {
 									<IoChevronBackOutline />
 								</a>
 							</Link>
-							<h1 className='ml-4 text-3xl font-bold'>
-								{currentCollection?.name}
-							</h1>
+							{currentCollection ? (
+								<h1 className='ml-4 text-3xl font-bold'>
+									{currentCollection?.name}
+								</h1>
+							) : (
+								<Skeleton
+									borderRadius='16px'
+									startColor='#21232D'
+									endColor='#2A2D39'
+									h='36px'
+									w='180px'
+									ml='4'
+								/>
+							)}
 						</div>
 						<DeleteCollectionButton
 							currentCollection={currentCollection}

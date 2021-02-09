@@ -1,6 +1,7 @@
 import { useAuth } from "@/lib/auth";
 import DashboardShell from "@/components/DashboardShell";
 import ShowCollections from "@/components/ShowCollections";
+import CollectionsSkeleton from "@/components/CollectionsSkeleton";
 import useSWR from "swr";
 import fetcher from "@/utils/fetcher";
 import EmptyState from "@/components/EmptyState";
@@ -15,7 +16,7 @@ const Dashboard = () => {
 	if (!data) {
 		return (
 			<DashboardShell>
-				<h1>Loading</h1>
+				<CollectionsSkeleton />
 			</DashboardShell>
 		);
 	}

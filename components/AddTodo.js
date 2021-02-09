@@ -7,7 +7,7 @@ import { HiOutlinePlus } from "react-icons/hi";
 import { useAuth } from "@/lib/auth";
 import { createTodo } from "@/lib/db";
 
-const AddTodo = () => {
+const AddTodo = ({ collectionColor }) => {
 	const auth = useAuth();
 	const router = useRouter();
 	const inputEl = useRef(null);
@@ -43,7 +43,7 @@ const AddTodo = () => {
 						style={{ padding: "10px" }}
 					>
 						<button
-							className='bg-primary-default border-primary-default focus:outline-none active:bg-primary-default border-1 p-1 mr-3 text-sm transition-colors duration-100 ease-in-out rounded-lg'
+							className={`bg-${collectionColor} border-${collectionColor} focus:outline-none active:bg-${collectionColor} border-1 p-1 mr-3 text-sm transition-colors duration-100 ease-in-out rounded-lg`}
 							style={{ height: "22px" }}
 						>
 							<HiOutlinePlus />

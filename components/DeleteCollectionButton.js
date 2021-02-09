@@ -35,7 +35,6 @@ const DeleteCollectionButton = ({ currentCollection }) => {
 			duration: 5000,
 			isClosable: true
 		});
-		deleteCollectionTodos(currentCollection.id);
 		deleteCollection(currentCollection.id);
 
 		mutate(
@@ -51,23 +50,6 @@ const DeleteCollectionButton = ({ currentCollection }) => {
 		);
 		setTimeout(() => Router.push("/dashboard"), 200);
 	};
-
-	// const onDelete = () => {
-	// 	deleteCollection(currentCollection.id);
-
-	// 	mutate(
-	// 		["/api/todo-collections", user.uid],
-	// 		async (data) => {
-	// 			return {
-	// 				collections: data.collections.filter(
-	// 					(collection) => collection.id !== currentCollection.id
-	// 				)
-	// 			};
-	// 		},
-	// 		false
-	// 	);
-	// 	setTimeout(() => Router.push("/dashboard"), 500);
-	// };
 
 	return (
 		<>

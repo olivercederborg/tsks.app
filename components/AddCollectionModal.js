@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import useSWR, { mutate } from "swr";
 import {
@@ -14,24 +14,37 @@ import {
 	FormControl,
 	FormLabel,
 	Input,
-	useToast
+	useToast,
+	useRadioGroup
 } from "@chakra-ui/react";
 
 import { createCollection } from "@/lib/db";
 import { useAuth } from "@/lib/auth";
+import RadioCard from "@/components/CustomRadioButton";
 
 const AddCollectionModal = ({ children }) => {
+	const options = ["purple", "yellow", "teal", "rose"];
+
 	const initialRef = useRef(null);
 	const toast = useToast();
 	const auth = useAuth();
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const { handleSubmit, register } = useForm();
+	const [collectionColor, setCollectionColor] = useState("purple");
+
+	const { getRootProps, getRadioProps } = useRadioGroup({
+		name: "collection-color",
+		defaultValue: "purple",
+		onChange: setCollectionColor
+	});
+	const group = getRootProps();
 
 	const onCreateCollection = ({ name }) => {
 		const newCollection = {
 			authorId: auth.user.uid,
 			createdAt: new Date().toISOString(),
-			name
+			name,
+			collectionColor
 		};
 
 		const { id } = createCollection(newCollection);
@@ -83,9 +96,27 @@ const AddCollectionModal = ({ children }) => {
 								px='4'
 								borderRadius='12px'
 								name='name'
+								mb='6'
 								_hover={{ borderColor: "#464957" }}
 								ref={register({ required: true })}
 							/>
+							<label>
+								Color
+								<div className='flex'>
+									{options.map((value) => {
+										const radio = getRadioProps({ value });
+										return (
+											<RadioCard
+												color={value}
+												key={value}
+												{...radio}
+											>
+												{value}
+											</RadioCard>
+										);
+									})}
+								</div>
+							</label>
 						</FormControl>
 					</ModalBody>
 
