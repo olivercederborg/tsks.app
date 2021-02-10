@@ -38,7 +38,11 @@ module.exports = {
 				"secondary-card": "#2A2D39"
 			},
 			borderWidth: {
+				1: "1px",
 				3: "3px"
+			},
+			fontSize: {
+				xxs: ".625rem"
 			}
 		}
 	},
