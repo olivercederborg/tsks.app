@@ -16,7 +16,7 @@ import { deleteCollection } from "@/lib/db";
 import { useAuth } from "@/lib/auth";
 
 const DeleteCollectionButton = ({ currentCollection }) => {
-	const Router = useRouter();
+	const router = useRouter();
 	const toast = useToast();
 	const { user } = useAuth();
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -30,18 +30,8 @@ const DeleteCollectionButton = ({ currentCollection }) => {
 		});
 		deleteCollection(currentCollection.id);
 
-		mutate(
-			["/api/todo-collections", user.uid],
-			async (data) => {
-				return {
-					collections: data.collections.filter(
-						(collection) => collection.id !== currentCollection.id
-					)
-				};
-			},
-			false
-		);
-		setTimeout(() => Router.push("/dashboard"), 200);
+		mutate("/api/todo-collections", user.uid);
+		router.push("/dashboard");
 	};
 
 	return (
