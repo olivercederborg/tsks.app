@@ -18,7 +18,8 @@ const Todo = ({ name, id, createdAt, authorId, collectionColor }) => {
 			authorId,
 			collectionId,
 			createdAt,
-			status: "completed"
+			status: "completed",
+			completedAt: new Date().toISOString()
 		};
 		toast({
 			title: "Task completed!",
@@ -40,7 +41,7 @@ const Todo = ({ name, id, createdAt, authorId, collectionColor }) => {
 			async (data) => ({ todos: [...data.todos, { id, ...newTodo }] }),
 			false
 		);
-		completeTodo(id);
+		completeTodo(id, newTodo);
 	};
 
 	return (
