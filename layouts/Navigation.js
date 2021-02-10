@@ -48,7 +48,7 @@ const Navigation = () => {
 
 			<header
 				id='mobile_menu'
-				className='bg-secondary-background md:hidden fixed bottom-0 z-20 flex items-start justify-center w-full text-sm font-medium text-white'
+				className='bg-secondary-background md:hidden fixed bottom-0 z-20 flex items-start justify-center w-full text-sm font-medium text-white transition-all duration-200 ease-in-out'
 			>
 				<div className='flex flex-row items-center justify-between w-full'>
 					<nav className='flex items-center justify-around w-full'>
@@ -59,7 +59,7 @@ const Navigation = () => {
 								}`}
 							>
 								<BiHomeAlt
-									className={`mr-2 text-3xl ${
+									className={`mr-2 text-2xl ${
 										router.pathname == "/"
 											? "text-primary-default"
 											: ""
@@ -75,7 +75,7 @@ const Navigation = () => {
 								}`}
 							>
 								<MdDashboard
-									className={`mr-2 text-3xl ${
+									className={`mr-2 text-2xl ${
 										router.pathname == "/dashboard"
 											? "text-primary-default"
 											: ""
@@ -84,15 +84,6 @@ const Navigation = () => {
 								Dashboard
 							</a>
 						</Link>
-						{auth.user && (
-							<button
-								onClick={() => auth.signout()}
-								className='font-regular opacity-70 flex items-center'
-							>
-								<IoLogOutOutline className='mr-2 text-3xl' />
-								Logout
-							</button>
-						)}
 					</nav>
 				</div>
 			</header>
