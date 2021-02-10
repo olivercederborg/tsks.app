@@ -82,7 +82,7 @@ const Navigation = () => {
 								Dashboard
 							</a>
 						</Link>
-						<Link href='' passHref>
+						<Link href='/' passHref>
 							<a
 								className={`default-focus py-4 opacity-70 hover:opacity-100 flex items-center ${
 									router.pathname == "/" ? "opacity-100" : ""

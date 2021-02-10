@@ -52,7 +52,8 @@ const AddCollectionModal = ({ children }) => {
 			title: "Success!",
 			description: "We've added your collection.",
 			status: "success",
-			duration: 5000,
+			position: "top",
+			duration: 3000,
 			isClosable: true
 		});
 		mutate(

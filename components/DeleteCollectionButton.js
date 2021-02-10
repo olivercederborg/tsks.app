@@ -24,14 +24,15 @@ const DeleteCollectionButton = ({ currentCollection }) => {
 	const onDelete = () => {
 		toast({
 			title: "Collection deleted.",
+			position: "top",
 			status: "success",
-			duration: 5000,
+			duration: 3000,
 			isClosable: true
 		});
 		deleteCollection(currentCollection.id);
 
 		mutate("/api/todo-collections", user.uid);
-		router.push("/dashboard");
+		setTimeout(() => router.push("/dashboard"), 200);
 	};
 
 	return (
