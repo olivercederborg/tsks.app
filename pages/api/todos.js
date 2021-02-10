@@ -1,4 +1,4 @@
-import { getAllTodos, getPendingTodos } from "@/lib/db-admin";
+import { getPendingTodos } from "@/lib/db-admin";
 
 export default async (req, res) => {
 	try {

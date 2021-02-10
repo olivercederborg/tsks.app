@@ -11,16 +11,15 @@ import { useAuth } from "@/lib/auth";
 
 export default function ShowCollections({ collections }) {
 	const { user } = useAuth();
-	const [userTodos, setUserTodos] = useState([]);
-	// const [collectionColor, setCollectionColor] = useState("");
+	// const [userTodos, setUserTodos] = useState([]);
 
-	useEffect(() => {
-		const getAllUserTodos = async () => {
-			const initialTodos = await getUserTodos(user?.uid);
-			setUserTodos(initialTodos);
-		};
-		getAllUserTodos();
-	}, [Router]);
+	// useEffect(() => {
+	// 	const getAllUserTodos = async () => {
+	// 		const initialTodos = await getUserTodos(user?.uid);
+	// 		setUserTodos(initialTodos);
+	// 	};
+	// 	getAllUserTodos();
+	// }, [Router]);
 
 	return (
 		<>
@@ -63,7 +62,7 @@ export default function ShowCollections({ collections }) {
 										</h2>
 										<CollectionPendingTodos
 											currentCollection={collection}
-											userTodos={userTodos}
+											// userTodos={userTodos}
 										/>
 									</div>
 								</div>
