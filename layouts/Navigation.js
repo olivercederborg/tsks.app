@@ -1,11 +1,9 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { BiHomeAlt } from "react-icons/bi";
-import { MdDashboard } from "react-icons/md";
-import { IoLogOutOutline } from "react-icons/io5";
+import { MdDashboard, MdAccountCircle } from "react-icons/md";
 
 import { useAuth } from "@/lib/auth";
-import { Avatar } from "@chakra-ui/react";
 import NavDropdown from "../components/NavDropdown";
 
 const Navigation = () => {
@@ -48,7 +46,7 @@ const Navigation = () => {
 
 			<header
 				id='mobile_menu'
-				className='bg-secondary-background md:hidden fixed bottom-0 z-20 flex items-start justify-center w-full text-sm font-medium text-white transition-all duration-200 ease-in-out'
+				className='bg-secondary-background md:hidden fixed bottom-0 z-20 flex items-start justify-center w-full text-sm font-medium text-white'
 			>
 				<div className='flex flex-row items-center justify-between w-full'>
 					<nav className='flex items-center justify-around w-full'>
@@ -82,6 +80,22 @@ const Navigation = () => {
 									}`}
 								/>
 								Dashboard
+							</a>
+						</Link>
+						<Link href='' passHref>
+							<a
+								className={`default-focus py-4 opacity-70 hover:opacity-100 flex items-center ${
+									router.pathname == "/" ? "opacity-100" : ""
+								}`}
+							>
+								<MdAccountCircle
+									className={`mr-2 text-2xl ${
+										router.pathname == "/account"
+											? "text-primary-default"
+											: ""
+									}`}
+								/>
+								Account
 							</a>
 						</Link>
 					</nav>

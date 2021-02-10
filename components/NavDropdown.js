@@ -25,10 +25,21 @@ const NavDropdown = ({ auth }) => {
 			>
 				<div className='py-1'>
 					<p
-						className='block px-4 py-2 text-sm font-semibold text-gray-200'
+						className='block px-4 pt-2 pb-1 text-sm text-gray-200'
 						role='menuitem'
 					>
-						Signed in as {auth?.user.name}
+						Signed in as
+					</p>
+					<p
+						className='just inline-flex items-start px-4 pb-2 text-sm font-semibold text-gray-200'
+						role='menuitem'
+					>
+						{auth?.user.name}
+						{auth?.user.userRole == "admin" && (
+							<span className='bg-primary-default border-primary-default border-1 bg-opacity-60 text-xxs px-1 ml-2 font-normal tracking-wide text-purple-100 uppercase rounded-md'>
+								{auth?.user.userRole}
+							</span>
+						)}
 					</p>
 				</div>
 				<div className='py-1'>
@@ -39,6 +50,8 @@ const NavDropdown = ({ auth }) => {
 					>
 						Account settings
 					</a>
+				</div>
+				<div className='py-1'>
 					<button
 						onClick={auth.signout}
 						className='hover:bg-secondary-card block w-full px-4 py-2 text-sm text-left text-gray-200'
