@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { mutate } from "swr";
 import {
@@ -18,8 +18,6 @@ import {
 } from "@chakra-ui/react";
 
 import { editTodo } from "@/lib/db";
-import { useAuth } from "@/lib/auth";
-import { compareDesc, parseISO } from "date-fns";
 import { getPendingTodos } from "@/lib/db-admin";
 
 const EditTodoModal = ({ children, todoId, collectionId }) => {
@@ -44,8 +42,7 @@ const EditTodoModal = ({ children, todoId, collectionId }) => {
 		});
 
 		mutate(["/api/todos", collectionId], async (data) => {
-			const pendingTodos = await getPendingTodos(collectionId);
-			return pendingTodos;
+			return await getPendingTodos(collectionId);
 		});
 
 		onClose();
