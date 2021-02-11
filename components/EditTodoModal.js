@@ -25,10 +25,8 @@ import { getPendingTodos } from "@/lib/db-admin";
 const EditTodoModal = ({ children, todoId, collectionId }) => {
 	const initialRef = useRef(null);
 	const toast = useToast();
-	const auth = useAuth();
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const { handleSubmit, register } = useForm();
-	let rawTodos = [];
 
 	const onEditTodo = ({ name }) => {
 		const newTodo = {
