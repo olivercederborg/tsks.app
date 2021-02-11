@@ -5,6 +5,7 @@ import { FiMoreVertical } from "react-icons/fi";
 
 import { deleteTodo } from "../lib/db";
 import { useDetectOutsideClick } from "@/utils/useDetectOutsideClick";
+import EditTodoModal from "./EditTodoModal";
 
 const TodoDropdown = ({ collectionId, id }) => {
 	const toast = useToast();
@@ -51,10 +52,12 @@ const TodoDropdown = ({ collectionId, id }) => {
 			>
 				<div className='py-1'>
 					<button
-						className='default-focus hover:bg-secondary-card block w-full px-4 py-2 text-sm text-left text-gray-200'
+						className='default-focus hover:bg-secondary-card flex w-full px-4 py-2 text-sm text-left text-gray-200'
 						role='menuitem'
 					>
-						Edit
+						<EditTodoModal collectionId={collectionId} todoId={id}>
+							Edit
+						</EditTodoModal>
 					</button>
 				</div>
 				<div className='py-1'>
