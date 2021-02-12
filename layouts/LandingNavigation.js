@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { BiHomeAlt } from "react-icons/bi";
 import { MdDashboard, MdAccountCircle } from "react-icons/md";
+import { AiOutlineGoogle } from "react-icons/ai";
 
 import { useAuth } from "@/lib/auth";
 import NavDropdown from "../components/NavDropdown";
@@ -12,7 +13,7 @@ const LandingNavigation = () => {
 
 	return (
 		<>
-			<header className='font-regular bg-hero-background flex items-center justify-center w-full py-10 text-white'>
+			<header className='font-regular bg-hero-background md:flex items-center justify-center hidden w-full py-10 text-white'>
 				<div className='container flex flex-row items-center justify-between w-full px-5'>
 					<nav className='flex items-center justify-between w-full'>
 						<div className='flex items-center'>
@@ -83,38 +84,63 @@ const LandingNavigation = () => {
 								Home
 							</a>
 						</Link>
-						<Link href='/dashboard' passHref>
-							<a
-								className={`default-focus py-4 opacity-70 hover:opacity-100 flex items-center ${
-									router.pathname == "/dashboard" ? "opacity-100" : ""
-								}`}
-							>
-								<MdDashboard
-									className={`mr-2 text-2xl ${
-										router.pathname == "/dashboard"
-											? "text-primary-default"
-											: ""
+						{!auth?.user && (
+							<Link href='/' passHref>
+								<a
+									onClick={() => auth.signinWithGoogle()}
+									className={`default-focus py-4 opacity-70 hover:opacity-100 flex items-center ${
+										router.pathname == "/" ? "opacity-100" : ""
 									}`}
-								/>
-								Dashboard
-							</a>
-						</Link>
-						<Link href='/' passHref>
-							<a
-								className={`default-focus py-4 opacity-70 hover:opacity-100 flex items-center ${
-									router.pathname == "/" ? "opacity-100" : ""
-								}`}
-							>
-								<MdAccountCircle
-									className={`mr-2 text-2xl ${
-										router.pathname == "/account"
-											? "text-primary-default"
-											: ""
-									}`}
-								/>
-								Account
-							</a>
-						</Link>
+								>
+									<AiOutlineGoogle
+										className={`mr-2 text-2xl ${
+											router.pathname == "/"
+												? "text-primary-default"
+												: ""
+										}`}
+									/>
+									Sign in with Google
+								</a>
+							</Link>
+						)}
+						{auth?.user && (
+							<>
+								<Link href='/dashboard' passHref>
+									<a
+										className={`default-focus py-4 opacity-70 hover:opacity-100 flex items-center ${
+											router.pathname == "/dashboard"
+												? "opacity-100"
+												: ""
+										}`}
+									>
+										<MdDashboard
+											className={`mr-2 text-2xl ${
+												router.pathname == "/dashboard"
+													? "text-primary-default"
+													: ""
+											}`}
+										/>
+										Dashboard
+									</a>
+								</Link>
+								<Link href='/' passHref>
+									<a
+										className={`default-focus py-4 opacity-70 hover:opacity-100 flex items-center ${
+											router.pathname == "/" ? "opacity-100" : ""
+										}`}
+									>
+										<MdAccountCircle
+											className={`mr-2 text-2xl ${
+												router.pathname == "/account"
+													? "text-primary-default"
+													: ""
+											}`}
+										/>
+										Account
+									</a>
+								</Link>
+							</>
+						)}
 					</nav>
 				</div>
 			</header>

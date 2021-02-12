@@ -51,13 +51,15 @@ const LandingHero = () => {
 				className='bg-hero-background hero-image lg:h-90vh flex flex-col w-full h-screen'
 			>
 				<LandingNavigation />
-				<section className='h-3/4 md:h-4/6 lg:h-3/6 relative flex flex-col justify-center'>
+				<section className='h-4/6 md:h-3/6 lg:h-3/6 relative flex flex-col justify-center'>
 					{!auth?.user && (
-						<h1 className='text-6xl font-bold'>Tsks, just tasks.</h1>
+						<h1 className='text-5xl font-bold leading-snug'>
+							Tsks, just tasks.
+						</h1>
 					)}
 
 					{auth?.user && (
-						<h1 className='text-6xl font-bold leading-snug'>
+						<h1 className='text-4xl font-bold leading-snug'>
 							{greeting},<br />
 							{auth.user.name}.
 						</h1>
