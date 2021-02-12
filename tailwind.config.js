@@ -38,9 +38,15 @@ module.exports = {
 				"primary-darkBrown": "#5B4D47",
 				"primary-background": "#15151C",
 				"secondary-background": "#191921",
+				"hero-background": "#1D1D26",
 				"primary-card": "#1D1D26",
 				"hover-card": "#23232E",
-				"secondary-card": "#2A2938"
+				"secondary-card": "#2A2938",
+				"gray-text": "#C3C3D9",
+				"gray-button": "#30303D",
+				"gradient1-button": "#BB3FDD",
+				"gradient2-button": "#FB6DA9",
+				"gradient3-button": "#FF9F7C"
 			},
 			borderWidth: {
 				1: "1px",
@@ -48,6 +54,13 @@ module.exports = {
 			},
 			fontSize: {
 				xxs: ".625rem"
+			},
+			boxShadow: {
+				button: "inset 0 -5px 0px 0 rgba(0, 0, 0, 0.25)"
+			},
+			height: {
+				"90vh": "90vh",
+				"80vh": "80vh"
 			}
 		}
 	},

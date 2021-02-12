@@ -11,7 +11,12 @@ const NavDropdown = ({ auth }) => {
 	return (
 		<div className='relative inline-block text-left'>
 			<button className='default-focus rounded-full' onClick={onClick}>
-				<Avatar w='35px' h='35px' src={auth.user.photoUrl} />
+				<Avatar
+					bg='transparent'
+					w='35px'
+					h='35px'
+					src={auth.user.photoUrl}
+				/>
 			</button>
 
 			<div

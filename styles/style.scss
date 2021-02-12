@@ -36,3 +36,30 @@ input[type="color"]::-webkit-color-swatch-wrapper {
 input[type="color"]::-webkit-color-swatch {
 	border: none;
 }
+
+// -------- HERO SECTION ------------ //
+
+.hero-image {
+	background-image: url("/img/hero-app-preview_tablet.png");
+	background-repeat: no-repeat;
+	background-position: bottom left -25px;
+	background-size: 800px;
+}
+
+@media only screen and (min-width: 768px) {
+	.hero-image {
+		background-image: url("/img/hero-app-preview_tablet.png");
+		background-repeat: no-repeat;
+		background-position: bottom left -25px;
+		background-size: auto;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	.hero-image {
+		background-image: url("/img/hero-app-preview.png");
+		background-repeat: no-repeat;
+		background-position: bottom;
+		background-size: auto;
+	}
+}

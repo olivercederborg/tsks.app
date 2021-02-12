@@ -6,40 +6,57 @@ import { MdDashboard, MdAccountCircle } from "react-icons/md";
 import { useAuth } from "@/lib/auth";
 import NavDropdown from "../components/NavDropdown";
 
-const Navigation = () => {
+const LandingNavigation = () => {
 	const auth = useAuth();
 	const router = useRouter();
 
 	return (
 		<>
-			<header className='bg-secondary-background font-regular md:flex items-center justify-center hidden text-white shadow-md'>
-				<div className='flex flex-row items-center justify-between w-full px-5'>
-					<div>
-						<nav className='flex items-center'>
+			<header className='font-regular bg-hero-background flex items-center justify-center w-full py-10 text-white'>
+				<div className='container flex flex-row items-center justify-between w-full px-5'>
+					<nav className='flex items-center justify-between w-full'>
+						<div className='flex items-center'>
 							<Link href='/' passHref>
 								<a className='default-focus text-2xl font-bold'>
-									TSKS<span className='text-primary-default'>.</span>
-								</a>
-							</Link>
-							<Link href='/dashboard' passHref>
-								<a
-									className={`default-focus ml-6 py-4 font-medium border-transparent opacity-70 border-b-2 hover:opacity-100 flex items-center ${
-										router.pathname == "/dashboard" &&
-										"border-primary-default opacity-100"
-									}`}
-								>
-									<MdDashboard
-										className={`mr-2 text-2xl ${
-											router.pathname == "/dashboard"
-												? "text-primary-default"
-												: ""
-										}`}
+									<img
+										src='/img/tsks-logo-w-type.svg'
+										alt='Tsks logo'
 									/>
-									Dashboard
 								</a>
 							</Link>
-						</nav>
-					</div>
+							<Link href='/' passHref>
+								<a
+									className={`default-focus ml-10 p-4 font-medium border-transparent hover:border-gradient2-button transition-all duration-200 ease-in-out bg-opacity-50 border-b-2 flex items-center`}
+								>
+									Features
+								</a>
+							</Link>
+						</div>
+						{/* Right side nav */}
+						<div className='flex items-center'>
+							{!auth?.user && (
+								<>
+									<Link href='/' passHref>
+										<a
+											onClick={() => auth.signinWithGoogle()}
+											className={`default-focus p-4 font-medium border-transparent hover:border-gradient2-button transition-all duration-200 ease-in-out bg-opacity-50 border-b-2 flex items-center`}
+										>
+											Sign in
+										</a>
+									</Link>
+									<Link href='/' passHref>
+										<a
+											onClick={() => auth.signinWithGoogle()}
+											className={`default-focus ml-5 py-3 px-6 border-3 border-gray-button rounded-xl font-medium border-transparent hover:border-gradient2-button transition-all duration-200 ease-in-out bg-opacity-50 flex items-center`}
+										>
+											Sign up
+										</a>
+									</Link>
+								</>
+							)}
+						</div>
+					</nav>
+
 					{auth.user && <NavDropdown auth={auth} />}
 				</div>
 			</header>
@@ -105,4 +122,4 @@ const Navigation = () => {
 	);
 };
 
-export default Navigation;
+export default LandingNavigation;
