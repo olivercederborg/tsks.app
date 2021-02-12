@@ -25,8 +25,6 @@ const TodoShell = ({ children, currentCollection }) => {
 		<>
 			<Head>
 				<title>{currentCollection?.name} - Tsks, just tasks.</title>
-
-				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
 			<Navigation />

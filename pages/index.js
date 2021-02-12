@@ -12,15 +12,6 @@ export default function Index() {
 		<>
 			<Head>
 				<title>Home - Tsks, just tasks.</title>
-				{/* <script
-					dangerouslySetInnerHTML={{
-						__html: `
-          if (document.cookie && document.cookie.includes('tsks-auth')) {
-            window.location.href = "/dashboard"
-          }`
-					}}
-				/> */}
-				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<main className='flex flex-col items-center min-h-screen text-center text-white'>
 				<LandingHero />

@@ -7,8 +7,6 @@ export default function DashboardShell({ children }) {
 		<>
 			<Head>
 				<title>Dashboard - Tsks, just tasks.</title>
-
-				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
 			<Navigation />
