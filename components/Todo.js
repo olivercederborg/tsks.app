@@ -48,7 +48,11 @@ const Todo = ({ name, id, createdAt, authorId, collectionColor }) => {
 		<div className='py-2'>
 			<div className='group rounded-2xl bg-primary-card relative flex items-center justify-start p-3'>
 				<button
-					className={`default-focus border-${collectionColor} border-3 focus:outline-none hover:bg-${collectionColor} active:bg-${collectionColor} hover:bg-opacity-40 px-2 py-2 transition-colors duration-100 ease-in-out rounded-lg`}
+					style={{
+						borderColor: collectionColor
+						// backgroundColor: collectionColor
+					}}
+					className={`default-focus border-3 focus:outline-none bg-opacity-0 hover:bg-opacity-40 px-2 py-2 transition-colors duration-100 ease-in-out rounded-lg`}
 					onClick={onComplete}
 				></button>
 				<p className='pr-8 ml-3 text-white'>{name}</p>

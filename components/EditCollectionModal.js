@@ -25,15 +25,26 @@ import { getUserCollections } from "@/lib/db-admin";
 import { useRouter } from "next/router";
 
 const EditCollectionModal = ({ children, currentCollection }) => {
-	const options = ["purple", "yellow", "teal", "rose"];
+	const options = [
+		"#FC76A1",
+		"#DBBE56",
+		"#E39264",
+		"#D25A61",
+		"#AE68E6",
+		"#70C4BF",
+		"#9E7F72"
+	];
 
 	const initialRef = useRef(null);
+	const colorPicker = useRef(null);
 	const toast = useToast();
 	const auth = useAuth();
 	const router = useRouter();
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const { handleSubmit, register } = useForm();
-	const [collectionColor, setCollectionColor] = useState("purple");
+	const [collectionColor, setCollectionColor] = useState(
+		currentCollection?.collectionColor
+	);
 
 	const { getRootProps, getRadioProps } = useRadioGroup({
 		name: "collection-color",
@@ -44,7 +55,9 @@ const EditCollectionModal = ({ children, currentCollection }) => {
 	const onEditCollection = ({ name }) => {
 		const newCollection = {
 			name,
-			collectionColor
+			collectionColor: collectionColor
+				? collectionColor
+				: currentCollection.collectionColor
 		};
 
 		editCollection(currentCollection.id, newCollection);
@@ -91,6 +104,7 @@ const EditCollectionModal = ({ children, currentCollection }) => {
 							<FormLabel>Name</FormLabel>
 							<Input
 								ref={initialRef}
+								defaultValue={currentCollection?.name}
 								placeholder='My Collection'
 								border='3px solid'
 								borderColor='#333644'
@@ -104,7 +118,7 @@ const EditCollectionModal = ({ children, currentCollection }) => {
 							/>
 							<label>
 								Color
-								<div className='flex'>
+								<div className='grid grid-cols-6 gap-2 mt-2'>
 									{options.map((value) => {
 										const radio = getRadioProps({ value });
 										return (
@@ -118,6 +132,22 @@ const EditCollectionModal = ({ children, currentCollection }) => {
 										);
 									})}
 								</div>
+							</label>
+							<label
+								htmlFor='colorPicker'
+								className='flex flex-col mt-6'
+							>
+								Custom color
+								<input
+									ref={colorPicker}
+									onChange={() =>
+										setCollectionColor(colorPicker.current.value)
+									}
+									type='color'
+									id='colorPicker'
+									name='colorPicker'
+									className='w-16 h-12 p-0 mt-2 bg-transparent border-0 rounded-lg'
+								/>
 							</label>
 						</FormControl>
 					</ModalBody>

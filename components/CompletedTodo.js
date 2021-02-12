@@ -41,9 +41,14 @@ const Todo = ({ name, id, createdAt, authorId, collectionColor }) => {
 		<div className='py-2'>
 			<div className='group rounded-2xl bg-primary-card relative flex items-center justify-start p-3'>
 				<button
+					style={{
+						height: "22px",
+						width: "22px",
+						borderColor: collectionColor,
+						backgroundColor: collectionColor
+					}}
 					onClick={onUnComplete}
-					className={`bg-${collectionColor} default-focus hover:bg-opacity-50 focus:outline-none active:bg-${collectionColor} p-1 text-sm transition-colors duration-100 ease-in-out rounded-lg`}
-					style={{ height: "22px", width: "22px" }}
+					className={`default-focus hover:bg-opacity-50 focus:outline-none p-1 text-sm transition-colors duration-100 ease-in-out rounded-lg`}
 				>
 					<FiCheck />
 				</button>

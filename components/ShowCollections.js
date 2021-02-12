@@ -37,19 +37,10 @@ export default function ShowCollections({ collections }) {
 							<a className='group default-focus rounded-3xl no-underline'>
 								<div className='group-hover:bg-hover-card rounded-3xl bg-primary-card flex flex-row items-start p-6 break-all transition-all duration-200 ease-in-out'>
 									<div
+										style={{
+											backgroundColor: collection.collectionColor
+										}}
 										className={`rounded-2xl p-4 ${
-											collection.collectionColor == "teal" &&
-											"bg-primary-teal"
-										} ${
-											collection.collectionColor == "yellow" &&
-											"bg-primary-yellow"
-										} ${
-											collection.collectionColor == "rose" &&
-											"bg-primary-rose"
-										} ${
-											collection.collectionColor == "purple" &&
-											"bg-primary-default"
-										} ${
 											!collection.collectionColor &&
 											"bg-primary-default"
 										}`}

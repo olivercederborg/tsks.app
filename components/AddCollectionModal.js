@@ -23,23 +23,31 @@ import { createCollection } from "@/lib/db";
 import { useAuth } from "@/lib/auth";
 
 const AddCollectionModal = ({ children }) => {
-	const options = ["purple", "yellow", "teal", "rose"];
+	const options = [
+		"#FC76A1",
+		"#DBBE56",
+		"#E39264",
+		"#D25A61",
+		"#AE68E6",
+		"#70C4BF",
+		"#9E7F72"
+	];
 
 	const initialRef = useRef(null);
+	const colorPicker = useRef(null);
 	const toast = useToast();
 	const auth = useAuth();
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const { handleSubmit, register } = useForm();
-	const [collectionColor, setCollectionColor] = useState("purple");
+	const [collectionColor, setCollectionColor] = useState("pink");
 
 	const { getRootProps, getRadioProps } = useRadioGroup({
 		name: "collection-color",
-		defaultValue: "purple",
+		defaultValue: "pink",
 		onChange: setCollectionColor
 	});
-	const group = getRootProps();
 
-	const onCreateCollection = ({ name }) => {
+	const onCreateCollection = ({ name, colorPicker }) => {
 		const newCollection = {
 			authorId: auth.user.uid,
 			createdAt: new Date().toISOString(),
@@ -70,7 +78,7 @@ const AddCollectionModal = ({ children }) => {
 		<>
 			<button
 				onClick={onOpen}
-				className='default-focus hover:bg-primary-default rounded-2xl hover:border-primary-default border-secondary-card border-3 focus:outline-none flex flex-row items-center justify-center px-6 py-3 font-medium text-white transition-colors duration-200 ease-in-out bg-transparent'
+				className='default-focus hover:bg-secondary-card rounded-2xl border-secondary-card border-3 focus:outline-none flex flex-row items-center justify-center px-6 py-3 font-medium text-white transition-colors duration-200 ease-in-out bg-transparent'
 			>
 				{children}
 			</button>
@@ -79,9 +87,10 @@ const AddCollectionModal = ({ children }) => {
 				<ModalContent
 					as='form'
 					onSubmit={handleSubmit(onCreateCollection)}
-					bgColor='#191B21'
+					bgColor='#1D1D26'
 					borderRadius='20px'
 					color='white'
+					pt='2'
 				>
 					<ModalHeader fontWeight='700'>Add Collection</ModalHeader>
 					<ModalCloseButton />
@@ -103,7 +112,7 @@ const AddCollectionModal = ({ children }) => {
 							/>
 							<label>
 								Color
-								<div className='flex'>
+								<div className='grid grid-cols-6 gap-2 mt-2'>
 									{options.map((value) => {
 										const radio = getRadioProps({ value });
 										return (
@@ -118,26 +127,44 @@ const AddCollectionModal = ({ children }) => {
 									})}
 								</div>
 							</label>
+							<label
+								htmlFor='colorPicker'
+								className='flex flex-col mt-6'
+							>
+								Custom color
+								<input
+									ref={colorPicker}
+									onChange={() =>
+										setCollectionColor(colorPicker.current.value)
+									}
+									type='color'
+									id='colorPicker'
+									name='colorPicker'
+									className='w-16 h-12 p-0 mt-2 bg-transparent border-0 rounded-lg'
+								/>
+							</label>
 						</FormControl>
 					</ModalBody>
 
 					<ModalFooter>
 						<Button
 							type='submit'
-							bgColor='#7578D1'
+							bgColor='#30303D'
 							fontWeight='600'
 							px='5'
-							_hover={{ bgColor: "#9396F3" }}
+							_hover={{
+								bgColor: "#4A4A5B"
+							}}
 						>
 							Create
 						</Button>
 						<Button
 							onClick={onClose}
 							ml={3}
-							bgColor='#333644'
+							bgColor='transparent'
 							fontWeight='600'
 							px='5'
-							_hover={{ bgColor: "#3E4255" }}
+							_hover={{ bgColor: "#30303D" }}
 						>
 							Cancel
 						</Button>

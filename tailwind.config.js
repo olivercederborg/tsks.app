@@ -26,16 +26,21 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				"primary-default": "#7578D1",
-				"primary-pink": "#C97DD6",
-				"primary-rose": "#D05673",
-				"primary-teal": "#4BAE96",
-				"primary-yellow": "#DDB058",
-				"primary-background": "#191B21",
-				"secondary-background": "#1E2027",
-				"primary-card": "#21232D",
-				"hover-card": "#333644",
-				"secondary-card": "#2A2D39"
+				"primary-default": "#FC76A1",
+				"primary-yellow": "#DBBE56",
+				"primary-orange": "#E39264",
+				"primary-red": "#D25A61",
+				"primary-purple": "#AE68E6",
+				"primary-blue": "#4BACD5",
+				"primary-teal": "#70C4BF",
+				"primary-gray": "#7B7B8E",
+				"primary-brown": "#9E7F72",
+				"primary-darkBrown": "#5B4D47",
+				"primary-background": "#15151C",
+				"secondary-background": "#191921",
+				"primary-card": "#1D1D26",
+				"hover-card": "#23232E",
+				"secondary-card": "#2A2938"
 			},
 			borderWidth: {
 				1: "1px",

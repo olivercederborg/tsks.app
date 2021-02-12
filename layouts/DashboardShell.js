@@ -12,8 +12,8 @@ export default function DashboardShell({ children }) {
 			</Head>
 
 			<Navigation />
-			<main className='bg-primary-background flex flex-col items-center min-h-screen pb-40 text-white'>
-				<section className='mt-14 w-full max-w-screen-md min-h-screen px-5'>
+			<main className='flex flex-col items-center pb-40 text-white'>
+				<section className='mt-14 w-full max-w-screen-md px-5'>
 					{children}
 				</section>
 			</main>

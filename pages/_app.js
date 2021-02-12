@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
 		styles: {
 			global: {
 				body: {
-					bg: "#191B21",
+					bg: "#15151C",
 					color: "white",
 					overflowX: "hidden",
 					fontFamily: "Inter, sans-serif"

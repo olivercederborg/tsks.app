@@ -36,21 +36,31 @@ const CollectionTodos = () => {
 		getCurrentCollection();
 	}, [router]);
 
-	useEffect(() => {
-		if (collection?.collectionColor === "teal") {
-			setCollectionColor("primary-teal");
-		} else if (collection?.collectionColor === "yellow") {
-			setCollectionColor("primary-yellow");
-		} else if (collection?.collectionColor === "rose") {
-			setCollectionColor("primary-rose");
-		} else if (collection?.collectionColor === "purple") {
-			setCollectionColor("primary-default");
-		} else if (!collection?.collectionColor) {
-			setCollectionColor("primary-default");
-		}
-	}, [collection?.collectionColor]);
+	// useEffect(() => {
+	// 	if (collection?.collectionColor === "teal") {
+	// 		setCollectionColor("primary-teal");
+	// 	} else if (collection?.collectionColor === "yellow") {
+	// 		setCollectionColor("primary-yellow");
+	// 	} else if (collection?.collectionColor === "orange") {
+	// 		setCollectionColor("primary-orange");
+	// 	} else if (collection?.collectionColor === "red") {
+	// 		setCollectionColor("primary-red");
+	// 	} else if (collection?.collectionColor === "purple") {
+	// 		setCollectionColor("primary-purple");
+	// 	} else if (collection?.collectionColor === "blue") {
+	// 		setCollectionColor("primary-blue");
+	// 	} else if (collection?.collectionColor === "gray") {
+	// 		setCollectionColor("primary-gray");
+	// 	} else if (collection?.collectionColor === "brown") {
+	// 		setCollectionColor("primary-brown");
+	// 	} else if (collection?.collectionColor === "darkBrown") {
+	// 		setCollectionColor("primary-darkBrown");
+	// 	} else if (!collection?.collectionColor) {
+	// 		setCollectionColor("primary-default");
+	// 	}
+	// }, [collection?.collectionColor]);
 
-	if (!todoData || !collectionColor) {
+	if (!todoData || !collection?.collectionColor) {
 		return (
 			<TodoShell>
 				<TodoSkeleton />
@@ -66,12 +76,15 @@ const CollectionTodos = () => {
 			{todoData?.todos?.length
 				? todoData.todos.map((todo) => (
 						<div key={todo.id}>
-							<Todo collectionColor={collectionColor} {...todo} />
+							<Todo
+								collectionColor={collection.collectionColor}
+								{...todo}
+							/>
 						</div>
 				  ))
 				: ""}
 
-			<AddTodo collectionColor={collectionColor} />
+			<AddTodo collectionColor={collection.collectionColor} />
 
 			{completedTodoData?.todos?.length ? (
 				<p className='mt-8 mb-2 font-medium text-white'>
@@ -84,7 +97,7 @@ const CollectionTodos = () => {
 				? completedTodoData.todos.map((todo) => (
 						<div key={todo.id}>
 							<CompletedTodo
-								collectionColor={collectionColor}
+								collectionColor={collection.collectionColor}
 								{...todo}
 							/>
 						</div>
