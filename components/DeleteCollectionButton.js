@@ -37,7 +37,7 @@ const DeleteCollectionButton = ({ currentCollection }) => {
 
 	return (
 		<>
-			<div onClick={onOpen}>Delete {currentCollection?.name}</div>
+			<div onClick={onOpen}>Delete Collection</div>
 
 			<Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
 				<ModalOverlay />

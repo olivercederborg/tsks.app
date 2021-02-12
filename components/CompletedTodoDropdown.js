@@ -51,14 +51,6 @@ const CompletedTodoDropdown = ({ collectionId, id }) => {
 			>
 				<div className='py-1'>
 					<button
-						className='default-focus hover:bg-secondary-card block w-full px-4 py-2 text-sm text-left text-gray-200'
-						role='menuitem'
-					>
-						Edit
-					</button>
-				</div>
-				<div className='py-1'>
-					<button
 						onClick={onDelete}
 						className='default-focus hover:bg-secondary-card block w-full px-4 py-2 text-sm text-left text-gray-200'
 						role='menuitem'
