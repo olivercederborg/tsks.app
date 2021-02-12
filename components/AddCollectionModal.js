@@ -39,11 +39,11 @@ const AddCollectionModal = ({ children }) => {
 	const auth = useAuth();
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const { handleSubmit, register } = useForm();
-	const [collectionColor, setCollectionColor] = useState("pink");
+	const [collectionColor, setCollectionColor] = useState("#FC76A1");
 
 	const { getRootProps, getRadioProps } = useRadioGroup({
 		name: "collection-color",
-		defaultValue: "pink",
+		defaultValue: "#FC76A1",
 		onChange: setCollectionColor
 	});
 

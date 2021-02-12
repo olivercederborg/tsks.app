@@ -48,7 +48,7 @@ const EditCollectionModal = ({ children, currentCollection }) => {
 
 	const { getRootProps, getRadioProps } = useRadioGroup({
 		name: "collection-color",
-		defaultValue: "pink",
+		defaultValue: null,
 		onChange: setCollectionColor
 	});
 
