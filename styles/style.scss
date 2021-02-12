@@ -22,3 +22,17 @@ body {
 .default-focus:focus {
 	outline: 0;
 }
+
+input[type="color"] {
+	-webkit-appearance: none;
+	border-radius: 12px;
+	overflow: hidden;
+	width: 60px;
+	height: 50px;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+	border: none;
+}
