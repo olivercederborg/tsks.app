@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps }) {
 			global: {
 				body: {
 					bg: "#15151C",
+					width: "100%",
 					color: "white",
 					overflowX: "hidden",
 					fontFamily: "Inter, sans-serif"
@@ -32,7 +33,7 @@ function MyApp({ Component, pageProps }) {
 					<meta property='og:title' content='Tsks, just tasks.' />
 					<meta
 						property='og:image'
-						content='https://dev.olivercederborg.com/images/preview.png'
+						content='https://dev.tsks.app/img/preview.png'
 					/>
 					<meta property='og:description' content={siteDescription} />
 					<meta property='og:type' content='website' />
