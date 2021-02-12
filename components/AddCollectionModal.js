@@ -137,6 +137,7 @@ const AddCollectionModal = ({ children }) => {
 									onChange={() =>
 										setCollectionColor(colorPicker.current.value)
 									}
+									defaultValue='#FC76A1'
 									type='color'
 									id='colorPicker'
 									name='colorPicker'

@@ -34,7 +34,7 @@ const EditTodoModal = ({ children, todoId, collectionId }) => {
 
 		toast({
 			title: "Success!",
-			description: "Your todo was updated.",
+			description: "Your task was updated.",
 			status: "success",
 			position: "top",
 			duration: 3000,
@@ -64,12 +64,13 @@ const EditTodoModal = ({ children, todoId, collectionId }) => {
 					bgColor='#191B21'
 					borderRadius='20px'
 					color='white'
+					pt='2'
 				>
-					<ModalHeader fontWeight='700'>Edit todo</ModalHeader>
+					<ModalHeader fontWeight='700'>Edit task</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody pb={6}>
 						<FormControl>
-							<FormLabel>New name</FormLabel>
+							<FormLabel>New task</FormLabel>
 							<Input
 								ref={initialRef}
 								placeholder='Do the dishes'
@@ -99,9 +100,9 @@ const EditTodoModal = ({ children, todoId, collectionId }) => {
 						<Button
 							onClick={onClose}
 							ml={3}
-							bgColor='#333644'
 							fontWeight='600'
 							px='5'
+							bgColor='transparent'
 							_hover={{ bgColor: "#3E4255" }}
 						>
 							Cancel

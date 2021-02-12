@@ -93,7 +93,7 @@ const EditCollectionModal = ({ children, currentCollection }) => {
 				<ModalContent
 					as='form'
 					onSubmit={handleSubmit(onEditCollection)}
-					bgColor='#191B21'
+					bgColor='#1D1D26'
 					borderRadius='20px'
 					color='white'
 				>
@@ -139,10 +139,11 @@ const EditCollectionModal = ({ children, currentCollection }) => {
 							>
 								Custom color
 								<input
-									ref={colorPicker}
 									onChange={() =>
 										setCollectionColor(colorPicker.current.value)
 									}
+									defaultValue='#FC76A1'
+									ref={colorPicker}
 									type='color'
 									id='colorPicker'
 									name='colorPicker'
@@ -155,20 +156,20 @@ const EditCollectionModal = ({ children, currentCollection }) => {
 					<ModalFooter>
 						<Button
 							type='submit'
-							bgColor='#7578D1'
+							bgColor='#30303D'
 							fontWeight='600'
 							px='5'
-							_hover={{ bgColor: "#9396F3" }}
+							_hover={{ bgColor: "#4A4A5B" }}
 						>
 							Update
 						</Button>
 						<Button
 							onClick={onClose}
 							ml={3}
-							bgColor='#333644'
+							bgColor='transparent'
 							fontWeight='600'
 							px='5'
-							_hover={{ bgColor: "#3E4255" }}
+							_hover={{ bgColor: "#30303D" }}
 						>
 							Cancel
 						</Button>
