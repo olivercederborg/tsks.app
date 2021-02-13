@@ -60,8 +60,8 @@ function MyApp({ Component, pageProps }) {
 						rel='apple-touch-icon'
 						href='/icons/apple-touch-icon.png'
 					/>
-					<link rel='icon' sizes='32x32' href='/icons/favicon_32x32.png' />
-					<link rel='icon' sizes='16x16' href='/icons/favicon_16x16.png' />
+					<link rel='icon' sizes='32x32' href='/icons/favicon_x32.png' />
+					<link rel='icon' sizes='16x16' href='/icons/favicon_x16.png' />
 					<meta name='theme-color' content='#15151C' />
 
 					<link rel='preconnect' href='https://fonts.gstatic.com' />

@@ -4,8 +4,9 @@
     "display": "standalone",
     "scope": "/",
     "start_url": "/",
-    "name": "Tsks",
+    "name": "Tsks, just tasks.",
     "short_name": "Tsks",
+    "description": "Tsks is a task manager made simply to manage and keep track of everyday tasks with a modern and simple interface.",
     "icons": [
         {
             "src": "/icons/icon-192x192.png",
