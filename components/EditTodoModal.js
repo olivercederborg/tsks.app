@@ -61,7 +61,7 @@ const EditTodoModal = ({ children, todoId, collectionId }) => {
 				<ModalContent
 					as='form'
 					onSubmit={handleSubmit(onEditTodo)}
-					bgColor='#191B21'
+					bgColor='#1D1D27'
 					borderRadius='20px'
 					color='white'
 					pt='2'
@@ -75,13 +75,13 @@ const EditTodoModal = ({ children, todoId, collectionId }) => {
 								ref={initialRef}
 								placeholder='Do the dishes'
 								border='3px solid'
-								borderColor='#333644'
+								borderColor='#343343'
 								py='5'
 								px='4'
 								borderRadius='12px'
 								name='name'
 								mb='6'
-								_hover={{ borderColor: "#464957" }}
+								_hover={{ borderColor: "#3D3C50" }}
 								ref={register({ required: true })}
 							/>
 						</FormControl>
@@ -90,10 +90,10 @@ const EditTodoModal = ({ children, todoId, collectionId }) => {
 					<ModalFooter>
 						<Button
 							type='submit'
-							bgColor='#7578D1'
+							bgColor='#3D3C50'
 							fontWeight='600'
 							px='5'
-							_hover={{ bgColor: "#9396F3" }}
+							_hover={{ bgColor: "#525166" }}
 						>
 							Edit
 						</Button>
@@ -103,7 +103,7 @@ const EditTodoModal = ({ children, todoId, collectionId }) => {
 							fontWeight='600'
 							px='5'
 							bgColor='transparent'
-							_hover={{ bgColor: "#3E4255" }}
+							_hover={{ bgColor: "#3D3C50" }}
 						>
 							Cancel
 						</Button>

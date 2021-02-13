@@ -48,7 +48,7 @@ const LandingHero = () => {
 		<>
 			<article
 				id='hero'
-				className='bg-hero-background hero-image lg:h-90vh flex flex-col w-full h-screen'
+				className='bg-hero-background hero-image flex flex-col w-full h-screen'
 			>
 				<LandingNavigation />
 				<section className='h-4/6 md:h-3/6 lg:h-3/6 relative flex flex-col justify-center'>

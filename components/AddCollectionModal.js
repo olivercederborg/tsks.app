@@ -87,7 +87,7 @@ const AddCollectionModal = ({ children }) => {
 				<ModalContent
 					as='form'
 					onSubmit={handleSubmit(onCreateCollection)}
-					bgColor='#1D1D26'
+					bgColor='#1D1D27'
 					borderRadius='20px'
 					color='white'
 					pt='2'
@@ -101,13 +101,13 @@ const AddCollectionModal = ({ children }) => {
 								ref={initialRef}
 								placeholder='My Collection'
 								border='3px solid'
-								borderColor='#333644'
+								borderColor='#343343'
 								py='5'
 								px='4'
 								borderRadius='12px'
 								name='name'
 								mb='6'
-								_hover={{ borderColor: "#464957" }}
+								_hover={{ borderColor: "#3D3C50" }}
 								ref={register({ required: true })}
 							/>
 							<label>
@@ -150,11 +150,11 @@ const AddCollectionModal = ({ children }) => {
 					<ModalFooter>
 						<Button
 							type='submit'
-							bgColor='#30303D'
+							bgColor='#3D3C50'
 							fontWeight='600'
 							px='5'
 							_hover={{
-								bgColor: "#4A4A5B"
+								bgColor: "#525166"
 							}}
 						>
 							Create
@@ -165,7 +165,7 @@ const AddCollectionModal = ({ children }) => {
 							bgColor='transparent'
 							fontWeight='600'
 							px='5'
-							_hover={{ bgColor: "#30303D" }}
+							_hover={{ bgColor: "#3D3C50" }}
 						>
 							Cancel
 						</Button>

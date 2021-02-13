@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useRouter } from "next/router";
 import { mutate } from "swr";
 import { Box, FormControl, FormLabel } from "@chakra-ui/react";
-import { HiOutlinePlus } from "react-icons/hi";
+import { BiPlus } from "react-icons/bi";
 
 import { useAuth } from "@/lib/auth";
 import { createTodo } from "@/lib/db";
@@ -45,12 +45,13 @@ const AddTodo = ({ collectionColor }) => {
 						<button
 							style={{
 								height: "22px",
+								width: "23px",
 								borderColor: collectionColor,
 								backgroundColor: collectionColor
 							}}
-							className={`default-focus text-white p-1 mr-3 hover:bg-opacity-70 text-sm transition-colors duration-100 ease-in-out rounded-lg`}
+							className={`default-focus text-primary-background text-center flex justify-center items-center mr-3 text-base transition-colors duration-100 ease-in-out rounded-lg`}
 						>
-							<HiOutlinePlus />
+							<BiPlus />
 						</button>
 						<input
 							className='w-full bg-transparent rounded-md outline-none'

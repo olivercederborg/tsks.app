@@ -1,10 +1,10 @@
 import router from "next/router";
 import { mutate } from "swr";
 import { useToast } from "@chakra-ui/react";
-import { FiCheck } from "react-icons/fi";
+import { HiCheck } from "react-icons/hi";
 
 import CompletedTodoDropdown from "./CompletedTodoDropdown";
-import { deleteTodo, unCompleteTodo } from "@/lib/db";
+import { unCompleteTodo } from "@/lib/db";
 import { useAuth } from "../lib/auth";
 
 const Todo = ({ name, id, createdAt, authorId, collectionColor }) => {
@@ -48,9 +48,9 @@ const Todo = ({ name, id, createdAt, authorId, collectionColor }) => {
 						backgroundColor: collectionColor
 					}}
 					onClick={onUnComplete}
-					className={`default-focus hover:bg-opacity-50 focus:outline-none p-1 text-sm transition-colors duration-100 ease-in-out rounded-lg`}
+					className={`default-focus text-primary-background hover:bg-opacity-50 focus:outline-none flex justify-center items-center transition-colors duration-100 ease-in-out rounded-lg`}
 				>
-					<FiCheck />
+					<HiCheck />
 				</button>
 				<p className='ml-3 mr-8 text-white line-through'>{name}</p>
 				<div

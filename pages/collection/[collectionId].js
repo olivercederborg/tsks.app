@@ -63,7 +63,7 @@ const CollectionTodos = () => {
 			<AddTodo collectionColor={collection.collectionColor} />
 
 			{completedTodoData?.todos?.length ? (
-				<p className='mt-8 mb-2 font-medium text-white'>
+				<p className='mt-10 mb-2 font-medium text-white'>
 					Completed - {completedTodoData?.todos.length}
 				</p>
 			) : (
