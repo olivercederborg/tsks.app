@@ -1,7 +1,7 @@
 {
     "theme_color": "#15151C",
     "background_color": "#15151C",
-    "display": "fullscreen",
+    "display": "standalone",
     "scope": "/",
     "start_url": "/",
     "name": "Tsks",
