@@ -11,6 +11,12 @@ body {
 	padding-bottom: calc(env(safe-area-inset-bottom));
 }
 
+@media all and (display-mode: standalone) {
+	#mobile_menu {
+		padding-bottom: 20px;
+	}
+}
+
 .default-focus:focus-visible {
 	@apply ring-2;
 	@apply ring-offset-primary-background;
