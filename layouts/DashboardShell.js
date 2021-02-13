@@ -6,7 +6,7 @@ export default function DashboardShell({ children }) {
 	return (
 		<>
 			<Head>
-				<title>Dashboard - Tsks, just tasks.</title>
+				<title>Dashboard - Tsks.</title>
 			</Head>
 
 			<Navigation />

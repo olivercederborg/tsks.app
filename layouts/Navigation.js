@@ -12,27 +12,29 @@ const Navigation = () => {
 
 	return (
 		<>
-			<header className='bg-secondary-background font-regular md:flex items-center justify-center hidden text-white shadow-md'>
+			<header className='bg-navigation font-regular md:flex items-center justify-center hidden text-white shadow-md'>
 				<div className='flex flex-row items-center justify-between w-full px-5'>
 					<div>
 						<nav className='flex items-center'>
-							<Link href='/' passHref>
-								<a className='default-focus text-2xl font-bold'>
-									TSKS<span className='text-primary-default'>.</span>
+							{/* <Link href='/' passHref>
+								<a className='default-focus h-7 text-2xl font-bold'>
+									<img
+										className='h-7'
+										src='/img/tsks-logo-w-type.svg'
+										alt='Tsks logo'
+									/>
 								</a>
-							</Link>
-							<Link href='/dashboard' passHref>
+							</Link> */}
+							<Link href='/app' passHref>
 								<a
-									className={`default-focus ml-6 py-4 font-medium border-transparent opacity-70 border-b-2 hover:opacity-100 flex items-center ${
-										router.pathname == "/dashboard" &&
-										"border-primary-default opacity-100"
+									className={`default-focus py-4 font-medium border-transparent opacity-70 border-b-2 hover:opacity-100 flex items-center ${
+										router.pathname == "/app" &&
+										"border-white opacity-100"
 									}`}
 								>
 									<MdDashboard
 										className={`mr-2 text-2xl ${
-											router.pathname == "/dashboard"
-												? "text-primary-default"
-												: ""
+											router.pathname == "/app" ? "text-white" : ""
 										}`}
 									/>
 									Dashboard
@@ -50,33 +52,15 @@ const Navigation = () => {
 			>
 				<div className='flex flex-row items-center justify-between w-full'>
 					<nav className='flex items-center justify-around w-full'>
-						<Link href='/' passHref>
+						<Link href='/app' passHref>
 							<a
 								className={`default-focus py-4 opacity-70 hover:opacity-100 flex items-center ${
-									router.pathname == "/" ? "opacity-100" : ""
-								}`}
-							>
-								<BiHomeAlt
-									className={`mr-2 text-2xl ${
-										router.pathname == "/"
-											? "text-primary-default"
-											: ""
-									}`}
-								/>
-								Home
-							</a>
-						</Link>
-						<Link href='/dashboard' passHref>
-							<a
-								className={`default-focus py-4 opacity-70 hover:opacity-100 flex items-center ${
-									router.pathname == "/dashboard" ? "opacity-100" : ""
+									router.pathname == "/app" ? "opacity-100" : ""
 								}`}
 							>
 								<MdDashboard
 									className={`mr-2 text-2xl ${
-										router.pathname == "/dashboard"
-											? "text-primary-default"
-											: ""
+										router.pathname == "/app" ? "text-white" : ""
 									}`}
 								/>
 								Dashboard
@@ -90,9 +74,7 @@ const Navigation = () => {
 							>
 								<MdAccountCircle
 									className={`mr-2 text-2xl ${
-										router.pathname == "/account"
-											? "text-primary-default"
-											: ""
+										router.pathname == "/account" ? "text-white" : ""
 									}`}
 								/>
 								Account

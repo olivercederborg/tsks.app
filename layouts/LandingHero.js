@@ -59,7 +59,7 @@ const LandingHero = () => {
 					)}
 
 					{auth?.user && (
-						<h1 className='text-4xl font-bold leading-snug'>
+						<h1 className='md:text-5xl md:leading-normal text-4xl font-bold leading-snug'>
 							{greeting},<br />
 							{auth.user.name}.
 						</h1>
@@ -82,7 +82,7 @@ const LandingHero = () => {
 							</>
 						)}
 						{auth?.user && (
-							<Link href='/dashboard' passHref>
+							<Link href='/app' passHref>
 								<a className='rounded-xl bg-gradient-to-tr shadow-button from-gradient1-button via-gradient2-button hover:-translate-y-1 to-gradient3-button px-8 py-4 mx-3 transition-all duration-200 ease-in-out transform'>
 									View Dashboard
 								</a>

@@ -32,7 +32,7 @@ const DeleteCollectionButton = ({ currentCollection }) => {
 		deleteCollection(currentCollection.id);
 
 		mutate("/api/todo-collections", user.uid);
-		setTimeout(() => router.push("/dashboard"), 200);
+		setTimeout(() => router.push("/app"), 200);
 	};
 
 	return (

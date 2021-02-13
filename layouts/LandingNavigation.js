@@ -105,17 +105,15 @@ const LandingNavigation = () => {
 						)}
 						{auth?.user && (
 							<>
-								<Link href='/dashboard' passHref>
+								<Link href='/app' passHref>
 									<a
 										className={`default-focus py-4 opacity-70 hover:opacity-100 flex items-center ${
-											router.pathname == "/dashboard"
-												? "opacity-100"
-												: ""
+											router.pathname == "/app" ? "opacity-100" : ""
 										}`}
 									>
 										<MdDashboard
 											className={`mr-2 text-2xl ${
-												router.pathname == "/dashboard"
+												router.pathname == "/app"
 													? "text-primary-default"
 													: ""
 											}`}

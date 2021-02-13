@@ -36,30 +36,6 @@ const CollectionTodos = () => {
 		getCurrentCollection();
 	}, [router]);
 
-	// useEffect(() => {
-	// 	if (collection?.collectionColor === "teal") {
-	// 		setCollectionColor("primary-teal");
-	// 	} else if (collection?.collectionColor === "yellow") {
-	// 		setCollectionColor("primary-yellow");
-	// 	} else if (collection?.collectionColor === "orange") {
-	// 		setCollectionColor("primary-orange");
-	// 	} else if (collection?.collectionColor === "red") {
-	// 		setCollectionColor("primary-red");
-	// 	} else if (collection?.collectionColor === "purple") {
-	// 		setCollectionColor("primary-purple");
-	// 	} else if (collection?.collectionColor === "blue") {
-	// 		setCollectionColor("primary-blue");
-	// 	} else if (collection?.collectionColor === "gray") {
-	// 		setCollectionColor("primary-gray");
-	// 	} else if (collection?.collectionColor === "brown") {
-	// 		setCollectionColor("primary-brown");
-	// 	} else if (collection?.collectionColor === "darkBrown") {
-	// 		setCollectionColor("primary-darkBrown");
-	// 	} else if (!collection?.collectionColor) {
-	// 		setCollectionColor("primary-default");
-	// 	}
-	// }, [collection?.collectionColor]);
-
 	if (!todoData || !collection?.collectionColor) {
 		return (
 			<TodoShell>

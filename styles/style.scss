@@ -7,9 +7,9 @@ body {
 	outline: none;
 }
 
-// #mobile_menu {
-// 	padding-bottom: calc(env(safe-area-inset-bottom));
-// }
+#mobile_menu {
+	padding-bottom: calc(5px + env(safe-area-inset-bottom));
+}
 
 .default-focus:focus-visible {
 	@apply ring-2;
@@ -61,11 +61,5 @@ input[type="color"]::-webkit-color-swatch {
 		background-repeat: no-repeat;
 		background-position: bottom;
 		background-size: auto;
-	}
-}
-
-@media all and (display-mode: standalone) {
-	#mobile_menu {
-		padding-bottom: 20px;
 	}
 }

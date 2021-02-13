@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
 		styles: {
 			global: {
 				body: {
-					bg: "#15151C",
+					bg: "#181820",
 					width: "100%",
 					color: "white",
 					overflowX: "hidden",
@@ -31,13 +31,6 @@ function MyApp({ Component, pageProps }) {
 					<meta name='description' content={siteDescription} />
 					<meta name='keywords' content={siteKeywords} />
 					<meta property='og:title' content='Tsks, just tasks.' />
-					<meta name='apple-mobile-web-app-capable' content='yes' />
-					<meta
-						name='apple-mobile-web-app-status-bar-style'
-						content='black-translucent'
-					/>
-					<meta name='apple-mobile-web-app-title' content='Tsks' />
-
 					<meta
 						property='og:image'
 						content='https://dev.tsks.app/img/preview.png'
@@ -55,71 +48,18 @@ function MyApp({ Component, pageProps }) {
 						content='https://dev.tsks.app/img/preview.png'
 					/>
 
-					<link rel='manifest' href='/manifest.json' />
 					<link
-						rel='apple-touch-icon'
+						rel='icon'
+						sizes='180x180'
 						href='/icons/apple-touch-icon.png'
 					/>
 					<link rel='icon' sizes='32x32' href='/icons/favicon_x32.png' />
 					<link rel='icon' sizes='16x16' href='/icons/favicon_x16.png' />
-					<meta name='theme-color' content='#15151C' />
 
 					<link rel='preconnect' href='https://fonts.gstatic.com' />
 					<link
 						href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'
 						rel='stylesheet'
-					/>
-
-					{/* Splash screens */}
-					<link
-						href='splashscreens/iphone5_splash.png'
-						media='(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
-						rel='apple-touch-startup-image'
-					/>
-					<link
-						href='splashscreens/iphone6_splash.png'
-						media='(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)'
-						rel='apple-touch-startup-image'
-					/>
-					<link
-						href='splashscreens/iphoneplus_splash.png'
-						media='(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)'
-						rel='apple-touch-startup-image'
-					/>
-					<link
-						href='splashscreens/iphonex_splash.png'
-						media='(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)'
-						rel='apple-touch-startup-image'
-					/>
-					<link
-						href='splashscreens/iphonexr_splash.png'
-						media='(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)'
-						rel='apple-touch-startup-image'
-					/>
-					<link
-						href='splashscreens/iphonexsmax_splash.png'
-						media='(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)'
-						rel='apple-touch-startup-image'
-					/>
-					<link
-						href='splashscreens/ipad_splash.png'
-						media='(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)'
-						rel='apple-touch-startup-image'
-					/>
-					<link
-						href='splashscreens/ipadpro1_splash.png'
-						media='(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)'
-						rel='apple-touch-startup-image'
-					/>
-					<link
-						href='splashscreens/ipadpro3_splash.png'
-						media='(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)'
-						rel='apple-touch-startup-image'
-					/>
-					<link
-						href='splashscreens/ipadpro2_splash.png'
-						media='(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)'
-						rel='apple-touch-startup-image'
 					/>
 				</Head>
 

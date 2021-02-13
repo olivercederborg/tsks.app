@@ -17,14 +17,14 @@ const TodoShell = ({ children, currentCollection }) => {
 
 	if (user?.uid) {
 		if (currentCollection && user.uid !== currentCollection.authorId) {
-			router.push("/dashboard");
+			router.push("/app");
 		}
 	}
 
 	return (
 		<>
 			<Head>
-				<title>{currentCollection?.name} - Tsks, just tasks.</title>
+				<title>{currentCollection?.name} - Tsks.</title>
 			</Head>
 
 			<Navigation />
@@ -32,7 +32,7 @@ const TodoShell = ({ children, currentCollection }) => {
 				<div className='mt-14 w-full max-w-screen-md px-5'>
 					<div className='flex justify-between mb-12'>
 						<div className='flex items-center'>
-							<Link href='/dashboard' passHref>
+							<Link href='/app' passHref>
 								<a className='default-focus bg-primary-card hover:bg-hover-card rounded-2xl p-3 text-2xl transition-colors duration-200 ease-in-out'>
 									<IoChevronBackOutline />
 								</a>
