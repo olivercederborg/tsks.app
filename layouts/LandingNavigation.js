@@ -37,17 +37,15 @@ const LandingNavigation = () => {
 						<div className='flex items-center'>
 							{!auth?.user && (
 								<>
-									<Link href='/' passHref>
+									<Link href='/users/signin' passHref>
 										<a
-											onClick={() => auth.signinWithGoogle()}
 											className={`default-focus p-4 font-medium border-transparent hover:border-gradient2-button transition-all duration-200 ease-in-out bg-opacity-50 border-b-2 flex items-center`}
 										>
 											Sign in
 										</a>
 									</Link>
-									<Link href='/' passHref>
+									<Link href='/users/signup' passHref>
 										<a
-											onClick={() => auth.signinWithGoogle()}
 											className={`default-focus ml-5 py-3 px-6 border-3 border-gray-button rounded-xl font-medium border-transparent hover:border-gradient2-button transition-all duration-200 ease-in-out bg-opacity-50 flex items-center`}
 										>
 											Sign up
