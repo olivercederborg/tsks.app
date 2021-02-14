@@ -39,7 +39,7 @@ const NavDropdown = ({ auth }) => {
 						className='just inline-flex items-start px-4 pb-2 text-sm font-semibold text-gray-200'
 						role='menuitem'
 					>
-						{auth?.user.name}
+						{!auth?.user.name ? auth?.user.email : auth?.user.name}
 						{auth?.user.userRole == "admin" && (
 							<span className='bg-primary-default border-primary-default border-1 bg-opacity-60 text-xxs px-1 ml-2 font-normal tracking-wide text-purple-100 uppercase rounded-md'>
 								{auth?.user.userRole}
