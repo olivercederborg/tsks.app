@@ -2,20 +2,26 @@ import { AiOutlineGoogle } from "react-icons/ai";
 
 import { useAuth } from "@/lib/auth";
 import { IoLogoFacebook } from "react-icons/io5";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { HiArrowLeft } from "react-icons/hi";
 import Head from "next/head";
 
 const SignUpPage = () => {
-	const auth = useAuth();
-	const emailInput = useRef(null);
-	const passwordInput = useRef(null);
+	const {
+		error,
+		signupWithEmail,
+		signinWithFacebook,
+		signinWithGoogle
+	} = useAuth();
 
 	const onSignupWithEmail = (e) => {
 		e.preventDefault();
-		auth.signupWithEmail(email.value, password.value);
+		signupWithEmail(email.value, password.value);
 		console.log(email.value, password.value);
+		if (error) {
+			console.log(error);
+		}
 	};
 
 	return (
@@ -27,14 +33,14 @@ const SignUpPage = () => {
 				<section className='bg md:mt-40 flex flex-col items-center justify-center w-full max-w-sm mt-24'>
 					<h1 className='mb-20 text-5xl font-bold'>Sign up.</h1>
 					<button
-						onClick={() => auth.signinWithGoogle()}
+						onClick={() => signinWithGoogle()}
 						className={`default-focus py-4 text-white text-opacity-80 hover:text-opacity-100 flex justify-center items-center border-3 w-full border-secondary-card hover:bg-secondary-card rounded-xl transition-all duration-200 ease-in-out font-medium`}
 					>
 						<AiOutlineGoogle className={`mr-2 text-2xl`} />
 						Continue with Google
 					</button>
 					<button
-						onClick={() => auth.signinWithFacebook()}
+						onClick={() => signinWithFacebook()}
 						className={`default-focus mt-5 py-4 text-white text-opacity-80 hover:text-opacity-100 flex justify-center items-center border-3 w-full border-secondary-card hover:bg-secondary-card rounded-xl transition-all duration-200 ease-in-out font-medium`}
 					>
 						<IoLogoFacebook className={`mr-2 text-2xl`} />
@@ -50,7 +56,6 @@ const SignUpPage = () => {
 						</label>
 						<input
 							required
-							ref={emailInput}
 							id='email'
 							name='email'
 							type='email'
@@ -64,7 +69,6 @@ const SignUpPage = () => {
 						<input
 							required
 							minLength='6'
-							ref={passwordInput}
 							id='password'
 							name='password'
 							type='password'
