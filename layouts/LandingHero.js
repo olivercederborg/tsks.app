@@ -54,14 +54,20 @@ const LandingHero = () => {
 				<section className='h-4/6 md:h-3/6 lg:h-3/6 relative flex flex-col justify-center'>
 					{!auth?.user && (
 						<h1 className='text-5xl font-bold leading-snug'>
-							Tsks, just tasks.
+							Tsks, just tasks
+							<span className='bg-gradient-to-r from-gradient1-button via-gradient2-button to-gradient3-button bg-clip-text text-transparent'>
+								.
+							</span>
 						</h1>
 					)}
 
 					{auth?.user && (
 						<h1 className='md:text-5xl md:leading-normal text-4xl font-bold leading-snug'>
 							{greeting},<br />
-							{auth.user.name}.
+							{auth.user.name}
+							<span className='bg-gradient-to-r from-gradient1-button via-gradient2-button to-gradient3-button bg-clip-text text-transparent'>
+								.
+							</span>
 						</h1>
 					)}
 
@@ -73,9 +79,12 @@ const LandingHero = () => {
 					<div className='flex justify-center mt-12 font-semibold'>
 						{!auth?.user && (
 							<>
-								<a className='rounded-xl bg-gradient-to-tr shadow-button from-gradient1-button via-gradient2-button hover:-translate-y-1 to-gradient3-button px-8 py-4 mx-3 transition-all duration-200 ease-in-out transform'>
-									Get Started
-								</a>
+								<Link href='/users/signup' passHref>
+									<a className='rounded-xl bg-gradient-to-tr shadow-button from-gradient1-button via-gradient2-button hover:-translate-y-1 to-gradient3-button px-8 py-4 mx-3 transition-all duration-200 ease-in-out transform'>
+										Get Started
+									</a>
+								</Link>
+
 								<a className='bg-gray-button shadow-button rounded-xl hover:bg-opacity-90 hover:-translate-y-1 px-8 py-4 mx-3 transition-all duration-200 ease-in-out transform'>
 									Learn More
 								</a>
