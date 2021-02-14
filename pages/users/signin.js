@@ -7,15 +7,22 @@ import Link from "next/link";
 import { HiArrowLeft } from "react-icons/hi";
 import Head from "next/head";
 import { Alert, AlertIcon } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 const SignInPage = () => {
+	const router = useRouter();
 	const {
+		user,
 		error,
 		signinWithEmail,
 		signinWithFacebook,
 		signinWithGoogle
 	} = useAuth();
 	const [authError, setAuthError] = useState(null);
+
+	if (user) {
+		router.push("/app");
+	}
 
 	useEffect(() => {
 		if (error) {
