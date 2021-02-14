@@ -64,7 +64,7 @@ const LandingHero = () => {
 					{auth?.user && (
 						<h1 className='md:text-5xl md:leading-normal text-4xl font-bold leading-snug'>
 							{greeting},<br />
-							{auth.user.name}
+							{auth.user?.name ?? auth.user?.email}
 							<span className='bg-gradient-to-r from-gradient1-button via-gradient2-button to-gradient3-button bg-clip-text text-transparent'>
 								.
 							</span>

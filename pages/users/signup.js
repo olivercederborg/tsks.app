@@ -2,10 +2,11 @@ import { AiOutlineGoogle } from "react-icons/ai";
 
 import { useAuth } from "@/lib/auth";
 import { IoLogoFacebook } from "react-icons/io5";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { HiArrowLeft } from "react-icons/hi";
 import Head from "next/head";
+import { Alert, AlertIcon } from "@chakra-ui/react";
 
 const SignUpPage = () => {
 	const {
@@ -14,14 +15,18 @@ const SignUpPage = () => {
 		signinWithFacebook,
 		signinWithGoogle
 	} = useAuth();
+	const [signupError, setSignupError] = useState(null);
+
+	useEffect(() => {
+		if (error) {
+			setSignupError(error);
+		}
+	}, [signupWithEmail]);
 
 	const onSignupWithEmail = (e) => {
 		e.preventDefault();
 		signupWithEmail(email.value, password.value);
 		console.log(email.value, password.value);
-		if (error) {
-			console.log(error);
-		}
 	};
 
 	return (
@@ -51,6 +56,17 @@ const SignUpPage = () => {
 						className='flex flex-col w-full'
 						onSubmit={onSignupWithEmail}
 					>
+						{signupError?.code == "auth/email-already-in-use" && (
+							<Alert
+								bgColor='red.400'
+								borderRadius='12px'
+								status='error'
+								mb='4'
+							>
+								<AlertIcon color='white' />
+								Email already in use.
+							</Alert>
+						)}
 						<label htmlFor='email' className='hidden mt-4 mb-2 ml-2'>
 							Email
 						</label>

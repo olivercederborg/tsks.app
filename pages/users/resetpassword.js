@@ -7,6 +7,7 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { HiArrowLeft } from "react-icons/hi";
 import Head from "next/head";
+import { Alert, AlertIcon } from "@chakra-ui/react";
 
 const ResetPasswordPage = () => {
 	const [resetPwResult, setResetPwResult] = useState(null);
@@ -51,10 +52,26 @@ const ResetPasswordPage = () => {
 						onSubmit={resetPasswordEmail}
 					>
 						{resetPwResult && (
-							<p className='mb-4 text-green-400'>{resetPwResult}</p>
+							<Alert
+								bgColor='green.400'
+								borderRadius='12px'
+								status='success'
+								mb='4'
+							>
+								<AlertIcon color='white' />
+								{resetPwResult}
+							</Alert>
 						)}
 						{resetPwError && (
-							<p className='mb-4 text-red-400'>{resetPwError}</p>
+							<Alert
+								bgColor='red.400'
+								borderRadius='12px'
+								status='error'
+								mb='4'
+							>
+								<AlertIcon color='white' />
+								{resetPwError}
+							</Alert>
 						)}
 						<label htmlFor='email' className='hidden mt-4 mb-2 ml-2'>
 							Email

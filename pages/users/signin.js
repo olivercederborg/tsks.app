@@ -2,19 +2,31 @@ import { AiOutlineGoogle } from "react-icons/ai";
 
 import { useAuth } from "@/lib/auth";
 import { IoLogoFacebook } from "react-icons/io5";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { HiArrowLeft } from "react-icons/hi";
 import Head from "next/head";
+import { Alert, AlertIcon } from "@chakra-ui/react";
 
 const SignInPage = () => {
-	const auth = useAuth();
-	const emailInput = useRef(null);
-	const passwordInput = useRef(null);
+	const {
+		error,
+		signinWithEmail,
+		signinWithFacebook,
+		signinWithGoogle
+	} = useAuth();
+	const [authError, setAuthError] = useState(null);
+
+	useEffect(() => {
+		if (error) {
+			setAuthError(error);
+			console.log(error);
+		}
+	}, [signinWithEmail]);
 
 	const onSigninWithEmail = (e) => {
 		e.preventDefault();
-		auth.signinWithEmail(email.value, password.value);
+		signinWithEmail(email.value, password.value);
 	};
 
 	return (
@@ -26,14 +38,14 @@ const SignInPage = () => {
 				<section className='bg md:mt-40 flex flex-col items-center justify-center w-full max-w-sm mt-24'>
 					<h1 className='mb-20 text-5xl font-bold'>Sign in.</h1>
 					<button
-						onClick={() => auth.signinWithGoogle()}
+						onClick={() => signinWithGoogle()}
 						className={`default-focus py-4 text-white text-opacity-80 hover:text-opacity-100 flex justify-center items-center border-3 w-full border-secondary-card hover:bg-secondary-card rounded-xl transition-all duration-200 ease-in-out font-medium`}
 					>
 						<AiOutlineGoogle className={`mr-2 text-2xl`} />
 						Continue with Google
 					</button>
 					<button
-						onClick={() => auth.signinWithFacebook()}
+						onClick={() => signinWithFacebook()}
 						className={`default-focus mt-5 py-4 text-white text-opacity-80 hover:text-opacity-100 flex justify-center items-center border-3 w-full border-secondary-card hover:bg-secondary-card rounded-xl transition-all duration-200 ease-in-out font-medium`}
 					>
 						<IoLogoFacebook className={`mr-2 text-2xl`} />
@@ -44,12 +56,33 @@ const SignInPage = () => {
 						className='flex flex-col w-full'
 						onSubmit={onSigninWithEmail}
 					>
+						{authError?.code == "auth/user-not-found" && (
+							<Alert
+								bgColor='red.400'
+								borderRadius='12px'
+								status='error'
+								mb='4'
+							>
+								<AlertIcon color='white' />
+								User doesn't exist.
+							</Alert>
+						)}
+						{authError?.code == "auth/wrong-password" && (
+							<Alert
+								bgColor='red.400'
+								borderRadius='12px'
+								status='error'
+								mb='4'
+							>
+								<AlertIcon color='white' />
+								Invalid password.
+							</Alert>
+						)}
 						<label htmlFor='email' className='hidden mt-4 mb-2 ml-2'>
 							Email
 						</label>
 						<input
 							required
-							ref={emailInput}
 							id='email'
 							name='email'
 							type='email'
@@ -62,7 +95,6 @@ const SignInPage = () => {
 						</label>
 						<input
 							required
-							ref={passwordInput}
 							id='password'
 							name='password'
 							type='password'
