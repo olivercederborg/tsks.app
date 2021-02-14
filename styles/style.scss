@@ -51,7 +51,7 @@ input[type="color"]::-webkit-color-swatch {
 		background-image: url("/img/hero-app-preview_tablet.png");
 		background-repeat: no-repeat;
 		background-position: bottom left -25px;
-		background-size: auto;
+		background-size: 100vw;
 	}
 }
 
@@ -62,4 +62,12 @@ input[type="color"]::-webkit-color-swatch {
 		background-position: bottom;
 		background-size: auto;
 	}
+}
+
+// --------- SIGN IN AND UP -------------- //
+.sign-in-up-balls {
+	background-image: url("/img/signin_balls.png");
+	background-repeat: no-repeat;
+	background-position: top;
+	background-size: auto;
 }
