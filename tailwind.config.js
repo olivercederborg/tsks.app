@@ -57,7 +57,7 @@ module.exports = {
 				xxs: ".625rem"
 			},
 			boxShadow: {
-				button: "inset 0 -5px 0px 0 rgba(0, 0, 0, 0.25)"
+				button: "inset 0 -4px 0px 0 rgba(0, 0, 0, 0.25)"
 			},
 			height: {
 				"90vh": "90vh",
