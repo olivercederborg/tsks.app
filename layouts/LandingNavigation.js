@@ -2,7 +2,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { BiHomeAlt } from "react-icons/bi";
 import { MdDashboard, MdAccountCircle } from "react-icons/md";
-import { AiOutlineGoogle } from "react-icons/ai";
+import {
+	RiUserAddLine,
+	RiUserSharedLine,
+	RiUserReceivedLine
+} from "react-icons/ri";
 
 import { useAuth } from "@/lib/auth";
 import NavDropdown from "../components/NavDropdown";
@@ -66,40 +70,29 @@ const LandingNavigation = () => {
 			>
 				<div className='flex flex-row items-center justify-between w-full'>
 					<nav className='flex items-center justify-around w-full'>
-						<Link href='/' passHref>
-							<a
-								className={`default-focus py-4 opacity-70 hover:opacity-100 flex items-center ${
-									router.pathname == "/" ? "opacity-100" : ""
-								}`}
-							>
-								<BiHomeAlt
-									className={`mr-2 text-2xl ${
-										router.pathname == "/"
-											? "text-primary-default"
-											: ""
-									}`}
-								/>
-								Home
-							</a>
-						</Link>
 						{!auth?.user && (
-							<Link href='/' passHref>
-								<a
-									onClick={() => auth.signinWithGoogle()}
-									className={`default-focus py-4 opacity-70 hover:opacity-100 flex items-center ${
-										router.pathname == "/" ? "opacity-100" : ""
-									}`}
-								>
-									<AiOutlineGoogle
-										className={`mr-2 text-2xl ${
-											router.pathname == "/"
-												? "text-primary-default"
-												: ""
+							<>
+								<Link href='/users/signin' passHref>
+									<a
+										className={`default-focus py-4 opacity-70 hover:opacity-100 flex items-center ${
+											router.pathname == "/" ? "opacity-100" : ""
 										}`}
-									/>
-									Sign in with Google
-								</a>
-							</Link>
+									>
+										<RiUserSharedLine className={`mr-2 text-2xl`} />
+										Sign in
+									</a>
+								</Link>
+								<Link href='/users/signup' passHref>
+									<a
+										className={`default-focus py-4 opacity-70 hover:opacity-100 flex items-center ${
+											router.pathname == "/" ? "opacity-100" : ""
+										}`}
+									>
+										<RiUserAddLine className={`mr-2 text-2xl`} />
+										Sign up
+									</a>
+								</Link>
+							</>
 						)}
 						{auth?.user && (
 							<>
@@ -109,30 +102,25 @@ const LandingNavigation = () => {
 											router.pathname == "/app" ? "opacity-100" : ""
 										}`}
 									>
-										<MdDashboard
-											className={`mr-2 text-2xl ${
-												router.pathname == "/app"
-													? "text-primary-default"
-													: ""
-											}`}
-										/>
+										<MdDashboard className={`mr-2 text-2xl`} />
 										Dashboard
 									</a>
 								</Link>
 								<Link href='/' passHref>
 									<a
+										onClick={() => auth.signout()}
 										className={`default-focus py-4 opacity-70 hover:opacity-100 flex items-center ${
 											router.pathname == "/" ? "opacity-100" : ""
 										}`}
 									>
-										<MdAccountCircle
+										<RiUserReceivedLine
 											className={`mr-2 text-2xl ${
 												router.pathname == "/account"
 													? "text-primary-default"
 													: ""
 											}`}
 										/>
-										Account
+										Sign out
 									</a>
 								</Link>
 							</>
