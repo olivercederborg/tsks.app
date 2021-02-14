@@ -40,7 +40,7 @@ const LandingHero = () => {
 				break;
 
 			default:
-				setGreeting(`Hi`);
+				setGreeting(`Welcome back`);
 		}
 	}, [currentTime]);
 
