@@ -17,7 +17,7 @@ const SignInPage = () => {
 	};
 
 	return (
-		<main className='sign-in-up-balls flex items-start justify-center min-h-screen px-6'>
+		<main className='sign-in-up-balls flex items-start justify-center min-h-screen px-6 pb-16'>
 			<section className='bg md:mt-40 flex flex-col items-center justify-center w-full max-w-sm mt-24'>
 				<h1 className='mb-20 text-5xl font-bold'>Sign in.</h1>
 				<button
