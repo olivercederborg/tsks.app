@@ -14,8 +14,8 @@ export default function EmptyState({ collections }) {
 	return (
 		<>
 			<div className='flex flex-col items-center justify-center mt-20'>
-				<h1 className='mb-10 text-3xl font-medium'>
-					You have no collections.
+				<h1 className='mb-10 text-3xl font-medium text-center'>
+					You have no collections
 				</h1>
 				<AddCollectionModal>Add Your First Collection</AddCollectionModal>
 			</div>

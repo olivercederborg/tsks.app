@@ -29,7 +29,7 @@ const TodoShell = ({ children, currentCollection }) => {
 
 			<Navigation />
 			<main className='flex flex-col items-center pb-40 text-white'>
-				<div className='mt-14 w-full max-w-screen-md px-5'>
+				<div className='md:mt-14 w-full max-w-screen-md px-5 mt-8'>
 					<div className='flex justify-between mb-12'>
 						<div className='flex items-center'>
 							<Link href='/app' passHref>

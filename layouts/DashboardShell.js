@@ -11,7 +11,7 @@ export default function DashboardShell({ children }) {
 
 			<Navigation />
 			<main className='flex flex-col items-center pb-40 text-white'>
-				<section className='mt-14 w-full max-w-screen-md px-5'>
+				<section className='md:mt-14 w-full max-w-screen-md px-5 mt-8'>
 					{children}
 				</section>
 			</main>
