@@ -28,9 +28,9 @@ const TodoShell = ({ children, currentCollection }) => {
 			</Head>
 
 			<Navigation />
-			<main className='flex flex-col items-center pb-40 text-white'>
-				<div className='md:mt-14 w-full max-w-screen-md px-5 mt-8'>
-					<div className='flex justify-between mb-12'>
+			<main className='relative flex flex-col items-center pb-40 text-white'>
+				<div className='md:mt-14 relative w-full max-w-screen-md mt-8'>
+					<div className='blur-bg bg-primary-background bg-opacity-90 sticky top-0 z-20 flex justify-between px-5 py-5 mb-12'>
 						<div className='flex items-center'>
 							<Link href='/app' passHref>
 								<a className='default-focus bg-primary-card hover:bg-hover-card rounded-2xl p-3 text-2xl transition-colors duration-200 ease-in-out'>
@@ -38,7 +38,7 @@ const TodoShell = ({ children, currentCollection }) => {
 								</a>
 							</Link>
 							{currentCollection ? (
-								<h1 className='ml-4 text-3xl font-bold'>
+								<h1 className='ml-4 text-2xl font-bold'>
 									{currentCollection?.name}
 								</h1>
 							) : (
@@ -54,7 +54,7 @@ const TodoShell = ({ children, currentCollection }) => {
 						</div>
 						<CollectionDropdown currentCollection={currentCollection} />
 					</div>
-					{children}
+					<div className='px-5'>{children}</div>
 				</div>
 			</main>
 		</>
