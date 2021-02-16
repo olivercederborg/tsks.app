@@ -1,10 +1,11 @@
 import { useRef } from "react";
 import { mutate } from "swr";
 import { useToast } from "@chakra-ui/react";
-import { FiMoreVertical } from "react-icons/fi";
+import { FiMoreHorizontal, FiMoreVertical } from "react-icons/fi";
 
 import { deleteTodo } from "../lib/db";
 import { useDetectOutsideClick } from "@/utils/useDetectOutsideClick";
+import { BiTrash } from "react-icons/bi";
 
 const CompletedTodoDropdown = ({ collectionId, id }) => {
 	const toast = useToast();
@@ -37,7 +38,7 @@ const CompletedTodoDropdown = ({ collectionId, id }) => {
 				onClick={onClick}
 				className='default-focus hover:opacity-100 z-10 p-2 transition-opacity duration-200 ease-in-out rounded-lg opacity-50'
 			>
-				<FiMoreVertical className='text-xl' />
+				<FiMoreHorizontal className='text-xl' />
 			</button>
 
 			<div
@@ -52,9 +53,10 @@ const CompletedTodoDropdown = ({ collectionId, id }) => {
 				<div className='py-1'>
 					<button
 						onClick={onDelete}
-						className='default-focus hover:bg-secondary-card block w-full px-4 py-2 text-sm text-left text-gray-200'
+						className='default-focus hover:bg-secondary-card flex items-center w-full px-4 py-2 text-sm text-left text-red-400'
 						role='menuitem'
 					>
+						<BiTrash className='mr-2 text-lg' />
 						Delete
 					</button>
 				</div>

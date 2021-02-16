@@ -14,6 +14,7 @@ import {
 
 import { deleteCollection } from "@/lib/db";
 import { useAuth } from "@/lib/auth";
+import { BiTrash } from "react-icons/bi";
 
 const DeleteCollectionButton = ({ currentCollection }) => {
 	const router = useRouter();
@@ -37,7 +38,10 @@ const DeleteCollectionButton = ({ currentCollection }) => {
 
 	return (
 		<>
-			<div onClick={onOpen}>Delete Collection</div>
+			<div className='flex items-center text-red-400' onClick={onOpen}>
+				<BiTrash className='mr-2 text-lg' />
+				Delete Collection
+			</div>
 
 			<Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
 				<ModalOverlay />

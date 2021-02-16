@@ -1,13 +1,14 @@
 import router from "next/router";
 import { mutate } from "swr";
-import { useToast } from "@chakra-ui/react";
+import { Tooltip, useToast } from "@chakra-ui/react";
 import { HiCheck } from "react-icons/hi";
 
 import CompletedTodoDropdown from "./CompletedTodoDropdown";
 import { unCompleteTodo } from "@/lib/db";
 import { useAuth } from "../lib/auth";
+import { getPendingTodos } from "@/lib/db-admin";
 
-const Todo = ({ name, id, createdAt, authorId, collectionColor }) => {
+const Todo = ({ name, id, createdAt, authorId, collectionColor, priority }) => {
 	const auth = useAuth();
 	const toast = useToast();
 
@@ -30,16 +31,16 @@ const Todo = ({ name, id, createdAt, authorId, collectionColor }) => {
 			},
 			false
 		);
-		mutate(
-			["/api/todos", collectionId],
-			async (data) => ({ todos: [...data.todos, { id, ...newTodo }] }),
-			false
-		);
+		mutate(["/api/todos", collectionId], async () => {
+			return await getPendingTodos(collectionId);
+		});
 		unCompleteTodo(id);
 	};
 	return (
 		<div className='py-2'>
-			<div className='group rounded-2xl bg-primary-card relative flex items-center justify-start p-3'>
+			<div
+				className={`group rounded-2xl bg-primary-card relative flex items-center justify-start p-3`}
+			>
 				<button
 					style={{
 						height: "22px",
@@ -53,8 +54,29 @@ const Todo = ({ name, id, createdAt, authorId, collectionColor }) => {
 					<HiCheck />
 				</button>
 				<p className='ml-3 mr-8 text-white line-through'>{name}</p>
+				<Tooltip
+					openDelay={500}
+					label={`Priority ${priority}`}
+					placement='top'
+					bg='#272732'
+					color='gray.200'
+					borderRadius='6px'
+					py='4px'
+					px='8px'
+				>
+					<div
+						style={{ width: "12px", height: "12px" }}
+						className={`rounded-md absolute -top-0.5 -right-0.5 ${
+							priority === 4 && "hidden"
+						} ${!priority && "hidden"} ${
+							priority === 3 && "bg-blue-500"
+						} ${priority === 2 && "bg-yellow-500"} ${
+							priority === 1 && "bg-red-500"
+						}`}
+					></div>
+				</Tooltip>
 				<div
-					className={`focus:outline-none absolute right-0 mr-2 rounded-lg`}
+					className={`focus:outline-none absolute right-0 mr-2 rounded-lg flex items-center`}
 				>
 					<CompletedTodoDropdown collectionId={collectionId} id={id} />
 				</div>

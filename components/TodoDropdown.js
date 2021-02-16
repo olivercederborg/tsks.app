@@ -1,11 +1,14 @@
 import { useRef } from "react";
 import { mutate } from "swr";
 import { useToast } from "@chakra-ui/react";
-import { FiMoreVertical } from "react-icons/fi";
+import { FiEdit, FiMoreHorizontal, FiMoreVertical } from "react-icons/fi";
 
-import { deleteTodo } from "../lib/db";
+import { deleteTodo, prioritizeTodo } from "../lib/db";
 import { useDetectOutsideClick } from "@/utils/useDetectOutsideClick";
 import EditTodoModal from "./EditTodoModal";
+import { BiEdit, BiTrash } from "react-icons/bi";
+import { HiFlag, HiOutlineFlag } from "react-icons/hi";
+import { getPendingTodos } from "@/lib/db-admin";
 
 const TodoDropdown = ({ collectionId, id }) => {
 	const toast = useToast();
@@ -32,13 +35,21 @@ const TodoDropdown = ({ collectionId, id }) => {
 		deleteTodo(id);
 	};
 
+	const onPriority = (prioVal) => {
+		prioritizeTodo(id, prioVal);
+
+		mutate(["/api/todos", collectionId], async () => {
+			return await getPendingTodos(collectionId);
+		});
+	};
+
 	return (
 		<div className='relative flex text-left'>
 			<button
 				onClick={onClick}
 				className='default-focus hover:opacity-100 z-10 p-2 transition-opacity duration-200 ease-in-out rounded-lg opacity-50'
 			>
-				<FiMoreVertical className='text-xl' />
+				<FiMoreHorizontal className='text-xl' />
 			</button>
 
 			<div
@@ -56,16 +67,52 @@ const TodoDropdown = ({ collectionId, id }) => {
 						role='menuitem'
 					>
 						<EditTodoModal collectionId={collectionId} todoId={id}>
-							Edit
+							<FiEdit className='mr-2 text-lg' /> Edit
 						</EditTodoModal>
 					</button>
 				</div>
+
+				<div className='py-1'>
+					<button
+						onClick={() => onPriority(1)}
+						className='default-focus hover:bg-secondary-card flex w-full px-4 py-2 text-sm text-left text-gray-200'
+						role='menuitem'
+					>
+						<HiFlag className='mr-2 text-lg text-red-500' /> Priority 1
+					</button>
+
+					<button
+						onClick={() => onPriority(2)}
+						className='default-focus hover:bg-secondary-card flex w-full px-4 py-2 text-sm text-left text-gray-200'
+						role='menuitem'
+					>
+						<HiFlag className='mr-2 text-lg text-yellow-400' /> Priority 2
+					</button>
+
+					<button
+						onClick={() => onPriority(3)}
+						className='default-focus hover:bg-secondary-card flex w-full px-4 py-2 text-sm text-left text-gray-200'
+						role='menuitem'
+					>
+						<HiFlag className='mr-2 text-lg text-blue-500' /> Priority 3
+					</button>
+
+					<button
+						onClick={() => onPriority(4)}
+						className='default-focus hover:bg-secondary-card flex w-full px-4 py-2 text-sm text-left text-gray-200'
+						role='menuitem'
+					>
+						<HiFlag className='mr-2 text-lg' /> Priority 4
+					</button>
+				</div>
+
 				<div className='py-1'>
 					<button
 						onClick={onDelete}
-						className='default-focus hover:bg-secondary-card block w-full px-4 py-2 text-sm text-left text-gray-200'
+						className='default-focus hover:bg-secondary-card flex items-center w-full px-4 py-2 text-sm text-left text-red-400'
 						role='menuitem'
 					>
+						<BiTrash className='mr-2 text-lg' />
 						Delete
 					</button>
 				</div>

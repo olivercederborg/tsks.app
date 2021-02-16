@@ -1,25 +1,14 @@
-import { useEffect, useState } from "react";
-import { Router } from "next/router";
 import NextLink from "next/link";
 import { MdLabel } from "react-icons/md";
 import { HiOutlinePlus } from "react-icons/hi";
 
 import AddCollectionModal from "@/components/AddCollectionModal";
 import CollectionPendingTodos from "./CollectionPendingTodos";
-import { getUserTodos } from "@/lib/db-admin";
 import { useAuth } from "@/lib/auth";
+import CollectionProgress from "./CollectionProgressBar";
 
 export default function ShowCollections({ collections }) {
 	const { user } = useAuth();
-	// const [userTodos, setUserTodos] = useState([]);
-
-	// useEffect(() => {
-	// 	const getAllUserTodos = async () => {
-	// 		const initialTodos = await getUserTodos(user?.uid);
-	// 		setUserTodos(initialTodos);
-	// 	};
-	// 	getAllUserTodos();
-	// }, [Router]);
 
 	return (
 		<>
@@ -35,27 +24,29 @@ export default function ShowCollections({ collections }) {
 							passHref
 						>
 							<a className='group default-focus rounded-3xl no-underline'>
-								<div className='group-hover:bg-hover-card rounded-3xl bg-primary-card flex flex-row items-start p-6 break-all transition-all duration-200 ease-in-out'>
-									<div
-										style={{
-											backgroundColor: collection.collectionColor
-										}}
-										className={`rounded-2xl p-4 ${
-											!collection.collectionColor &&
-											"bg-primary-default"
-										}`}
-									>
-										<MdLabel fontSize='30px' />
+								<div className='group-hover:bg-hover-card rounded-3xl bg-primary-card flex flex-col items-start p-6 pb-4 break-all transition-all duration-200 ease-in-out'>
+									<div className='flex items-center'>
+										<div
+											style={{
+												backgroundColor: collection.collectionColor
+											}}
+											className={`rounded-2xl p-4 ${
+												!collection.collectionColor &&
+												"bg-primary-default"
+											}`}
+										>
+											<MdLabel fontSize='30px' />
+										</div>
+										<div className='ml-5'>
+											<h2 className='text-xl font-semibold'>
+												{collection.name}
+											</h2>
+											<CollectionPendingTodos
+												currentCollection={collection}
+											/>
+										</div>
 									</div>
-									<div className='ml-5'>
-										<h2 className='text-xl font-semibold'>
-											{collection.name}
-										</h2>
-										<CollectionPendingTodos
-											currentCollection={collection}
-											// userTodos={userTodos}
-										/>
-									</div>
+									<CollectionProgress currentCollection={collection} />
 								</div>
 							</a>
 						</NextLink>

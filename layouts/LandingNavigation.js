@@ -17,7 +17,7 @@ const LandingNavigation = () => {
 
 	return (
 		<>
-			<header className='font-regular bg-hero-background md:flex items-center justify-center hidden w-full py-10 text-white'>
+			<header className='font-regular bg-hero-background md:flex items-center justify-center hidden w-full py-6 text-white'>
 				<div className='container flex flex-row items-center justify-between w-full px-5'>
 					<nav className='flex items-center justify-between w-full'>
 						<div className='flex items-center'>

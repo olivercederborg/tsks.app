@@ -12,14 +12,16 @@ export default function CollectionPendingTodos({ currentCollection }) {
 
 	return (
 		<>
-			{pendingTodos && (
+			{pendingTodos ? (
 				<p className='opacity-60 mt-1'>
 					{todos === 1
-						? `${todos} task`
+						? `${todos} pending task`
 						: todos > 1
-						? `${todos} tasks`
-						: "No tasks"}
+						? `${todos} pending tasks`
+						: "No pending tasks"}
 				</p>
+			) : (
+				"Loading"
 			)}
 		</>
 	);

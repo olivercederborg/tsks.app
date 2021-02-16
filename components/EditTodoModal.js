@@ -52,7 +52,7 @@ const EditTodoModal = ({ children, todoId, collectionId }) => {
 		<>
 			<div
 				onClick={onOpen}
-				className='default-focus flex flex-row w-full text-left text-white'
+				className='default-focus flex flex-row items-center w-full text-left text-white'
 			>
 				{children}
 			</div>

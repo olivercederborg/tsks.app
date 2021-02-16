@@ -21,6 +21,7 @@ const AddTodo = ({ collectionColor }) => {
 			collectionId: router.query.collectionId,
 			createdAt: new Date().toISOString(),
 			status: "pending",
+			priority: 4,
 			name: inputEl.current.value
 		};
 

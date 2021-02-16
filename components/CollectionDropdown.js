@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { mutate } from "swr";
 import { useToast } from "@chakra-ui/react";
-import { FiMoreHorizontal } from "react-icons/fi";
+import { FiEdit, FiMoreHorizontal } from "react-icons/fi";
 
 import DeleteCollectionButton from "./DeleteCollectionButton";
 import { useDetectOutsideClick } from "@/utils/useDetectOutsideClick";
@@ -37,6 +37,7 @@ const CollectionDropdown = ({ currentCollection }) => {
 						role='menuitem'
 					>
 						<EditCollectionModal currentCollection={currentCollection}>
+							<FiEdit className='mr-2 text-lg' />
 							Edit Collection
 						</EditCollectionModal>
 					</button>

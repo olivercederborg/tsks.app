@@ -27,8 +27,7 @@ const TodoShell = ({ children, currentCollection }) => {
 				<title>{currentCollection?.name} - Tsks.</title>
 			</Head>
 
-			<Navigation />
-			<main className='relative flex flex-col items-center pb-40 text-white'>
+			<Navigation>
 				<div className='md:mt-14 relative w-full max-w-screen-md mt-8'>
 					<div className='blur-bg bg-primary-background bg-opacity-90 sticky top-0 z-20 flex justify-between px-5 py-5 mb-12'>
 						<div className='flex items-center'>
@@ -56,7 +55,7 @@ const TodoShell = ({ children, currentCollection }) => {
 					</div>
 					<div className='px-5'>{children}</div>
 				</div>
-			</main>
+			</Navigation>
 		</>
 	);
 };
