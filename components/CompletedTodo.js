@@ -7,6 +7,7 @@ import CompletedTodoDropdown from "./CompletedTodoDropdown";
 import { unCompleteTodo } from "@/lib/db";
 import { useAuth } from "../lib/auth";
 import { getPendingTodos } from "@/lib/db-admin";
+import { compareAsc, parseISO } from "date-fns";
 
 const Todo = ({ name, id, createdAt, authorId, collectionColor, priority }) => {
 	const auth = useAuth();
@@ -20,6 +21,7 @@ const Todo = ({ name, id, createdAt, authorId, collectionColor, priority }) => {
 			authorId,
 			collectionId,
 			createdAt,
+			priority,
 			status: "pending"
 		};
 		mutate(
@@ -31,9 +33,21 @@ const Todo = ({ name, id, createdAt, authorId, collectionColor, priority }) => {
 			},
 			false
 		);
-		mutate(["/api/todos", collectionId], async () => {
-			return await getPendingTodos(collectionId);
-		});
+		mutate(
+			["/api/todos", collectionId],
+			async (data) => {
+				const todos = [...data.todos, { id, ...newTodo }];
+
+				todos.sort((a, b) =>
+					compareAsc(parseISO(b.createdAt), parseISO(a.createdAt))
+				);
+				todos.sort((a, b) => (a.priority > b.priority ? 1 : -1));
+
+				return { todos };
+			},
+			false
+		);
+
 		unCompleteTodo(id);
 	};
 	return (
