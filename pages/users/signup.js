@@ -82,6 +82,7 @@ const SignUpPage = () => {
 							id='email'
 							name='email'
 							type='email'
+							autoComplete='email'
 							placeholder='Email'
 							className='default-focus text-opacity-80 hover:text-opacity-100 border-3 border-secondary-card hover:border-primary-default rounded-xl bg-primary-background flex items-center justify-center w-full px-5 py-4 font-medium text-white transition-all duration-200 ease-in-out'
 						/>
@@ -95,6 +96,7 @@ const SignUpPage = () => {
 							id='password'
 							name='password'
 							type='password'
+							autoComplete='password'
 							placeholder='Password'
 							className='default-focus text-opacity-80 hover:text-opacity-100 border-3 border-secondary-card hover:border-primary-default rounded-xl bg-primary-background flex items-center justify-center w-full px-5 py-4 mt-5 font-medium text-white transition-all duration-200 ease-in-out'
 						/>
