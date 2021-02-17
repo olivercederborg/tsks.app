@@ -1,6 +1,26 @@
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import useSWR, { mutate } from "swr";
+import { GiPencilBrush, GiBroom, GiHouseKeys } from "react-icons/gi";
+import { HiLightningBolt } from "react-icons/hi";
+import { MdAssignment, MdLabel, MdPhoneIphone } from "react-icons/md";
+import { BiBuildingHouse } from "react-icons/bi";
+import { GrPersonalComputer } from "react-icons/gr";
+import {
+	IoSchool,
+	IoCodeSlash,
+	IoWallet,
+	IoBook,
+	IoFastFood
+} from "react-icons/io5";
+import {
+	FaLightbulb,
+	FaAppleAlt,
+	FaHeadphonesAlt,
+	FaCarAlt,
+	FaShoppingCart,
+	FaSuitcaseRolling
+} from "react-icons/fa";
 import {
 	Button,
 	Modal,
@@ -15,15 +35,17 @@ import {
 	FormLabel,
 	Input,
 	useToast,
-	useRadioGroup
+	useRadioGroup,
+	HStack
 } from "@chakra-ui/react";
 
-import RadioCard from "@/components/CustomRadioButton";
+import ColorRadioButtons from "@/components/ColorRadioButtons";
 import { createCollection } from "@/lib/db";
 import { useAuth } from "@/lib/auth";
+import IconRadioButtons from "./IconRadioButtons";
 
 const AddCollectionModal = ({ children }) => {
-	const options = [
+	const colorOptions = [
 		"#FC76A1",
 		"#DBBE56",
 		"#E39264",
@@ -33,6 +55,29 @@ const AddCollectionModal = ({ children }) => {
 		"#9E7F72"
 	];
 
+	const iconOptions = [
+		MdLabel,
+		IoSchool,
+		GiPencilBrush,
+		IoCodeSlash,
+		FaLightbulb,
+		HiLightningBolt,
+		IoWallet,
+		MdAssignment,
+		IoBook,
+		GiBroom,
+		FaAppleAlt,
+		IoFastFood,
+		BiBuildingHouse,
+		GiHouseKeys,
+		GrPersonalComputer,
+		FaHeadphonesAlt,
+		MdPhoneIphone,
+		FaCarAlt,
+		FaShoppingCart,
+		FaSuitcaseRolling
+	];
+
 	const initialRef = useRef(null);
 	const colorPicker = useRef(null);
 	const toast = useToast();
@@ -40,19 +85,30 @@ const AddCollectionModal = ({ children }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const { handleSubmit, register } = useForm();
 	const [collectionColor, setCollectionColor] = useState("#FC76A1");
+	const [collectionIcon, setCollectionIcon] = useState("MdLabel");
 
-	const { getRootProps, getRadioProps } = useRadioGroup({
-		name: "collection-color",
-		defaultValue: "#FC76A1",
-		onChange: setCollectionColor
-	});
+	const { getRootProps, getRadioProps } = useRadioGroup(
+		{
+			name: "collection-color",
+			defaultValue: "#FC76A1",
+			onChange: setCollectionColor
+		},
+		{
+			name: "collection-icon",
+			defaultValue: "MdLabel",
+			onChange: setCollectionIcon
+		}
+	);
+	const colorGroup = getRootProps();
+	const iconGroup = getRootProps();
 
-	const onCreateCollection = ({ name, colorPicker }) => {
+	const onCreateCollection = ({ name }) => {
 		const newCollection = {
 			authorId: auth.user.uid,
 			createdAt: new Date().toISOString(),
 			name,
-			collectionColor
+			collectionColor,
+			collectionIcon
 		};
 
 		const { id } = createCollection(newCollection);
@@ -112,17 +168,20 @@ const AddCollectionModal = ({ children }) => {
 							/>
 							<label>
 								Color
-								<div className='grid grid-cols-6 gap-2 mt-2'>
-									{options.map((value) => {
+								<div
+									className='grid grid-cols-6 gap-2 mt-2'
+									{...colorGroup}
+								>
+									{colorOptions.map((value) => {
 										const radio = getRadioProps({ value });
 										return (
-											<RadioCard
+											<ColorRadioButtons
 												color={value}
 												key={value}
 												{...radio}
 											>
 												{value}
-											</RadioCard>
+											</ColorRadioButtons>
 										);
 									})}
 								</div>
@@ -143,6 +202,26 @@ const AddCollectionModal = ({ children }) => {
 									name='colorPicker'
 									className='w-16 h-12 p-0 mt-2 bg-transparent border-0 rounded-lg'
 								/>
+							</label>
+							<label className='flex flex-col mt-6'>
+								Icon
+								<div
+									className='grid grid-cols-5 gap-2 mt-2'
+									{...iconGroup}
+								>
+									{iconOptions.map((value) => {
+										const radio = getRadioProps({ value });
+										return (
+											<IconRadioButtons
+												icon={value}
+												key={value}
+												{...radio}
+											>
+												{value}
+											</IconRadioButtons>
+										);
+									})}
+								</div>
 							</label>
 						</FormControl>
 					</ModalBody>

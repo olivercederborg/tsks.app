@@ -1,6 +1,8 @@
 import Head from "next/head";
 
 import Navigation from "@/layouts/Navigation";
+import { useRouter } from "next/router";
+import { useAuth } from "@/lib/auth";
 
 export default function DashboardShell({ children }) {
 	return (

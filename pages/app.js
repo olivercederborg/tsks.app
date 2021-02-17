@@ -6,6 +6,7 @@ import ShowCollections from "@/components/ShowCollections";
 import DashboardShell from "@/layouts/DashboardShell";
 import { useAuth } from "@/lib/auth";
 import fetcher from "@/utils/fetcher";
+import { getUserCollections } from "@/lib/db-admin";
 
 const Dashboard = () => {
 	const { user } = useAuth();
@@ -14,7 +15,7 @@ const Dashboard = () => {
 		fetcher
 	);
 
-	if (!data) {
+	if (!data?.collections) {
 		return (
 			<DashboardShell>
 				<CollectionsSkeleton />
@@ -25,7 +26,7 @@ const Dashboard = () => {
 	if (data.collections?.length) {
 		return (
 			<DashboardShell>
-				<ShowCollections collections={data.collections} />
+				<ShowCollections collections={data?.collections} />
 			</DashboardShell>
 		);
 	}

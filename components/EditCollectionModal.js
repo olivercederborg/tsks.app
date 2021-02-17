@@ -18,14 +18,14 @@ import {
 	useRadioGroup
 } from "@chakra-ui/react";
 
-import RadioCard from "@/components/CustomRadioButton";
+import ColorRadioButtons from "@/components/ColorRadioButtons";
 import { editCollection } from "@/lib/db";
 import { useAuth } from "@/lib/auth";
 import { getUserCollections } from "@/lib/db-admin";
 import { useRouter } from "next/router";
 
 const EditCollectionModal = ({ children, currentCollection }) => {
-	const options = [
+	const colorOptions = [
 		"#FC76A1",
 		"#DBBE56",
 		"#E39264",
@@ -119,16 +119,16 @@ const EditCollectionModal = ({ children, currentCollection }) => {
 							<label>
 								Color
 								<div className='grid grid-cols-6 gap-2 mt-2'>
-									{options.map((value) => {
+									{colorOptions.map((value) => {
 										const radio = getRadioProps({ value });
 										return (
-											<RadioCard
+											<ColorRadioButtons
 												color={value}
 												key={value}
 												{...radio}
 											>
 												{value}
-											</RadioCard>
+											</ColorRadioButtons>
 										);
 									})}
 								</div>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const { useRadio, Box } = require("@chakra-ui/react");
 
-export default function RadioCard(props) {
+export default function ColorRadioButtons(props) {
 	const { getInputProps, getCheckboxProps } = useRadio(props);
 
 	const input = getInputProps();
@@ -10,7 +10,7 @@ export default function RadioCard(props) {
 
 	return (
 		<Box as='label' w='100%' h='100%'>
-			<input name='default-focus collection-color' {...input} />
+			<input className='default-focus' name='collection-color' {...input} />
 			<Box
 				{...checkbox}
 				w='100%'
