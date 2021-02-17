@@ -8,8 +8,6 @@ import { useAuth } from "@/lib/auth";
 import CollectionProgress from "./CollectionProgressBar";
 
 export default function ShowCollections({ collections }) {
-	const { user } = useAuth();
-
 	return (
 		<>
 			<h1 className='text-3xl font-bold'>Collections</h1>

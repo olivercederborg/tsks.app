@@ -9,8 +9,16 @@ import EditTodoModal from "./EditTodoModal";
 import { BiEdit, BiTrash } from "react-icons/bi";
 import { HiFlag, HiOutlineFlag } from "react-icons/hi";
 import { getPendingTodos } from "@/lib/db-admin";
+import { compareAsc, parseISO } from "date-fns";
 
-const TodoDropdown = ({ collectionId, id }) => {
+const TodoDropdown = ({
+	collectionId,
+	id,
+	name,
+	authorId,
+	createdAt,
+	priority
+}) => {
 	const toast = useToast();
 	const dropdownRef = useRef(null);
 	const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
@@ -36,11 +44,31 @@ const TodoDropdown = ({ collectionId, id }) => {
 	};
 
 	const onPriority = (prioVal) => {
+		const newTodoValues = {
+			collectionId,
+			name,
+			authorId,
+			createdAt,
+			priority: prioVal
+		};
 		prioritizeTodo(id, prioVal);
 
-		mutate(["/api/todos", collectionId], async () => {
-			return await getPendingTodos(collectionId);
-		});
+		mutate(
+			["/api/todos", collectionId],
+			async (data) => {
+				const newTodos = data.todos.filter((todo) => todo.id !== id);
+
+				const todos = [...newTodos, { id, ...newTodoValues }];
+
+				todos.sort((a, b) =>
+					compareAsc(parseISO(b.createdAt), parseISO(a.createdAt))
+				);
+				todos.sort((a, b) => (a.priority > b.priority ? 1 : -1));
+
+				return { todos };
+			},
+			false
+		);
 	};
 
 	return (
@@ -66,7 +94,14 @@ const TodoDropdown = ({ collectionId, id }) => {
 						className='default-focus hover:bg-secondary-card flex w-full px-4 py-2 text-sm text-left text-gray-200'
 						role='menuitem'
 					>
-						<EditTodoModal collectionId={collectionId} todoId={id}>
+						<EditTodoModal
+							collectionId={collectionId}
+							todoId={id}
+							todoName={name}
+							authorId={authorId}
+							createdAt={createdAt}
+							priority={priority}
+						>
 							<FiEdit className='mr-2 text-lg' /> Edit
 						</EditTodoModal>
 					</button>

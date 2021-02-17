@@ -8,11 +8,20 @@ export default function CollectionPendingTodos({ currentCollection }) {
 		user ? ["/api/todos", currentCollection.id] : null,
 		fetcher
 	);
+	const { data: completedTodos } = useSWR(
+		user ? ["/api/todos-completed", currentCollection.id] : null,
+		fetcher
+	);
 	const todos = pendingTodos?.todos.length;
+	const doneTodos = completedTodos?.todos.length;
+
+	if (!user || (!pendingTodos && !completedTodos)) {
+		return <p className='opacity-60 mt-1'>Loading</p>;
+	}
 
 	return (
 		<>
-			{pendingTodos ? (
+			{pendingTodos && doneTodos != todos + doneTodos ? (
 				<p className='opacity-60 mt-1'>
 					{todos === 1
 						? `${todos} pending task`
@@ -20,8 +29,10 @@ export default function CollectionPendingTodos({ currentCollection }) {
 						? `${todos} pending tasks`
 						: "No pending tasks"}
 				</p>
+			) : pendingTodos && doneTodos == todos + doneTodos && doneTodos ? (
+				<p className='opacity-80 mt-1'>All done! 🎉</p>
 			) : (
-				"Loading"
+				<p className='opacity-60 mt-1'>No tasks</p>
 			)}
 		</>
 	);

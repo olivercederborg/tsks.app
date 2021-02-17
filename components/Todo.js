@@ -85,7 +85,15 @@ const Todo = ({ name, id, createdAt, authorId, collectionColor, priority }) => {
 				<div
 					className={`focus:outline-none absolute right-0 mr-2 rounded-lg flex items-center`}
 				>
-					<TodoDropdown collectionId={collectionId} id={id} />
+					<TodoDropdown
+						collectionId={collectionId}
+						id={id}
+						name={name}
+						createdAt={createdAt}
+						authorId={authorId}
+						collectionColor={collectionColor}
+						priority={priority}
+					/>
 				</div>
 			</div>
 		</div>

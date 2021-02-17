@@ -19,8 +19,17 @@ import {
 
 import { editTodo } from "@/lib/db";
 import { getPendingTodos } from "@/lib/db-admin";
+import { compareAsc, parseISO } from "date-fns";
 
-const EditTodoModal = ({ children, todoId, collectionId }) => {
+const EditTodoModal = ({
+	children,
+	todoId,
+	todoName,
+	collectionId,
+	authorId,
+	createdAt,
+	priority
+}) => {
 	const initialRef = useRef(null);
 	const toast = useToast();
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -28,7 +37,11 @@ const EditTodoModal = ({ children, todoId, collectionId }) => {
 
 	const onEditTodo = ({ name }) => {
 		const newTodo = {
-			name
+			name,
+			collectionId,
+			authorId,
+			createdAt,
+			priority
 		};
 		editTodo(todoId, newTodo);
 
@@ -41,9 +54,22 @@ const EditTodoModal = ({ children, todoId, collectionId }) => {
 			isClosable: true
 		});
 
-		mutate(["/api/todos", collectionId], async (data) => {
-			return await getPendingTodos(collectionId);
-		});
+		mutate(
+			["/api/todos", collectionId],
+			async (data) => {
+				const newTodos = data.todos.filter((todo) => todo.id !== todoId);
+
+				const todos = [...newTodos, { id: todoId, ...newTodo }];
+
+				todos.sort((a, b) =>
+					compareAsc(parseISO(b.createdAt), parseISO(a.createdAt))
+				);
+				todos.sort((a, b) => (a.priority > b.priority ? 1 : -1));
+
+				return { todos };
+			},
+			false
+		);
 
 		onClose();
 	};
@@ -73,6 +99,7 @@ const EditTodoModal = ({ children, todoId, collectionId }) => {
 							<FormLabel>New task</FormLabel>
 							<Input
 								ref={initialRef}
+								defaultValue={todoName}
 								placeholder='Do the dishes'
 								border='3px solid'
 								borderColor='#343343'
