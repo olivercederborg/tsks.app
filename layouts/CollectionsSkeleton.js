@@ -16,31 +16,31 @@ const CollectionsSkeleton = () => {
 					borderRadius='24px'
 					startColor='#21212B'
 					endColor='#343343'
-					h='110px'
+					h='138px'
 				></Skeleton>
 				<Skeleton
 					borderRadius='24px'
 					startColor='#21212B'
 					endColor='#343343'
-					h='110px'
+					h='138px'
 				></Skeleton>
 				<Skeleton
 					borderRadius='24px'
 					startColor='#21212B'
 					endColor='#343343'
-					h='110px'
+					h='138px'
 				></Skeleton>
 				<Skeleton
 					borderRadius='24px'
 					startColor='#21212B'
 					endColor='#343343'
-					h='110px'
+					h='138px'
 				></Skeleton>
 				<Skeleton
 					borderRadius='24px'
 					startColor='#21212B'
 					endColor='#343343'
-					h='110px'
+					h='138px'
 				></Skeleton>
 				<Skeleton
 					borderRadius='16px'
