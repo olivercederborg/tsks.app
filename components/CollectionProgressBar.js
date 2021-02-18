@@ -38,7 +38,7 @@ const CollectionProgress = ({ currentCollection }) => {
 					)}
 				</div>
 				<p className='opacity-70 text-sm break-normal'>
-					{typeof todos == "number" || typeof doneTodos == "number"
+					{typeof todos == "number" && typeof doneTodos == "number"
 						? `${doneTodos}/${todos + doneTodos}`
 						: "0/0"}
 				</p>
