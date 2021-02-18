@@ -38,9 +38,9 @@ const CollectionProgress = ({ currentCollection }) => {
 					)}
 				</div>
 				<p className='opacity-70 text-sm break-normal'>
-					{pendingTodos ?? completedTodos
+					{todos || doneTodos
 						? `${doneTodos}/${todos + doneTodos}`
-						: ""}
+						: "0/0"}
 				</p>
 			</div>
 		</>

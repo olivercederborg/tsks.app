@@ -107,8 +107,7 @@ const AddCollectionModal = ({ children }) => {
 			authorId: auth.user.uid,
 			createdAt: new Date().toISOString(),
 			name,
-			collectionColor,
-			collectionIcon
+			collectionColor
 		};
 
 		const { id } = createCollection(newCollection);
@@ -203,7 +202,7 @@ const AddCollectionModal = ({ children }) => {
 									className='w-16 h-12 p-0 mt-2 bg-transparent border-0 rounded-lg'
 								/>
 							</label>
-							<label className='flex flex-col mt-6'>
+							{/* <label className='flex flex-col mt-6'>
 								Icon
 								<div
 									className='grid grid-cols-5 gap-2 mt-2'
@@ -222,7 +221,7 @@ const AddCollectionModal = ({ children }) => {
 										);
 									})}
 								</div>
-							</label>
+							</label> */}
 						</FormControl>
 					</ModalBody>
 
