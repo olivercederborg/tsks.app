@@ -22,7 +22,7 @@ export default function CollectionPendingTodos({ currentCollection }) {
 
 	return (
 		<>
-			{todos && doneTodos != todos + doneTodos ? (
+			{pendingTodos && doneTodos != todos + doneTodos ? (
 				<p className='opacity-60 mt-1'>
 					{todos === 1
 						? `${todos} pending task`
@@ -30,7 +30,7 @@ export default function CollectionPendingTodos({ currentCollection }) {
 						? `${todos} pending tasks`
 						: "No pending tasks"}
 				</p>
-			) : todos && doneTodos == todos + doneTodos && doneTodos ? (
+			) : pendingTodos && doneTodos == todos + doneTodos && doneTodos ? (
 				<p className='opacity-80 mt-1'>All done! 🎉</p>
 			) : (
 				<p className='opacity-60 mt-1'>No tasks</p>

@@ -22,7 +22,7 @@ const CollectionProgress = ({ currentCollection }) => {
 		<>
 			<div className='flex items-center w-full mt-4'>
 				<div className='bg-secondary-card w-full h-1 mr-4 rounded-full'>
-					{todos || doneTodos ? (
+					{progressPercentage ?? pendingTodos ?? completedTodos ? (
 						<motion.div
 							initial={{ scaleX: 0, originX: 0 }}
 							animate={{ scaleX: 1 }}
@@ -38,9 +38,9 @@ const CollectionProgress = ({ currentCollection }) => {
 					)}
 				</div>
 				<p className='opacity-70 text-sm break-normal'>
-					{todos || doneTodos
+					{pendingTodos ?? completedTodos
 						? `${doneTodos}/${todos + doneTodos}`
-						: "0/0"}
+						: ""}
 				</p>
 			</div>
 		</>
