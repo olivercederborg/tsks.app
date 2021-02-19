@@ -66,7 +66,7 @@ const CollectionProgress = ({ currentCollection }) => {
 						value={progressPercentage || 0}
 						size='20px'
 						thickness='14px'
-						capIsRound='true'
+						// capIsRound='true'
 						color={currentCollection.collectionColor}
 						overflow='visible'
 					/>

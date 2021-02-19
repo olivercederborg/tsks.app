@@ -27,14 +27,15 @@ const Navigation = ({ children, href }) => {
 				<div className='flex flex-row items-center justify-between w-full px-5'>
 					<div>
 						<nav className='flex items-center'>
-							{router.pathname != "/app" && (
-								<button
-									onClick={() => setIsActive(!isActive)}
-									className='default-focus opacity-70 lg:block hover:opacity-100 hidden py-4 mr-4 text-2xl font-medium border-b-2 border-transparent'
-								>
-									<HiMenuAlt2 />
-								</button>
-							)}
+							{router.pathname != "/app" &&
+								router.pathname != "/settings/account" && (
+									<button
+										onClick={() => setIsActive(!isActive)}
+										className='default-focus opacity-70 lg:block hover:opacity-100 hidden py-4 mr-4 text-2xl font-medium border-b-2 border-transparent'
+									>
+										<HiMenuAlt2 />
+									</button>
+								)}
 							<Link href='/app' passHref>
 								<a
 									className={`default-focus py-4 font-medium border-transparent opacity-70 border-b-2 hover:opacity-100 flex items-center ${
@@ -55,7 +56,7 @@ const Navigation = ({ children, href }) => {
 					{auth.user && <NavDropdown auth={auth} />}
 				</div>
 			</header>
-			{router.pathname != "/app" && (
+			{router.pathname != "/app" && router.pathname != "/settings/account" && (
 				<nav
 					className={`bg-navigation w-72 border-t-1 border-primary-background lg:block fixed hidden h-full z-10 transition-transform duration-200 ease-in-out translate-x-0 transform ${
 						!isActive && "-translate-x-72"
@@ -145,7 +146,10 @@ const Navigation = ({ children, href }) => {
 
 			<main
 				className={`flex justify-center w-full mr-0 transition-all duration-200 ease-in-out pl-0 transform md:mt-14 mt-2 mb-32 ${
-					router.pathname != "/app" && isActive && "lg:pl-72"
+					router.pathname != "/app" &&
+					router.pathname != "/settings/account" &&
+					isActive &&
+					"lg:pl-72"
 				}`}
 			>
 				{children}

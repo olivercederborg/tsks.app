@@ -10,9 +10,9 @@ import CollectionProgress from "./CollectionProgressBar";
 export default function ShowCollections({ collections }) {
 	return (
 		<>
-			<h1 className='text-3xl font-bold'>Collections</h1>
+			<h1 className='text-2xl font-bold'>Collections</h1>
 
-			<div className='md:grid-cols-3 grid items-start grid-cols-2 gap-4 mt-10'>
+			<div className='md:grid-cols-3 mt-14 grid items-start grid-cols-2 gap-4'>
 				{collections &&
 					collections.map((collection) => (
 						<NextLink
