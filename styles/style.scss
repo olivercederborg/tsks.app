@@ -96,3 +96,7 @@ input[type="color"]::-webkit-color-swatch {
 .blur-bg {
 	backdrop-filter: blur(20px);
 }
+
+circle.chakra-progress__track {
+	stroke: #32323F;
+}

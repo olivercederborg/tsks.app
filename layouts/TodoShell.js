@@ -28,29 +28,28 @@ const TodoShell = ({ children, currentCollection }) => {
 			</Head>
 
 			<Navigation>
-				<div className='md:mt-14 relative w-full max-w-screen-md mt-8'>
-					<div className='blur-bg bg-primary-background bg-opacity-90 sticky top-0 z-20 flex justify-between px-5 py-5 mb-12'>
-						<div className='flex items-center'>
-							<Link href='/app' passHref>
-								<a className='default-focus bg-primary-card hover:bg-hover-card rounded-2xl p-3 text-2xl transition-colors duration-200 ease-in-out'>
-									<IoChevronBackOutline />
-								</a>
-							</Link>
-							{currentCollection ? (
-								<h1 className='ml-4 text-2xl font-bold'>
-									{currentCollection?.name}
-								</h1>
-							) : (
-								<Skeleton
-									borderRadius='16px'
-									startColor='#21232D'
-									endColor='#2A2D39'
-									h='36px'
-									w='180px'
-									ml='4'
-								/>
-							)}
-						</div>
+				<div className='md:mt-14 md:max-w-screen-md relative w-full mt-8'>
+					<div className='blur-bg bg-primary-background bg-opacity-90 sticky top-0 z-20 flex items-center justify-start w-full px-5 py-5 mb-12'>
+						<Link href='/app' passHref>
+							<a className='default-focus bg-primary-card hover:bg-hover-card rounded-2xl p-2.5 text-2xl transition-colors duration-200 ease-in-out'>
+								<IoChevronBackOutline />
+							</a>
+						</Link>
+						{currentCollection ? (
+							<h1 className='mx-4 text-2xl font-bold truncate'>
+								{currentCollection?.name}
+							</h1>
+						) : (
+							<Skeleton
+								borderRadius='16px'
+								startColor='#21232D'
+								endColor='#2A2D39'
+								h='36px'
+								w='180px'
+								ml='4'
+							/>
+						)}
+
 						<CollectionDropdown currentCollection={currentCollection} />
 					</div>
 					<div className='px-5'>{children}</div>

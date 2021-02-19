@@ -14,7 +14,7 @@ const CollectionDropdown = ({ currentCollection }) => {
 	const onClick = () => setIsActive(!isActive);
 
 	return (
-		<div className='relative flex text-left'>
+		<div className='relative flex ml-auto mr-0'>
 			<button
 				onClick={onClick}
 				className='default-focus hover:opacity-100 z-10 p-2 transition-opacity duration-200 ease-in-out rounded-lg opacity-50'
