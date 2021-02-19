@@ -91,6 +91,7 @@ const EditTodoModal = ({
 					borderRadius='20px'
 					color='white'
 					pt='2'
+					mx='5'
 				>
 					<ModalHeader fontWeight='700'>Edit task</ModalHeader>
 					<ModalCloseButton />

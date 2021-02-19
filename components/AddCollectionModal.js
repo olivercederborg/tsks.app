@@ -146,6 +146,7 @@ const AddCollectionModal = ({ children }) => {
 					borderRadius='20px'
 					color='white'
 					pt='2'
+					mx='5'
 				>
 					<ModalHeader fontWeight='700'>Add Collection</ModalHeader>
 					<ModalCloseButton />
@@ -168,7 +169,7 @@ const AddCollectionModal = ({ children }) => {
 							<label>
 								Color
 								<div
-									className='grid grid-cols-6 gap-2 mt-2'
+									className='md:grid-cols-6 grid grid-cols-5 gap-2 mt-2'
 									{...colorGroup}
 								>
 									{colorOptions.map((value) => {

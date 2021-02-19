@@ -28,8 +28,8 @@ const TodoShell = ({ children, currentCollection }) => {
 			</Head>
 
 			<Navigation>
-				<div className='md:mt-14 md:max-w-screen-md relative w-full mt-8'>
-					<div className='blur-bg bg-primary-background bg-opacity-90 sticky top-0 z-20 flex items-center justify-start w-full px-5 py-5 mb-12'>
+				<div className='md:mt-14 md:max-w-screen-md relative w-full'>
+					<div className='blur-bg bg-primary-background bg-opacity-80 md:top-14 sticky top-0 z-20 flex items-center justify-start w-full px-5 py-4 mb-12'>
 						<Link href='/app' passHref>
 							<a className='default-focus bg-primary-card hover:bg-hover-card rounded-2xl p-2.5 text-2xl transition-colors duration-200 ease-in-out'>
 								<IoChevronBackOutline />

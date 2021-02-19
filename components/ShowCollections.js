@@ -36,7 +36,7 @@ export default function ShowCollections({ collections }) {
 											<MdLabel fontSize='22px' />
 										</div>
 									</div>
-									<div className=' w-full mt-8'>
+									<div className=' md:mt-10 w-full mt-8'>
 										<h2 className='md:text-xl text-lg font-semibold truncate'>
 											{collection.name}
 										</h2>

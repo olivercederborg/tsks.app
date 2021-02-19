@@ -96,6 +96,7 @@ const EditCollectionModal = ({ children, currentCollection }) => {
 					bgColor='#1D1D27'
 					borderRadius='20px'
 					color='white'
+					mx='5'
 				>
 					<ModalHeader fontWeight='700'>Edit Collection</ModalHeader>
 					<ModalCloseButton />
@@ -118,7 +119,7 @@ const EditCollectionModal = ({ children, currentCollection }) => {
 							/>
 							<label>
 								Color
-								<div className='grid grid-cols-6 gap-2 mt-2'>
+								<div className='md:grid-cols-6 grid grid-cols-5 gap-2 mt-2'>
 									{colorOptions.map((value) => {
 										const radio = getRadioProps({ value });
 										return (

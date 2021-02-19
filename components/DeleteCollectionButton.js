@@ -43,7 +43,9 @@ const DeleteCollectionButton = ({ currentCollection }) => {
 			},
 			false
 		);
-		router.push("/app");
+		setTimeout(() => {
+			router.push("/app");
+		}, 100);
 	};
 
 	return (

@@ -23,7 +23,7 @@ const Navigation = ({ children, href }) => {
 
 	return (
 		<>
-			<header className='bg-navigation font-regular md:flex z-10 items-center justify-center hidden text-white shadow-md'>
+			<header className='bg-navigation font-regular md:flex fixed top-0 z-20 items-center justify-center hidden w-full text-white shadow-md'>
 				<div className='flex flex-row items-center justify-between w-full px-5'>
 					<div>
 						<nav className='flex items-center'>
@@ -144,7 +144,7 @@ const Navigation = ({ children, href }) => {
 			</header>
 
 			<main
-				className={`flex justify-center w-full mr-0 transition-all duration-200 ease-in-out pl-0 transform mb-32 ${
+				className={`flex justify-center w-full mr-0 transition-all duration-200 ease-in-out pl-0 transform md:mt-14 mt-2 mb-32 ${
 					router.pathname != "/app" && isActive && "lg:pl-72"
 				}`}
 			>
