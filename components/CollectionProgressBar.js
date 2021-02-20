@@ -24,29 +24,15 @@ const CollectionProgress = ({ currentCollection }) => {
 	return (
 		<>
 			<div className='flex items-center justify-between w-full mt-2'>
-				{/* <div className='bg-secondary-card w-full h-1 mr-4 rounded-full'>
-					{progressPercentage ?? pendingTodos ?? completedTodos ? (
-						<motion.div
-							initial={{ scaleX: 0, originX: 0 }}
-							animate={{ scaleX: 1 }}
-							transition={{ delay: 0.25, duration: 0.65 }}
-							style={{
-								backgroundColor: currentCollection.collectionColor,
-								width: `${progressPercentage}%` ?? "0%"
-							}}
-							className='h-full bg-black rounded-full'
-						/>
-					) : (
-						""
-					)}
-				</div> */}
-				<p className='opacity-70 text-sm break-normal'>
-					{progressPercentage == 100
-						? `All ${doneTodos} done!`
-						: todos !== 0 || doneTodos !== 0
-						? `${doneTodos}/${todos + doneTodos} done`
-						: "No tasks"}
-				</p>
+				{typeof todos === "number" && typeof todos === "number" && (
+					<p className='opacity-70 text-sm break-normal'>
+						{progressPercentage == 100
+							? `All ${doneTodos} done!`
+							: todos !== 0 || doneTodos !== 0
+							? `${doneTodos}/${todos + doneTodos} done`
+							: "No tasks"}
+					</p>
+				)}
 
 				{progressPercentage === 100 ? (
 					<div
@@ -66,7 +52,7 @@ const CollectionProgress = ({ currentCollection }) => {
 						value={progressPercentage || 0}
 						size='20px'
 						thickness='14px'
-						// capIsRound='true'
+						capIsRound={progressPercentage ? true : false}
 						color={currentCollection.collectionColor}
 						overflow='visible'
 					/>
