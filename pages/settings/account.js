@@ -1,14 +1,27 @@
-import CollectionDropdown from "@/components/CollectionDropdown";
-import Navigation from "@/layouts/Navigation";
-import { useAuth } from "@/lib/auth";
-import { Avatar, Skeleton } from "@chakra-ui/react";
 import Link from "next/link";
+import { Avatar, Skeleton } from "@chakra-ui/react";
 import { IoChevronBackOutline } from "react-icons/io5";
 
+import Navigation from "@/layouts/Navigation";
+import CollectionDropdown from "@/components/CollectionDropdown";
+import UpdateDisplayName from "@/components/UpdateDisplayName";
+import { useAuth } from "@/lib/auth";
+import useSWR from "swr";
+import fetcher from "@/utils/fetcher";
+import Head from "next/head";
+import UpdateUserEmail from "@/components/UpdateUserEmail";
+
 const Account = () => {
-	const { user } = useAuth();
+	const { user, signout, updateUserName } = useAuth();
+
+	const { data } = useSWR(user ? ["/api/userdata", user.uid] : null, fetcher);
+	const userData = data?.userData;
+
 	return (
 		<>
+			<Head>
+				<title>Account Settings - Tsks.</title>
+			</Head>
 			<Navigation>
 				<section
 					className='md:mt-10 md:mx-auto relative w-full pb-32'
@@ -21,7 +34,9 @@ const Account = () => {
 									<IoChevronBackOutline />
 								</a>
 							</Link>
-							<h1 className='ml-4 text-2xl font-bold'>My Account</h1>
+							<h1 className='ml-4 text-2xl font-bold'>
+								Account Settings
+							</h1>
 						</div>
 						<CollectionDropdown />
 					</div>
@@ -32,9 +47,11 @@ const Account = () => {
 								<Avatar w='80px' h='80px' src={user?.photoUrl} />
 							</figure>
 							<div className='ml-5'>
-								<p className='text-2xl font-semibold'>{user?.name}</p>
+								<p className='text-2xl font-semibold'>
+									{userData?.name ?? "No name set"}
+								</p>
 								<span className='user-role-gradient bg-primary-background text-xxs inline-block px-2 py-1 mt-2 font-semibold rounded-md'>
-									{user.userRole?.toUpperCase()}
+									{user?.userRole?.toUpperCase()}
 								</span>
 							</div>
 						</div>
@@ -43,20 +60,21 @@ const Account = () => {
 							<section>
 								<p className='text-sm opacity-50'>Display Name</p>
 								<div className='flex items-center justify-between'>
-									<p className='font-medium'>{user?.name}</p>
-									<button className='bg-ligther-gray-button px-4 py-2 text-sm font-medium rounded-md'>
-										Edit
-									</button>
+									<p className='font-medium'>
+										{userData?.name ?? "No name set"}
+									</p>
+									<UpdateDisplayName
+										user={userData}
+										updateUserName={updateUserName}
+									/>
 								</div>
 							</section>
 
 							<section className='mt-6'>
 								<p className='text-sm opacity-50'>Email</p>
 								<div className='flex items-center justify-between'>
-									<p className='font-medium'>{user?.email}</p>
-									<button className='bg-ligther-gray-button px-4 py-2 text-sm font-medium rounded-md'>
-										Edit
-									</button>
+									<p className='font-medium'>{userData?.email}</p>
+									<UpdateUserEmail user={userData} />
 								</div>
 							</section>
 
@@ -90,7 +108,10 @@ const Account = () => {
 						</article>
 
 						<div className='flex justify-center'>
-							<button className='bg-hover-card rounded-xl px-8 py-4 mt-5 font-medium'>
+							<button
+								onClick={() => signout()}
+								className='bg-hover-card rounded-xl px-8 py-4 mt-5 font-medium'
+							>
 								Sign out
 							</button>
 						</div>
