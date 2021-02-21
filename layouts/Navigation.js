@@ -62,7 +62,7 @@ const Navigation = ({ children, href }) => {
 						!isActive && "-translate-x-72"
 					}`}
 				>
-					<h3 className='mt-4 mb-3 ml-4 text-lg font-semibold'>
+					<h3 className='mt-4 mb-3 ml-5 text-lg font-semibold'>
 						Collections
 					</h3>
 					{collections &&
@@ -77,7 +77,7 @@ const Navigation = ({ children, href }) => {
 									className={`group default-focus rounded-3xl no-underline`}
 								>
 									<div
-										className={`group-hover:bg-hover-card flex flex-row items-center px-4 py-4 break-all transition-all duration-200 ease-in-out ${
+										className={`group-hover:bg-hover-card flex flex-row items-center px-5 py-4 break-all transition-all duration-200 ease-in-out ${
 											router.query.collectionId === collection.id
 												? "bg-hover-card"
 												: ""
