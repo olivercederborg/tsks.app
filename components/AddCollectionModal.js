@@ -42,7 +42,6 @@ import {
 import ColorRadioButtons from "@/components/ColorRadioButtons";
 import { createCollection } from "@/lib/db";
 import { useAuth } from "@/lib/auth";
-import IconRadioButtons from "./IconRadioButtons";
 
 const AddCollectionModal = ({ children }) => {
 	const colorOptions = [
@@ -55,29 +54,6 @@ const AddCollectionModal = ({ children }) => {
 		"#9E7F72"
 	];
 
-	const iconOptions = [
-		MdLabel,
-		IoSchool,
-		GiPencilBrush,
-		IoCodeSlash,
-		FaLightbulb,
-		HiLightningBolt,
-		IoWallet,
-		MdAssignment,
-		IoBook,
-		GiBroom,
-		FaAppleAlt,
-		IoFastFood,
-		BiBuildingHouse,
-		GiHouseKeys,
-		GrPersonalComputer,
-		FaHeadphonesAlt,
-		MdPhoneIphone,
-		FaCarAlt,
-		FaShoppingCart,
-		FaSuitcaseRolling
-	];
-
 	const initialRef = useRef(null);
 	const colorPicker = useRef(null);
 	const toast = useToast();
@@ -85,22 +61,13 @@ const AddCollectionModal = ({ children }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const { handleSubmit, register } = useForm();
 	const [collectionColor, setCollectionColor] = useState("#FC76A1");
-	const [collectionIcon, setCollectionIcon] = useState("MdLabel");
 
-	const { getRootProps, getRadioProps } = useRadioGroup(
-		{
-			name: "collection-color",
-			defaultValue: "#FC76A1",
-			onChange: setCollectionColor
-		},
-		{
-			name: "collection-icon",
-			defaultValue: "MdLabel",
-			onChange: setCollectionIcon
-		}
-	);
+	const { getRootProps, getRadioProps } = useRadioGroup({
+		name: "collection-color",
+		defaultValue: "#FC76A1",
+		onChange: setCollectionColor
+	});
 	const colorGroup = getRootProps();
-	const iconGroup = getRootProps();
 
 	const onCreateCollection = ({ name }) => {
 		const newCollection = {
@@ -203,27 +170,7 @@ const AddCollectionModal = ({ children }) => {
 									className='w-16 h-12 p-0 mt-2 bg-transparent border-0 rounded-lg'
 								/>
 							</label>
-							{/* <label className='flex flex-col mt-6'>
-								Icon
-								<div
-									className='grid grid-cols-5 gap-2 mt-2'
-									{...iconGroup}
-								>
-									{iconOptions.map((value) => {
-										const radio = getRadioProps({ value });
-										return (
-											<IconRadioButtons
-												icon={value}
-												key={value}
-												{...radio}
-											>
-												{value}
-											</IconRadioButtons>
-										);
-									})}
-								</div>
-							</label> */}
-						</FormControl>
+jk						</FormControl>
 					</ModalBody>
 
 					<ModalFooter>

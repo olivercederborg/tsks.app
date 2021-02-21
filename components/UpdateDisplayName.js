@@ -16,14 +16,12 @@ import {
 	Input,
 	useToast
 } from "@chakra-ui/react";
-import { updateUserName, useAuth } from "@/lib/auth";
-import { useRouter } from "next/router";
+import { useAuth } from "@/lib/auth";
 import { updateDisplayName } from "@/lib/db";
 import { getUser } from "@/lib/db-admin";
 
 const UpdateDisplayName = ({ user }) => {
-	const { updateUserName, error } = useAuth();
-	const router = useRouter();
+	const { updateUserName } = useAuth();
 	const initialRef = useRef(null);
 	const toast = useToast();
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -56,7 +54,7 @@ const UpdateDisplayName = ({ user }) => {
 		<>
 			<button
 				onClick={onOpen}
-				className='bg-ligther-gray-button px-4 py-2 text-sm font-medium rounded-md'
+				className='bg-ligther-gray-button hover:bg-gray-button px-4 py-2 text-sm font-medium transition-colors duration-200 ease-in-out rounded-md'
 			>
 				{user?.name ? "Edit" : "Set Name"}
 			</button>
