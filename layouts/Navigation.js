@@ -13,11 +13,15 @@ import { useEffect, useState } from "react";
 const Navigation = ({ children }) => {
 	const auth = useAuth();
 	const router = useRouter();
-	const [isActive, setIsActive] = useState(
-		typeof window !== "undefined"
-			? JSON.parse(localStorage.getItem("isActive"))
-			: true
-	);
+	const [isActive, setIsActive] = useState(null);
+
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			setIsActive(() => JSON.parse(localStorage.getItem("isActive")));
+		} else {
+			setIsActive(true);
+		}
+	}, []);
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {
