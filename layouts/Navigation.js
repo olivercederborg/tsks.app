@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 const Navigation = ({ children }) => {
 	const auth = useAuth();
 	const router = useRouter();
-	const [isActive, setIsActive] = useState(() =>
+	const [isActive, setIsActive] = useState(
 		typeof window !== "undefined"
 			? JSON.parse(localStorage.getItem("isActive"))
 			: true
