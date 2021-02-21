@@ -77,7 +77,7 @@ const Account = () => {
 										<p className='text-sm opacity-50'>Email</p>
 										<div className='flex items-center justify-between'>
 											<p className='font-medium'>
-												{userData?.email}{" "}
+												{userData?.email}
 												{user?.emailVerified ? (
 													<span className='ml-2 text-sm font-normal text-green-400'>
 														Verified
