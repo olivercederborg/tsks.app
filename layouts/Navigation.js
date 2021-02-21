@@ -8,12 +8,22 @@ import NavDropdown from "../components/NavDropdown";
 import useSWR from "swr";
 import fetcher from "@/utils/fetcher";
 import { HiMenuAlt2 } from "react-icons/hi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Navigation = ({ children, href }) => {
+const Navigation = ({ children }) => {
 	const auth = useAuth();
 	const router = useRouter();
-	const [isActive, setIsActive] = useState(true);
+	const [isActive, setIsActive] = useState(() =>
+		typeof window !== "undefined"
+			? JSON.parse(localStorage.getItem("isActive"))
+			: true
+	);
+
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			localStorage.setItem("isActive", JSON.stringify(isActive));
+		}
+	}, [isActive]);
 
 	const { data } = useSWR(
 		auth.user ? ["/api/todo-collections", auth.user.uid] : null,
