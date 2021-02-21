@@ -1,6 +1,5 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
-import { mutate } from "swr";
 import {
 	Button,
 	Modal,
@@ -18,9 +17,8 @@ import {
 	Alert,
 	AlertIcon
 } from "@chakra-ui/react";
+
 import { useAuth } from "@/lib/auth";
-import { updateEmail } from "@/lib/db";
-import { getUser } from "@/lib/db-admin";
 
 const UpdateUserEmail = ({ user }) => {
 	const { updateUserEmail, error } = useAuth();
@@ -29,33 +27,40 @@ const UpdateUserEmail = ({ user }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const { handleSubmit, register } = useForm();
 
-	if (error) {
-		console.log("Error happened", error);
-	}
-
 	const onUpdateEmail = ({ name }) => {
-		updateEmail(user.uid, name);
-		updateUserEmail(name);
-		console.log(`Update ${user.uid} email to ${name}`);
-
-		toast({
-			title: "Success!",
-			description: "Your email was updated.",
-			status: "success",
-			position: "top",
-			duration: 5000,
-			isClosable: true
-		});
-
-		setTimeout(() => {
-			mutate(["/api/userdata", user.uid], async () => {
-				return getUser(user.uid);
+		updateUserEmail(user.uid, name);
+		if (error) {
+			console.log(error);
+		}
+		if (error?.code == "auth/requires-recent-login") {
+			console.log("Error happened", error);
+			toast({
+				title: "Error",
+				description:
+					"You need to have logged in recently to change your email.",
+				status: "error",
+				position: "top",
+				duration: 10000,
+				isClosable: true
 			});
-		}, 100);
+		} else if (error?.code == "auth/email-already-in-use") {
+			console.log("Error happened", error);
+		} else {
+			console.log("no error");
+			toast({
+				title: "Success!",
+				description: "Your email was updated.",
+				status: "success",
+				position: "top",
+				duration: 5000,
+				isClosable: true
+			});
 
-		onClose();
+			setTimeout(() => {}, 500);
+
+			onClose();
+		}
 	};
-
 	return (
 		<>
 			<button
@@ -64,12 +69,6 @@ const UpdateUserEmail = ({ user }) => {
 			>
 				Change
 			</button>
-			{error?.code == "auth/requires-recent-login" && (
-				<Alert bgColor='red.400' borderRadius='12px' status='error' mb='4'>
-					<AlertIcon color='white' />
-					Log out and in again to change your email.
-				</Alert>
-			)}
 			<Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
 				<ModalOverlay />
 				<ModalContent

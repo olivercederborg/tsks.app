@@ -12,7 +12,7 @@ import Head from "next/head";
 import UpdateUserEmail from "@/components/UpdateUserEmail";
 
 const Account = () => {
-	const { user, signout, updateUserName } = useAuth();
+	const { user, signout, updateUserName, verifyEmail } = useAuth();
 
 	const { data } = useSWR(user ? ["/api/userdata", user.uid] : null, fetcher);
 	const userData = data?.userData;
@@ -73,7 +73,21 @@ const Account = () => {
 							<section className='mt-6'>
 								<p className='text-sm opacity-50'>Email</p>
 								<div className='flex items-center justify-between'>
-									<p className='font-medium'>{userData?.email}</p>
+									<p className='font-medium'>
+										{userData?.email}{" "}
+										{user?.emailVerified ? (
+											<span className='ml-2 text-sm font-normal text-green-400'>
+												Verified
+											</span>
+										) : (
+											<a
+												onClick={verifyEmail}
+												className='opacity-70 ml-2 text-sm font-normal cursor-pointer'
+											>
+												Verify
+											</a>
+										)}
+									</p>
 									<UpdateUserEmail user={userData} />
 								</div>
 							</section>
