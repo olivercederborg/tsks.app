@@ -46,9 +46,12 @@ const CollectionTodos = () => {
 
 	return (
 		<TodoShell currentCollection={collection}>
-			<p className='mb-2 font-medium text-white'>
+			<p className='mb-3 font-medium text-white'>
 				Tasks - {todoData?.todos.length}
 			</p>
+
+			<AddTodo collectionColor={collection.collectionColor} />
+
 			{todoData?.todos?.length
 				? todoData.todos.map((todo) => (
 						<div key={todo.id}>
@@ -59,8 +62,6 @@ const CollectionTodos = () => {
 						</div>
 				  ))
 				: ""}
-
-			<AddTodo collectionColor={collection.collectionColor} />
 
 			{completedTodoData?.todos?.length ? (
 				<p className='mt-10 mb-2 font-medium text-white'>
