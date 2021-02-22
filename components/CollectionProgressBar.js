@@ -6,26 +6,42 @@ import { useAuth } from "@/lib/auth";
 import fetcher from "@/utils/fetcher";
 import { BiCheck } from "react-icons/bi";
 import { HiCheck } from "react-icons/hi";
+import {
+	getCollectionTodos,
+	getCompletedTodos,
+	getPendingTodos
+} from "@/lib/db-admin";
+import { useEffect, useState } from "react";
 
 const CollectionProgress = ({ currentCollection }) => {
 	const { user } = useAuth();
-	const { data: pendingTodos } = useSWR(
-		user ? ["/api/todos", currentCollection.id] : null,
-		fetcher
-	);
-	const { data: completedTodos } = useSWR(
-		user ? ["/api/todos-completed", currentCollection.id] : null,
-		fetcher
-	);
-	const todos = pendingTodos?.todos.length;
-	const doneTodos = completedTodos?.todos.length;
+	// const { data: pendingTodos } = useSWR(
+	// 	user ? ["/api/todos", currentCollection.id] : null,
+	// 	fetcher
+	// );
+	// const { data: completedTodos } = useSWR(
+	// 	user ? ["/api/todos-completed", currentCollection.id] : null,
+	// 	fetcher
+	// );
+	const [pendingTodos, setPendingTodos] = useState([]);
+	const [completedTodos, setCompletedTodos] = useState([]);
+
+	const todos = pendingTodos.todos?.length;
+	const doneTodos = completedTodos.todos?.length;
 	const progressPercentage = (doneTodos / (todos + doneTodos)) * 100;
+
+	// console.log(pendingTodos, completedTodos);
+
+	useEffect(async () => {
+		setPendingTodos(await getPendingTodos(currentCollection.id));
+		setCompletedTodos(await getCompletedTodos(currentCollection.id));
+	}, [setPendingTodos, setCompletedTodos, currentCollection.id]);
 
 	return (
 		<>
 			<div className='flex items-center justify-between w-full mt-2'>
-				{pendingTodos &&
-				completedTodos &&
+				{pendingTodos.todos &&
+				completedTodos.todos &&
 				typeof todos === "number" &&
 				typeof todos === "number" ? (
 					<p className='opacity-70 text-sm break-normal'>
@@ -46,7 +62,7 @@ const CollectionProgress = ({ currentCollection }) => {
 					>
 						<HiCheck className='text-primary-card z-10 text-sm' />
 						<span
-							class='animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 z-0'
+							className='animate-ping absolute z-0 inline-flex w-full h-full rounded-full opacity-75'
 							style={{
 								backgroundColor: currentCollection.collectionColor
 							}}
