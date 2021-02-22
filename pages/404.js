@@ -11,7 +11,7 @@ const NotFound = () => {
 						<h1 className='md:text-5xl lg:text-6xl mt-14 md:mt-0 text-4xl font-bold'>
 							404 - Looks like you're lost.
 						</h1>
-						<p className='mt-8'>
+						<p className='text-gray-text mt-8'>
 							Maybe this page used to exist or you just spelled something
 							wrong.
 							<br />
