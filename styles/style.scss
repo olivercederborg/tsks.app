@@ -98,5 +98,31 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 circle.chakra-progress__track {
-	stroke: #32323F;
+	stroke: #32323f;
+}
+
+// 404 page
+.notfound-balls {
+	background-image: url("/img/404-left-balls.png"), url("/img/404-right-balls.png");
+	background-repeat: no-repeat;
+	background-position: bottom left, top right;
+	background-size: 65%, 30%;
+}
+
+@media only screen and (min-width: 768px) {
+	.notfound-balls {
+		background-image: url("/img/404-left-balls.png"), url("/img/404-right-balls.png");
+		background-repeat: no-repeat;
+		background-position: bottom left, top right;
+		background-size: 50%, 25%;
+	}
+}
+
+@media only screen and (min-width: 1280px) {
+	.notfound-balls {
+		background-image: url("/img/404-left-balls.png"), url("/img/404-right-balls.png");
+		background-repeat: no-repeat;
+		background-position: bottom left, top right;
+		background-size: auto;
+	}
 }
