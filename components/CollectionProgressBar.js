@@ -24,7 +24,10 @@ const CollectionProgress = ({ currentCollection }) => {
 	return (
 		<>
 			<div className='flex items-center justify-between w-full mt-2'>
-				{typeof todos === "number" && typeof todos === "number" && (
+				{pendingTodos &&
+				completedTodos &&
+				typeof todos === "number" &&
+				typeof todos === "number" ? (
 					<p className='opacity-70 text-sm break-normal'>
 						{progressPercentage == 100
 							? `All ${doneTodos} done!`
@@ -32,6 +35,8 @@ const CollectionProgress = ({ currentCollection }) => {
 							? `${doneTodos}/${todos + doneTodos} done`
 							: "No tasks"}
 					</p>
+				) : (
+					<p className='opacity-70 text-sm break-normal'>--/-- done</p>
 				)}
 
 				{progressPercentage === 100 ? (
