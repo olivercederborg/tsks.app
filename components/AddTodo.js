@@ -46,7 +46,7 @@ const AddTodo = ({ collectionColor }) => {
 						<button
 							style={{
 								height: "22px",
-								width: "23px",
+								width: "22px",
 								borderColor: collectionColor,
 								backgroundColor: collectionColor
 							}}
@@ -57,9 +57,9 @@ const AddTodo = ({ collectionColor }) => {
 						<input
 							className='w-full bg-transparent rounded-md outline-none'
 							ref={inputEl}
-							name='name'
-							type='name'
-							id='name'
+							name='todo'
+							type='text'
+							id='todo'
 							placeholder='Add task'
 							required
 						></input>
