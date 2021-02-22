@@ -170,7 +170,7 @@ const AddCollectionModal = ({ children }) => {
 									className='w-16 h-12 p-0 mt-2 bg-transparent border-0 rounded-lg'
 								/>
 							</label>
-jk						</FormControl>
+						</FormControl>
 					</ModalBody>
 
 					<ModalFooter>
