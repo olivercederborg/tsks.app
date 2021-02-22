@@ -17,7 +17,13 @@ const LandingNavigation = () => {
 
 	return (
 		<>
-			<header className='font-regular bg-hero-background md:flex items-center justify-center hidden w-full py-6 text-white'>
+			<header
+				className={`font-regular md:flex bg-opacity-80 blur-bg items-center justify-center hidden w-full py-4 text-white z-20 ${
+					router.pathname == "/"
+						? "bg-hero-background"
+						: "bg-primary-background"
+				}`}
+			>
 				<div className='container flex flex-row items-center justify-between w-full px-5'>
 					<nav className='flex items-center justify-between w-full'>
 						<div className='flex items-center'>
@@ -66,7 +72,7 @@ const LandingNavigation = () => {
 
 			<header
 				id='mobile_menu'
-				className='bg-secondary-background md:hidden fixed bottom-0 z-20 flex items-start justify-center w-full text-sm font-medium text-white'
+				className='bg-primary-background bg-opacity-80 blur-bg md:hidden fixed bottom-0 z-20 flex items-start justify-center w-full text-sm font-medium text-white'
 			>
 				<div className='flex flex-row items-center justify-between w-full'>
 					<nav className='flex items-center justify-around w-full'>
