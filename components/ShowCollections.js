@@ -1,57 +1,51 @@
-import NextLink from "next/link";
-import { MdLabel } from "react-icons/md";
-import { HiOutlinePlus } from "react-icons/hi";
-
-import AddCollectionModal from "@/components/AddCollectionModal";
-import CollectionPendingTodos from "./CollectionPendingTodos";
-import { useAuth } from "@/lib/auth";
-import CollectionProgress from "./CollectionProgressBar";
+import { useEffect, useState } from "react";
+import FavouriteCollections from "./FavouriteCollections";
+import ShowAllCollectons from "./ShowAllCollections";
 
 export default function ShowCollections({ collections }) {
+	const initialFavourites = JSON.parse(
+		window.localStorage.getItem("favouritesActive") ?? false
+	);
+	const initialAll = JSON.parse(
+		window.localStorage.getItem("allActive") ?? true
+	);
+	const [favouritesActive, setFavouritesActive] = useState(initialFavourites);
+	const [allActive, setAllActive] = useState(initialAll);
+
+	useEffect(() => {
+		window.localStorage.setItem("favouritesActive", favouritesActive);
+		window.localStorage.setItem("allActive", allActive);
+	}, [allActive, favouritesActive]);
+
 	return (
 		<>
 			<h1 className='text-2xl font-bold'>Collections</h1>
-
-			<div className='md:grid-cols-3 mt-14 grid items-start grid-cols-2 gap-4'>
-				{collections &&
-					collections.map((collection) => (
-						<NextLink
-							key={collection.id}
-							href='/collection/[collectionId]'
-							as={`/collection/${collection.id}`}
-							passHref
-						>
-							<a className='group default-focus rounded-3xl no-underline'>
-								<div className='group-hover:bg-hover-card rounded-3xl bg-primary-card md:p-6 relative flex flex-col items-start h-full p-5 break-all transition-all duration-200 ease-in-out'>
-									<div className='flex flex-col items-start'>
-										<div
-											style={{
-												backgroundColor: collection.collectionColor
-											}}
-											className={`rounded-2xl p-3 ${
-												!collection.collectionColor &&
-												"bg-primary-default"
-											}`}
-										>
-											<MdLabel fontSize='22px' />
-										</div>
-									</div>
-									<div className=' md:mt-10 w-full mt-8'>
-										<h2 className='md:text-xl text-lg font-semibold truncate'>
-											{collection.name}
-										</h2>
-										<CollectionProgress
-											currentCollection={collection}
-										/>
-									</div>
-								</div>
-							</a>
-						</NextLink>
-					))}
-				<AddCollectionModal>
-					<HiOutlinePlus className='text-lg' />
-				</AddCollectionModal>
+			<div className='mt-14 space-x-4'>
+				<button
+					onClick={() => {
+						setAllActive(false);
+						setFavouritesActive(true);
+					}}
+					className={`default-focus border-primary-card rounded-xl px-4 py-2.5 text-sm border-2 ${
+						favouritesActive && "bg-gray-button border-gray-button"
+					}`}
+				>
+					Favourites
+				</button>
+				<button
+					onClick={() => {
+						setFavouritesActive(false);
+						setAllActive(true);
+					}}
+					className={`default-focus border-primary-card rounded-xl px-4 py-2.5 text-sm border-2 ${
+						allActive && "bg-gray-button border-gray-button"
+					}`}
+				>
+					All Collections
+				</button>
 			</div>
+			{allActive && <ShowAllCollectons collections={collections} />}
+			{favouritesActive && <FavouriteCollections />}
 		</>
 	);
 }

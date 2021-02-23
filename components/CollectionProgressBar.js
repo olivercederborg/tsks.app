@@ -1,47 +1,50 @@
-import useSWR from "swr";
-import { motion } from "framer-motion";
-import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
+import { CircularProgress } from "@chakra-ui/react";
 
-import { useAuth } from "@/lib/auth";
-import fetcher from "@/utils/fetcher";
-import { BiCheck } from "react-icons/bi";
 import { HiCheck } from "react-icons/hi";
-import {
-	getCollectionTodos,
-	getCompletedTodos,
-	getPendingTodos
-} from "@/lib/db-admin";
+import { getCompletedTodos, getPendingTodos } from "@/lib/db-admin";
 import { useEffect, useState } from "react";
+import useSWR from "swr";
+import fetcher from "@/utils/fetcher";
+import { useAuth } from "@/lib/auth";
 
 const CollectionProgress = ({ currentCollection }) => {
 	const { user } = useAuth();
-	// const { data: pendingTodos } = useSWR(
-	// 	user ? ["/api/todos", currentCollection.id] : null,
-	// 	fetcher
-	// );
-	// const { data: completedTodos } = useSWR(
-	// 	user ? ["/api/todos-completed", currentCollection.id] : null,
-	// 	fetcher
-	// );
-	const [pendingTodos, setPendingTodos] = useState([]);
-	const [completedTodos, setCompletedTodos] = useState([]);
+	// const [pendingTodos, setPendingTodos] = useState([]);
+	// const [completedTodos, setCompletedTodos] = useState([]);
 
-	const todos = pendingTodos.todos?.length;
-	const doneTodos = completedTodos.todos?.length;
+	const { data: pendingTodos } = useSWR(
+		user ? ["/api/todos", currentCollection.id] : null,
+		fetcher
+	);
+	const { data: completedTodos } = useSWR(
+		user ? ["/api/todos-completed", currentCollection.id] : null,
+		fetcher
+	);
+
+	// console.log(completedTodos.todos);
+
+	const todos = pendingTodos?.todos.length;
+	const doneTodos = completedTodos?.todos.length;
 	const progressPercentage = (doneTodos / (todos + doneTodos)) * 100;
 
-	// console.log(pendingTodos, completedTodos);
-
-	useEffect(async () => {
-		setPendingTodos(await getPendingTodos(currentCollection.id));
-		setCompletedTodos(await getCompletedTodos(currentCollection.id));
-	}, [setPendingTodos, setCompletedTodos, currentCollection.id]);
+	// useEffect(() => {
+	// 	let isRendered = true;
+	// 	getPendingTodos(currentCollection.id).then(
+	// 		(todos) => isRendered && setPendingTodos(todos)
+	// 	);
+	// 	getCompletedTodos(currentCollection.id).then(
+	// 		(todos) => isRendered && setCompletedTodos(todos)
+	// 	);
+	// 	return () => {
+	// 		isRendered = false;
+	// 	};
+	// }, []);
 
 	return (
 		<>
 			<div className='flex items-center justify-between w-full mt-2'>
-				{pendingTodos.todos &&
-				completedTodos.todos &&
+				{pendingTodos?.todos &&
+				completedTodos?.todos &&
 				typeof todos === "number" &&
 				typeof todos === "number" ? (
 					<p className='opacity-70 text-sm break-normal'>
@@ -73,8 +76,9 @@ const CollectionProgress = ({ currentCollection }) => {
 						value={progressPercentage || 0}
 						size='20px'
 						thickness='14px'
-						capIsRound={progressPercentage ? true : false}
+						capIsRound={progressPercentage}
 						color={currentCollection.collectionColor}
+						trackColor='#32323f'
 						overflow='visible'
 					/>
 				)}
