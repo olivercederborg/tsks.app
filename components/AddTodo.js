@@ -54,12 +54,12 @@ const AddTodo = ({ collection }) => {
 								borderColor: collectionColor,
 								backgroundColor: collectionColor
 							}}
-							className={`default-focus text-primary-background text-center flex justify-center items-center mr-3 text-base transition-colors duration-100 ease-in-out rounded-lg`}
+							className={`default-focus text-primary-background text-center inline-flex justify-center items-center mr-3 text-base transition-colors duration-100 ease-in-out rounded-lg`}
 						>
 							<BiPlus />
 						</button>
 						<input
-							className='w-full bg-transparent rounded-md outline-none'
+							className='w-11/12 bg-transparent rounded-md outline-none'
 							ref={inputEl}
 							name='todo'
 							type='text'
