@@ -45,7 +45,9 @@ export default function ShowCollections({ collections }) {
 				</button>
 			</div>
 			{allActive && <ShowAllCollectons collections={collections} />}
-			{favouritesActive && <FavouriteCollections />}
+			{favouritesActive && (
+				<FavouriteCollections collections={collections} />
+			)}
 		</>
 	);
 }
