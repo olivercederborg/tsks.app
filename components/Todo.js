@@ -3,7 +3,11 @@ import { mutate } from "swr";
 import { Tooltip, useToast } from "@chakra-ui/react";
 
 import TodoDropdown from "./TodoDropdown";
-import { completeTodo } from "@/lib/db";
+import {
+	completeTodo,
+	decrementTodos,
+	incrementCompletedTodos
+} from "@/lib/db";
 import { useAuth } from "../lib/auth";
 import { eachDayOfInterval } from "date-fns";
 import { useDeprecatedInvertedScale } from "framer-motion";
@@ -45,6 +49,8 @@ const Todo = ({ name, id, createdAt, authorId, collectionColor, priority }) => {
 			false
 		);
 		completeTodo(id, newTodo);
+		incrementCompletedTodos(collectionId);
+		decrementTodos(collectionId);
 	};
 
 	return (

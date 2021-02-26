@@ -3,7 +3,7 @@ import { mutate } from "swr";
 import { useToast } from "@chakra-ui/react";
 import { FiEdit, FiMoreHorizontal, FiMoreVertical } from "react-icons/fi";
 
-import { deleteTodo, prioritizeTodo } from "../lib/db";
+import { decrementTodos, deleteTodo, prioritizeTodo } from "../lib/db";
 import { useDetectOutsideClick } from "@/utils/useDetectOutsideClick";
 import EditTodoModal from "./EditTodoModal";
 import { BiEdit, BiTrash } from "react-icons/bi";
@@ -41,6 +41,7 @@ const TodoDropdown = ({
 			false
 		);
 		deleteTodo(id);
+		decrementTodos(collectionId);
 	};
 
 	const onPriority = (prioVal) => {

@@ -3,7 +3,7 @@ import { mutate } from "swr";
 import { useToast } from "@chakra-ui/react";
 import { FiMoreHorizontal, FiMoreVertical } from "react-icons/fi";
 
-import { deleteTodo } from "../lib/db";
+import { decrementCompletedTodos, deleteTodo } from "../lib/db";
 import { useDetectOutsideClick } from "@/utils/useDetectOutsideClick";
 import { BiTrash } from "react-icons/bi";
 
@@ -30,6 +30,7 @@ const CompletedTodoDropdown = ({ collectionId, id }) => {
 			false
 		);
 		deleteTodo(id);
+		decrementCompletedTodos(collectionId);
 	};
 
 	return (

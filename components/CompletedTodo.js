@@ -4,7 +4,11 @@ import { Tooltip, useToast } from "@chakra-ui/react";
 import { HiCheck } from "react-icons/hi";
 
 import CompletedTodoDropdown from "./CompletedTodoDropdown";
-import { unCompleteTodo } from "@/lib/db";
+import {
+	decrementCompletedTodos,
+	incrementTodos,
+	unCompleteTodo
+} from "@/lib/db";
 import { useAuth } from "../lib/auth";
 import { getPendingTodos } from "@/lib/db-admin";
 import { compareAsc, parseISO } from "date-fns";
@@ -49,6 +53,8 @@ const Todo = ({ name, id, createdAt, authorId, collectionColor, priority }) => {
 		);
 
 		unCompleteTodo(id);
+		decrementCompletedTodos(collectionId);
+		incrementTodos(collectionId);
 	};
 	return (
 		<div className='py-2'>

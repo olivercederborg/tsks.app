@@ -5,13 +5,14 @@ import { Box, FormControl, FormLabel } from "@chakra-ui/react";
 import { BiPlus } from "react-icons/bi";
 
 import { useAuth } from "@/lib/auth";
-import { createTodo } from "@/lib/db";
+import { createTodo, incrementTodos } from "@/lib/db";
 
-const AddTodo = ({ collectionColor }) => {
+const AddTodo = ({ collection }) => {
 	const auth = useAuth();
 	const router = useRouter();
 	const inputEl = useRef(null);
 	const collectionId = router.query.collectionId;
+	const collectionColor = collection?.collectionColor;
 
 	const onCreateTodo = (e) => {
 		e.preventDefault();
@@ -28,10 +29,13 @@ const AddTodo = ({ collectionColor }) => {
 		const { id } = createTodo(newTodo);
 
 		mutate(
-			["/api/todos", collectionId],
+			["/api/todos", collection.id],
 			async (data) => ({ todos: [...data.todos, { id, ...newTodo }] }),
 			false
 		);
+
+		incrementTodos(collectionId);
+
 		inputEl.current.value = "";
 	};
 

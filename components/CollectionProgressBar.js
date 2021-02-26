@@ -1,30 +1,15 @@
+import { useEffect, useState } from "react";
 import { CircularProgress } from "@chakra-ui/react";
 
 import { HiCheck } from "react-icons/hi";
 import { getCompletedTodos, getPendingTodos } from "@/lib/db-admin";
-import { useEffect, useState } from "react";
-import useSWR from "swr";
-import fetcher from "@/utils/fetcher";
-import { useAuth } from "@/lib/auth";
 
 const CollectionProgress = ({ currentCollection }) => {
-	const { user } = useAuth();
-	// const [pendingTodos, setPendingTodos] = useState([]);
-	// const [completedTodos, setCompletedTodos] = useState([]);
+	const [pendingTodos, setPendingTodos] = useState([]);
+	const [completedTodos, setCompletedTodos] = useState([]);
 
-	const { data: pendingTodos } = useSWR(
-		user ? ["/api/todos", currentCollection.id] : null,
-		fetcher
-	);
-	const { data: completedTodos } = useSWR(
-		user ? ["/api/todos-completed", currentCollection.id] : null,
-		fetcher
-	);
-
-	// console.log(completedTodos.todos);
-
-	const todos = pendingTodos?.todos.length;
-	const doneTodos = completedTodos?.todos.length;
+	const todos = currentCollection.todos ?? 0;
+	const doneTodos = currentCollection.completedTodos ?? 0;
 	const progressPercentage = (doneTodos / (todos + doneTodos)) * 100;
 
 	// useEffect(() => {
@@ -43,20 +28,13 @@ const CollectionProgress = ({ currentCollection }) => {
 	return (
 		<>
 			<div className='flex items-center justify-between w-full mt-2'>
-				{pendingTodos?.todos &&
-				completedTodos?.todos &&
-				typeof todos === "number" &&
-				typeof todos === "number" ? (
-					<p className='opacity-70 text-sm break-normal'>
-						{progressPercentage == 100
-							? `All ${doneTodos} done!`
-							: todos !== 0 || doneTodos !== 0
-							? `${doneTodos}/${todos + doneTodos} done`
-							: "No tasks"}
-					</p>
-				) : (
-					<p className='opacity-70 text-sm break-normal'>--/-- done</p>
-				)}
+				<p className='opacity-70 text-sm break-normal'>
+					{progressPercentage == 100
+						? `All ${doneTodos} done!`
+						: todos !== 0 || doneTodos !== 0
+						? `${doneTodos}/${todos + doneTodos} done`
+						: "No tasks"}
+				</p>
 
 				{progressPercentage === 100 ? (
 					<div

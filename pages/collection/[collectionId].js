@@ -1,4 +1,3 @@
-import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import useSWR, { mutate } from "swr";
 
@@ -8,14 +7,11 @@ import CompletedTodo from "@/components/CompletedTodo";
 import TodoShell from "@/layouts/TodoShell";
 import fetcher from "@/utils/fetcher";
 import AddTodo from "@/components/AddTodo";
-import { getCollection } from "@/lib/db-admin";
 import TodoSkeleton from "@/layouts/TodoSkeleton";
 
 const CollectionTodos = () => {
 	const router = useRouter();
 	const collectionId = router.query.collectionId;
-	const [collection, setCollection] = useState(null);
-	const [collectionColor, setCollectionColor] = useState(null);
 
 	const auth = useAuth();
 	const { data: todoData } = useSWR(
@@ -26,15 +22,12 @@ const CollectionTodos = () => {
 		auth.user ? ["/api/todos-completed", collectionId] : null,
 		fetcher
 	);
-
-	useEffect(() => {
-		const getCurrentCollection = async () => {
-			const currentCollection = await getCollection(collectionId);
-			setCollection(currentCollection.collection);
-		};
-
-		getCurrentCollection();
-	}, [router]);
+	const { data: currentCollection } = useSWR(
+		auth.user ? ["/api/current-collection", collectionId] : null,
+		fetcher
+	);
+	const collection = currentCollection?.collection;
+	console.log(currentCollection);
 
 	if (!todoData || !collection?.collectionColor) {
 		return (
@@ -50,7 +43,7 @@ const CollectionTodos = () => {
 				Tasks - {todoData?.todos.length}
 			</p>
 
-			<AddTodo collectionColor={collection.collectionColor} />
+			<AddTodo collection={collection} />
 
 			{todoData?.todos?.length
 				? todoData.todos.map((todo) => (
