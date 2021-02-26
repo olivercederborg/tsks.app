@@ -53,9 +53,9 @@ const FavouriteCollections = () => {
 								</a>
 							</NextLink>
 						))}
-					<AddCollectionModal>
+					{/* <AddCollectionModal>
 						<HiOutlinePlus className='text-lg' />
-					</AddCollectionModal>
+					</AddCollectionModal> */}
 				</div>
 			) : (
 				""

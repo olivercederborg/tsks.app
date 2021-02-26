@@ -36,7 +36,7 @@ const CollectionProgress = ({ currentCollection }) => {
 						: "No tasks"}
 				</p>
 
-				{progressPercentage === 100 ? (
+				{progressPercentage === 100 && (
 					<div
 						className='relative z-10 flex items-center justify-center w-5 h-5 rounded-full'
 						style={{ backgroundColor: currentCollection.collectionColor }}
@@ -49,7 +49,9 @@ const CollectionProgress = ({ currentCollection }) => {
 							}}
 						></span>
 					</div>
-				) : (
+				)}
+
+				{progressPercentage && progressPercentage != 100 ? (
 					<CircularProgress
 						value={progressPercentage || 0}
 						size='20px'
@@ -59,6 +61,8 @@ const CollectionProgress = ({ currentCollection }) => {
 						trackColor='#32323f'
 						overflow='visible'
 					/>
+				) : (
+					""
 				)}
 			</div>
 		</>

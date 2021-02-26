@@ -27,7 +27,6 @@ const CollectionTodos = () => {
 		fetcher
 	);
 	const collection = currentCollection?.collection;
-	console.log(currentCollection);
 
 	if (!todoData || !collection?.collectionColor) {
 		return (
